@@ -20,8 +20,11 @@ export default class App extends Vue {}
 @import "~bulma/css/bulma.css";
 @import "bulma/sass/utilities/_all.sass";
 @import "bulma/sass/grid/columns.sass";
+
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i");
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  //font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

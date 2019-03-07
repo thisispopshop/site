@@ -9,10 +9,12 @@
 * **TypeORM** - ORM for Vue
 * **TypeScript** - better Javascript
 * **Node.Js/Express.js** - Javascript Environment
+* **Axios** - HTTP Client (for CRUD)
 
 ## Getting Started
 ### 0. Preparation
 * Install Docker
+* Intall NPM/Node.js
 
 ### 1. Starting the Back-End
 * in _./popshop_ run **docker-compose up**
