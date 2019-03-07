@@ -1,0 +1,16 @@
+{
+  "dev": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "password",
+    "database": "dev"
+  },
+  "test": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "password",
+    "database": "test"
+  }
+}

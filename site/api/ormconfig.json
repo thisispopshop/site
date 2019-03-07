@@ -1,0 +1,17 @@
+{
+  "type": "mysql",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "entity/**/*.ts"
+  ],
+  "migrations": [
+    "migration/**/*.ts"
+  ],
+  "subscribers": [
+    "subscriber/**/*.ts"
+  ],
+  "cli": {
+    "migrationsDir": "migration"
+  }
+}
