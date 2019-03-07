@@ -2,17 +2,27 @@
     <div class="LandingPage">
 
         <!--whatever this thing is called-->
-        <!--https://cdn.vox-cdn.com/thumbor/BWaT3_PNCAHTsWlAJ0vLgGcbOAk=/0x0:2000x1333/1920x0/filters:focal(0x0:2000x1333):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9136689/OH6A8388.jpg-->
         <section class="hero is-light is-fullheight">
+
+            <!--Put the Logo in the top right corner-->
+            <div class="hero-head">
+                <div class="logo">
+                    <img alt="PopShop Logo" src="../assets/popshop_logo.png">
+                </div>
+            </div>
+
             <div class="hero-body">
 
-                <!--USE BRANDON GROTESQUE TYPEFACE-->
                 <!--content-->
                 <section class="section ">
                     <div class="container">
+
+                        <!--Header-->
                         <h1 class="title is-size-1 has-text-black">
                             RUSH, REDESIGNED.
                         </h1>
+
+                        <!--Description-->
                         <h2 class="subtitle is-size-3 has-text-black">
                             <br> Say goodbye to countless hours spent shopping, creating lookbooks and approving 
                             <br> outfits. Let us handle your wardrobe so you can focus on what really matters: 
@@ -21,19 +31,27 @@
                             <br>
                         </h2>
 
-
                         <!--Add you email-->
-                        <div class="columns">
-                            <div class="column is-one-quarter">
-                                <div class="control">
-                                    <input class="input is-medium" type="text" placeholder="Enter your email">
-                                    <button class="button is-success is-medium is-fullwidth">Learn More</button>
+                        <div class="email_field">
+
+                            <!--email address form control-->
+                            <div class="field" >
+                                <div class="control is-exanded">
+                                    <input class="input is-medium" type="text" placeholder="enter email address" style="text-align:center;">
                                 </div>
                             </div>
-                        </div>
+
+                            <!--submit email address-->
+                            <div class="field">
+                                <div class="control is-expanded">
+                                    <button class="button is-dark is-medium is-fullwidth">learn more</button>
+                                </div>
+                            </div>
+                        </div>  
                     
                     </div>
                 </section>
+
             </div>
         </section>
 
@@ -122,10 +140,24 @@ export default class LandingPage extends Vue {
 </script>
 
 <style scoped>
-/*for background image*/
+/*for banner background image*/
 .has-bg-img { 
     background: url('https://cdn.vox-cdn.com/thumbor/BWaT3_PNCAHTsWlAJ0vLgGcbOAk=/0x0:2000x1333/1920x0/filters:focal(0x0:2000x1333):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9136689/OH6A8388.jpg')center center; 
     background-size:cover;
+}
+
+/*fixed alignment of logo*/
+.logo {
+  position: absolute;
+  right: 0px;
+  width: 200px;
+  padding: 10px;
+}
+
+/*fixed sizing and alignment of email field*/
+.email_field {
+    width:500px;
+    align: left;
 }
 
 
