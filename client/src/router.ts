@@ -9,16 +9,17 @@ export default new Router({
   routes: [
     //customer route
     {
-      path: "/welcome",
+      path: "/",
       name: "LandingPage",
       component:() =>
         import("./views/LandingPage.vue")
     },
+    /*
     {
       path: "/",
       name: "Home",
       component:() =>
         import("./views/Home.vue")
-    }
+    }*/
   ]
 });

@@ -22,7 +22,8 @@
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^7.3.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "email-validator": "^2.0.4"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",
