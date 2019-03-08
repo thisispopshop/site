@@ -43,12 +43,12 @@
                                     <!--email input form-->
                                     <div class="control is-expanded">
                                         <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true">
-                                        <!--<p class="help is-danger">*This email is invalid</p>-->
+                                        <p v-if="error" class="help is-danger">{{error}}</p>
                                     </div>
 
-                                    <!-- VALIDATION? add style:"display:nono"-->
+                                    <!-- VALIDATION? add style:"display:none"-->
                                     <div id="mce-responses" class="clear">
-                                        <div class="response" id="mce-error-response" ></div>
+                                        <!--<div class="response" id="mce-error-response" ></div>-->
                                         <div class="response" id="mce-success-response" ></div>
                                     </div>
 
@@ -57,7 +57,7 @@
 
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium is-black custom-button">
+                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium is-black custom-button" >
                                     </div>
 
                                 </div>
@@ -83,19 +83,16 @@
 <script lang="ts">
 import Vue from "vue";
 import { Component} from "vue-property-decorator";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import * as EmailValidator from "email-validator";
 
 @Component
 export default class LandingPage extends Vue {
 
     error: string | boolean = false;
-    validateEmail(){
-        this.error=false;
 
-        //validate returns true if valid
-        if ( !EmailValidator.validate("test@email.com") ){
-            this.error = "Invalid Email";
-        }
+    submitEmail(){
+        EmailValidator.validate("test@email.com");
     }
 
 }
