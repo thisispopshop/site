@@ -1,6 +1,11 @@
 <template>
     <div class="LandingPage">
 
+        <!--tab title thing-->
+        <vue-headful
+            title="Popshop"
+        />
+
         <!--whatever this thing is called-->
         <section class="hero is-fullheight is-light">
 
@@ -23,8 +28,8 @@
 
                         <!--Description-->
                         <h2 class="subtitle is-size-3 has-text-black">
-                            <br> Say goodbye to countless hours spent shopping, creating lookbooks and approving 
-                            <br> outfits. Let us handle your wardrobe so you can focus on what really matters: 
+                            <br> Say goodbye to countless hours spent shopping, creating lookbooks and approving outfits. 
+                            <br> Let us handle your wardrobe so you can focus on what really matters: 
                             <br> <b>welcoming your newest sisters home.</b>
                             <br>
                             <br>
