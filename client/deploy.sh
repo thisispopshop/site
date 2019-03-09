@@ -9,7 +9,7 @@ npm run build
 cd dist
 
 # if you are deploying to a custom domain
-#echo 'www.ThisisPopShop.com' > CNAME
+echo 'www.ThisisPopShop.com' > CNAME
 
 git init
 git add -A
@@ -19,6 +19,6 @@ git commit -m 'deploy'
 #git push -f git@github.com:kenakingkong/kenakingkong.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f  git@github.com:kenakingkong/PopShopSite.git master
+git push -f  git@github.com:kenakingkong/PopShopSite.git master:gh-pages
 
 cd -
