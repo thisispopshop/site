@@ -1,6 +1,11 @@
 <template>
     <div class="LandingPage">
 
+        <vue-headful
+            title="PopShop"
+            description=""
+        />
+
         <!--whatever this thing is called-->
         <section class="hero is-fullheight is-light">
 

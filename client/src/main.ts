@@ -6,10 +6,12 @@ import store from "./store";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUpload, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import  vueHeadful  from 'vue-headful';
 
 library.add(faUpload, faUser);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.component('vue-headful', vueHeadful);
 
 Vue.config.productionTip = false;
 

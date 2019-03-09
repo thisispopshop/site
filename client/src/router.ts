@@ -11,6 +11,7 @@ export default new Router({
     {
       path: "/",
       name: "LandingPage",
+      meta: {title: 'PopShop'},
       component:() =>
         import("./views/LandingPage.vue")
     },
