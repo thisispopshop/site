@@ -7,11 +7,13 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUpload, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import  vueheadful  from "vue-headful";
+//import emailvalidator from "email-validator";
 
 library.add(faUpload, faUser);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("vue-headful", vueheadful);
+//Vue.component("EmailValidator", emailvalidator);
 
 Vue.config.productionTip = false;
 

@@ -2,7 +2,19 @@
 
 <template>
   <div id="app">
+
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
       <RouterView/>
+
+      <footer class="footer">
+            
+            <div class="content has-text-centered">
+                <p><b>© Popshop 2019</b></p>
+                <!--<font-awesome-icon icon="coffee" />-->
+                  <i class="fas fa-instagram"></i>
+            </div>
+      </footer>
   </div>
 </template>
 
@@ -36,8 +48,10 @@ $family-primary: 'Josefin Sans', sans-serif;
 @import "bulma/sass/utilities/_all.sass";
 @import "bulma/sass/grid/columns.sass";
 @import "bulma/bulma.sass";
+
 //imports the font
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i");
+//@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 #app {
   //font-family: "Avenir", Helvetica, Arial, sans-serif;

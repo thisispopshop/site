@@ -12,7 +12,7 @@
             <!--Put the Logo in the top right corner-->
             <div class="hero-head">
                 <div class="logo">
-                    <img alt="PopShop Logo" src="../assets/popshop_logo.png">
+                    <img alt="PopShop Logo" src="../assets/popshoplogos-07.png">
                 </div>
             </div>
       
@@ -40,33 +40,29 @@
                         <div class="email-field" id="mc_embed_signup">
 
                             <!--will post to mail chimp-->
-                            <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
-                             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <form v-on:submit.prevent="submitEmail"
+                            id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
+
+                                <input type="hidden" name="u" id="u" value="1b710cfbce51379fff004977c&amp;">
+                                <input type="hidden" name="id" id="id" value="9af8420170">
 
                                 <div class="field is-grouped ">
 
                                     <!--email input form-->
                                     <div class="control is-expanded">
-                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true">
+                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" value = "" aria-required="true">
                                         <p v-if="error" class="help is-danger">{{error}}</p>
                                     </div>
 
-                                    <!-- VALIDATION? add style:"display:none"-->
-                                    <div id="mce-responses" class="clear">
-                                        <!--<div class="response" id="mce-error-response" ></div>-->
-                                        <div class="response" id="mce-success-response" ></div>
-                                    </div>
-
-                                    <!--prevents bots from signing up-->
-                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_1b710cfbce51379fff004977c_9af8420170" tabindex="-1" value=""></div>
-
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium is-black custom-button" >
+                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium is-black custom-button" on-click="submitEmail">
+                                        <input type="hidden" name="mc_signupsource" value="hosted">
                                     </div>
 
                                 </div>
                             </form>
+
                         </div> 
 
                     </div>
@@ -74,13 +70,6 @@
             </div>
 
         </section>
-
-        <footer class="footer">
-            
-            <div class="content has-text-centered">
-                <p><b>© Popshop 2019</b></p>
-            </div>
-        </footer>
 
     </div>
 </template>
@@ -97,8 +86,47 @@ export default class LandingPage extends Vue {
     error: string | boolean = false;
 
     submitEmail(){
-        EmailValidator.validate("test@email.com");
+        //EmailValidator.validate("test@email.com");
+
+        console.log("submitting email...");
+
+        //importnat info
+        var email = (<HTMLFormElement>document.getElementById('mce-EMAIL')).value;
+        var u = (<HTMLFormElement>document.getElementById('u')).value;
+        var list_id = (<HTMLFormElement>document.getElementById('id')).value;
+        var apikey = "0add730ed2afe84be3bb8ff58b0c8611-us20";
+        var dc = apikey.split("-")[1];
+
+        //post url by api
+        let url = "https://"  + dc + ".api.mailchimp.com/3.0/lists/" + list_id + "/members/";
+
+        //headers for post 
+        let axios_config = {
+            headers: {
+                'Authorization': 'Basic ' + btoa('any:' + apikey),
+                "Access-Control-Allow-Origin": "*",
+                'Content-Type': 'application/json;charset=UTF-8',
+            }
+        };
+
+        let post_data = {
+            'id' : u,
+            'email_address': email,
+            'status' : 'subscribed',
+        }
+
+        this.error = false;
+        axios.post(url, post_data, axios_config)
+        .then((response) => {
+            console.log("success");
+            console.log(response);
+        })
+        .catch((res) => {
+            console.log("error");
+            console.log(res);
+        })
     }
+
 
 }
 </script>
@@ -123,7 +151,7 @@ export default class LandingPage extends Vue {
 .logo {
   position: absolute;
   right: 0px;
-  width: 200px;
+  width: 350px;
   padding: 10px;
 }
 
