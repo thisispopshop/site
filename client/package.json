@@ -12,20 +12,21 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
+    "@fortawesome/free-brands-svg-icons": "^5.7.2",
     "@fortawesome/free-solid-svg-icons": "^5.7.1",
     "@fortawesome/vue-fontawesome": "^0.1.5",
     "axios": "^0.18.0",
     "bulma": "^0.7.2",
+    "email-validator": "^2.0.4",
     "font-awesome": "^4.7.0",
     "i": "^0.3.6",
     "npm": "^6.7.0",
     "vue": "^2.5.22",
     "vue-class-component": "^6.0.0",
+    "vue-headful": "^2.0.1",
     "vue-property-decorator": "^7.3.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "vue-headful": "^2.0.1",
-    "email-validator": "^2.0.4"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",

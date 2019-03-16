@@ -10,9 +10,15 @@
       <footer class="footer">
             
             <div class="content has-text-centered">
-                <p><b>© Popshop 2019</b></p>
-                <!--<font-awesome-icon icon="coffee" />-->
-                  <i class="fas fa-instagram"></i>
+                <p>
+                  <b>© Popshop 2019</b> 
+                  <br>
+                  <a class="tab-space" href="https://www.facebook.com/Popshop-384434792395944/" target="_blank">
+                    <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"/>
+                  </a>
+                  <span class="tab-space"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'twitter' }"/></span>
+                  <span class="tab-space"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/></span>
+                </p>
             </div>
       </footer>
   </div>
@@ -42,24 +48,35 @@ $input-border-color: transparent;
 //$button-border-color: #b7a3a6;
 //$button-focus-border-color: #b7a3a6;
 //$button-active-border-color:  #b7a3a6;
-$family-primary: 'Josefin Sans', sans-serif;
+$family-primary: 'Brandon Grotesque', sans-serif;
 
 @import "~bulma/css/bulma.css";
 @import "bulma/sass/utilities/_all.sass";
 @import "bulma/sass/grid/columns.sass";
 @import "bulma/bulma.sass";
 
-//imports the font
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i");
-//@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url('./assets/fonts/Brandon_light.otf');
+      font-weight: normal;
+      font-style: normal;
+}
 
 #app {
-  //font-family: "Avenir", Helvetica, Arial, sans-serif;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Brandon Grotesque", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
 
+//add slight tabbing
+.tab-space {
+  padding-left:1em 
+}
+
+//change link color to none
+a:link {
+  color:none;
+}
 
 </style>

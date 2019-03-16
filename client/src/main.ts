@@ -4,12 +4,13 @@ import router from "./router";
 import store from "./store";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUpload, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faUser, faCoffee} from "@fortawesome/free-solid-svg-icons";
+import {  faInstagram, faTwitter, faFacebook} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import  vueheadful  from "vue-headful";
 //import emailvalidator from "email-validator";
 
-library.add(faUpload, faUser);
+library.add(faUpload, faUser, faCoffee, faInstagram, faTwitter, faFacebook);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("vue-headful", vueheadful);

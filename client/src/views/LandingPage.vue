@@ -7,12 +7,12 @@
         />
 
         <!--whatever this thing is called-->
-        <section class="hero is-fullheight is-light">
+        <section class="hero is-fullheight">
 
             <!--Put the Logo in the top right corner-->
             <div class="hero-head">
                 <div class="logo">
-                    <img alt="PopShop Logo" src="../assets/popshoplogos-07.png">
+                    <img alt="PopShop Logo" src="../assets/popshop_logo.png">
                 </div>
             </div>
       
@@ -56,7 +56,7 @@
 
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium is-black custom-button" on-click="submitEmail">
+                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button" on-click="submitEmail">
                                         <input type="hidden" name="mc_signupsource" value="hosted">
                                     </div>
 
@@ -185,7 +185,7 @@ input {
 }
 
 .custom-button {
-    //background-color: #d8c9cb;
+    background-color:#ffeaed;
     border-radius: 3px;
 }
 
