@@ -25,7 +25,9 @@
 </template>
 
 <script lang="ts">
-import axios from "axios";
+/* eslint-disable */
+
+//import axios from "axios";
 import Vue from "vue";
 import { Component }  from "vue-property-decorator";
 

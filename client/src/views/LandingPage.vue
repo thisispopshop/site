@@ -43,9 +43,6 @@
                             <form v-on:submit.prevent="submitEmail"
                             id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
 
-                                <input type="hidden" name="u" id="u" value="1b710cfbce51379fff004977c&amp;">
-                                <input type="hidden" name="id" id="id" value="9af8420170">
-
                                 <div class="field is-grouped ">
 
                                     <!--email input form-->
@@ -56,7 +53,7 @@
 
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button" on-click="submitEmail">
+                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button" href="/mailchimp/auth/authorize" on-click="submitEmail">
                                         <input type="hidden" name="mc_signupsource" value="hosted">
                                     </div>
 
@@ -75,10 +72,12 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable */
 import Vue from "vue";
 import { Component} from "vue-property-decorator";
+import { APIConfig } from "../utils/api.utils";
 import axios, { AxiosError, AxiosResponse } from "axios";
-import * as EmailValidator from "email-validator";
+//import * as EmailValidator from "email-validator";
 
 @Component
 export default class LandingPage extends Vue {
@@ -90,43 +89,28 @@ export default class LandingPage extends Vue {
 
         console.log("submitting email...");
 
-        //importnat info
         var email = (<HTMLFormElement>document.getElementById('mce-EMAIL')).value;
-        var u = (<HTMLFormElement>document.getElementById('u')).value;
-        var list_id = (<HTMLFormElement>document.getElementById('id')).value;
-        var apikey = "0add730ed2afe84be3bb8ff58b0c8611-us20";
-        var dc = apikey.split("-")[1];
+        console.log(email);
+        
+        axios
+            .post(APIConfig.buildUrl("/email"), {
+                email_address: email
+            })
+            .then((response:AxiosResponse) => {
+                console.log(response.data.data);
+                this.clearForm();
+            })
+            .catch((res:AxiosError) => {
+                console.log(res.response.data.data);
+                this.clearForm();
+            })
 
-        //post url by api
-        let url = "https://"  + dc + ".api.mailchimp.com/3.0/lists/" + list_id + "/members/";
-
-        //headers for post 
-        let axios_config = {
-            headers: {
-                'Authorization': 'Basic ' + btoa('any:' + apikey),
-                "Access-Control-Allow-Origin": "*",
-                'Content-Type': 'application/json;charset=UTF-8',
-            }
-        };
-
-        let post_data = {
-            'id' : u,
-            'email_address': email,
-            'status' : 'subscribed',
-        }
-
-        this.error = false;
-        axios.post(url, post_data, axios_config)
-        .then((response) => {
-            console.log("success");
-            console.log(response);
-        })
-        .catch((res) => {
-            console.log("error");
-            console.log(res);
-        })
+        
     }
 
+    clearForm(){
+        (<HTMLFormElement>document.getElementById('mce-EMAIL')).value == "";
+    }
 
 }
 </script>

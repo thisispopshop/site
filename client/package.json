@@ -20,6 +20,7 @@
     "email-validator": "^2.0.4",
     "font-awesome": "^4.7.0",
     "i": "^0.3.6",
+    "mailchimp-api-v3": "^1.13.0",
     "npm": "^6.7.0",
     "vue": "^2.5.22",
     "vue-class-component": "^6.0.0",

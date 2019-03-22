@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-import { LoginController, UserController } from "./controller";
+import { LoginController, UserController, MailChimpController } from "./controller";
 
 import { DBConnection } from "./connection";
 
@@ -17,11 +17,17 @@ export class Server {
       const app: express.Application = express();
 
       app.use(cors());
+      app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        next();
+      });
       app.use(express.json());
       app.use(express.static("public"));
 
       app.use("/", new UserController().router);
       app.use("/", new LoginController().router);
+      app.use("/", new MailChimpController().router);
 
       return app;
     });
