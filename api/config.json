@@ -1,0 +1,9 @@
+{
+  "dev": {
+    "host": "http://ec2-13-52-175-75.us-west-1.compute.amazonaws.com/",
+    "port": 3306,
+    "username": "root",
+    "password": "password",
+    "database": "dev"
+  }
+}
