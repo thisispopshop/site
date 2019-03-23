@@ -84,7 +84,7 @@ export default class Profile extends Vue {
           this.$store.dispatch("fetchUser", { userid: res.data.user.id });
         });
     }
-    return Promise.reject({ response: "no user logged in" });
+    return Promise.reject({ response: "no user logged in" }).catch((reason:any) => {"upload error"});
   }
 
   save(formData: FormData) {
