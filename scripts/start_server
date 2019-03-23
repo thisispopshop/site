@@ -1,7 +1,3 @@
 #!/bin/bash
-#sudo npm install mysql
-#mysql start ..path to file
-#mysql save
-#sudo mysql startup
-service nginx start
+service httpd start
 
