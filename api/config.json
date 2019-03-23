@@ -1,6 +1,6 @@
 {
   "dev": {
-    "host": "ec2-13-52-175-75.us-west-1.compute.amazonaws.com/",
+    "host": "localhost",
     "port": 3306,
     "username": "root",
     "password": "password",
