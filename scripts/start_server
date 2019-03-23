@@ -1,4 +1,7 @@
 #!/bin/bash
-service httpd start
-sudo rm -f /var/www/html/index.html
+#sudo npm install mysql
+#mysql start ..path to file
+#mysql save
+#sudo mysql startup
+service nginx start
 

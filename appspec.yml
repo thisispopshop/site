@@ -1,8 +1,8 @@
 version: 0.0
 os: linux
 files:
-  - source: /index.html
-    destination: /var/www/html/
+  - source: /
+    destination: /client/dist/index.html
 hooks:
   BeforeInstall:
     - location: scripts/start_server
