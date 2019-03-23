@@ -33,7 +33,7 @@ export class Server {
       app.use("/", new MailChimpController().router);
 
       return app;
-    });
+    })
   }
 
 }

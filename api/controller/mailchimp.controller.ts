@@ -40,7 +40,6 @@ export class MailChimpController extends DefaultController {
                     Authorization: 'Basic ' + encodedAuth,
                     "Access-Control-Allow-Origin": "*",
                     'Content-Type': 'application/json',
-                    //'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS'
                 },
                 body : {
                     email_address : req.body.email,
