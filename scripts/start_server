@@ -1,7 +1,9 @@
 #!/bin/bash
 sudo service nginx start
+sudo yum install nodejs
 
-cd client
+cd 
+cd /home/ec2-user/site/client
 
 npm install
 npm run serve
