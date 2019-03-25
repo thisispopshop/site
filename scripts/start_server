@@ -1,4 +1,7 @@
 #!/bin/bash
 sudo service nginx start
+
 cd client
-sudo npm run serve
+
+npm install
+npm run serve

@@ -101,7 +101,7 @@ export default class LandingPage extends Vue {
                 this.clearForm();
             })
             .catch((res:AxiosError) => {
-                console.log(res.response.data.data);
+                console.log(res);
                 this.clearForm();
             })
 
