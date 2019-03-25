@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /home/ec2-user/site/client
+
+npm run serve
