@@ -1,9 +1,7 @@
-#!/bin/bash
 source /home/ec2-user/.bash_profile
 
 sudo service nginx start
-
-cd 
+ 
 cd /home/ec2-user/site/client
 
 npm install
