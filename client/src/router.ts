@@ -7,6 +7,7 @@ export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
+
     //customer route
     {
       path: "/",
@@ -14,12 +15,17 @@ export default new Router({
       component:() =>
         import("./views/LandingPage.vue")
     },
-    /*
     {
-      path: "/",
+      path: "/home",
       name: "Home",
       component:() =>
-        import("./views/Home.vue")
-    }*/
+        import("./views/Navigation.vue")
+    },
+    {
+      path: "/shop",
+      name: "Shop",
+      component:() =>
+        import("./views/Shop.vue")
+    }
   ]
 });

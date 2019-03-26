@@ -1,0 +1,45 @@
+@charset "utf-8";
+	.NormalCharacterStyle
+{
+	font-family : Brandon Grotesque;
+	font-size : 23px;
+	color : #000000;
+	color : rgb(0, 0, 0);
+}
+.NormalCharacterStyle1
+{
+	font-family : Brandon Grotesque;
+	font-weight : bold;
+	font-size : 23px;
+	color : #000000;
+	color : rgb(0, 0, 0);
+}
+.NormalCharacterStyle2
+{
+	font-family : Brandon Grotesque;
+	font-size : 23px;
+	color : #000000;
+	color : rgb(0, 0, 0);
+}
+.NormalCharacterStyle3
+{
+	font-family : Brandon Grotesque;
+	font-size : 23px;
+	color : #000000;
+	color : rgb(0, 0, 0);
+}
+.NormalCharacterStyle4
+{
+	font-family : Brandon Grotesque;
+	font-weight : bold;
+	font-size : 34px;
+	color : #000000;
+	color : rgb(0, 0, 0);
+}
+.st0
+{
+	background : #FFFFFF;
+	background : rgba(255, 255, 255, 1);
+	opacity : 0.9;
+	filter: alpha(opacity=90) progid:DXImageTransform.Microsoft.Alpha(opacity=90) ;
+}

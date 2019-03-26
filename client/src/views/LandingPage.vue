@@ -1,11 +1,6 @@
 <template>
     <div class="LandingPage">
 
-        <!--tab title thing-->
-        <vue-headful
-            title="Popshop"
-        />
-
         <!--whatever this thing is called-->
         <section class="hero is-fullheight">
 
@@ -41,7 +36,7 @@
 
                             <!--will post to mail chimp-->
                             <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
-                             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
 
                                 <div class="field is-grouped ">
 
@@ -149,7 +144,7 @@ input {
 }
 
 .custom-button {
-    background-color:#ffeaed;
+    background-color:#FAE4E9;
     border-radius: 3px;
 }
 

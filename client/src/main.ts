@@ -6,12 +6,15 @@ import store from "./store";
 import  vueheadful  from "vue-headful";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUpload, faUser, faCoffee} from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faCoffee} from "@fortawesome/free-solid-svg-icons";
+import { faHeart , faUser} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 //import emailvalidator from "email-validator";
 
-library.add(faUpload, faUser, faCoffee, faInstagram, faTwitter, faFacebook);
+library.add(faUpload, faCoffee);
+library.add(faHeart, faUser);
+library.add( faInstagram, faTwitter, faFacebook);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("vue-headful", vueheadful);

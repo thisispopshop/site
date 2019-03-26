@@ -3,7 +3,10 @@
 <template>
   <div id="app">
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--tab title thing-->
+    <vue-headful
+        title="Popshop"
+    />
 
       <RouterView/>
 
@@ -47,9 +50,8 @@ $input-focus-border-color:transparent;
 $input-focus-box-shadow-color:transparent;
 $input-shadow: none;
 $input-border-color: transparent;
-//$button-border-color: #b7a3a6;
-//$button-focus-border-color: #b7a3a6;
-//$button-active-border-color:  #b7a3a6;
+$navbar-height: 7rem;
+$navbar-item-img-max-height: 7rem;
 $family-primary: 'Brandon Grotesque', sans-serif;
 
 @import "~bulma/css/bulma.css";
