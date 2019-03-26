@@ -1,4 +1,5 @@
 
+/*
 module.exports = {
 
     //so we can push to github repo
@@ -6,4 +7,4 @@ module.exports = {
       ? '/thisispopshop/'
       : '/'
 
-  }
+  }*/
