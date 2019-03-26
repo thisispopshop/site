@@ -40,29 +40,21 @@
                         <div class="email-field" id="mc_embed_signup">
 
                             <!--will post to mail chimp-->
-                            <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
-                             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <form v-on:submit.prevent="submitEmail"
+                            id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
 
                                 <div class="field is-grouped ">
 
                                     <!--email input form-->
                                     <div class="control is-expanded">
-                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true">
+                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" value = "" aria-required="true">
                                         <p v-if="error" class="help is-danger">{{error}}</p>
                                     </div>
 
-                                    <!-- VALIDATION? add style:"display:none"-->
-                                    <div id="mce-responses" class="clear">
-                                        <!--<div class="response" id="mce-error-response" ></div>-->
-                                        <div class="response" id="mce-success-response" ></div>
-                                    </div>
-
-                                    <!--prevents bots from signing up-->
-                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_1b710cfbce51379fff004977c_9af8420170" tabindex="-1" value=""></div>
-
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button" >
+                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button" href="/mailchimp/auth/authorize" on-click="submitEmail">
+                                        <input type="hidden" name="mc_signupsource" value="hosted">
                                     </div>
 
                                 </div>
@@ -91,6 +83,34 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 export default class LandingPage extends Vue {
 
     error: string | boolean = false;
+
+    submitEmail(){
+        //EmailValidator.validate("test@email.com");
+
+        console.log("submitting email...");
+
+        var email = (<HTMLFormElement>document.getElementById('mce-EMAIL')).value;
+        console.log(email);
+        
+        axios
+            .post(APIConfig.buildUrl("/email"), {
+                email_address: email
+            })
+            .then((response:AxiosResponse) => {
+                console.log(response.data.data);
+                this.clearForm();
+            })
+            .catch((res:AxiosError) => {
+                console.log(res);
+                this.clearForm();
+            })
+
+        
+    }
+
+    clearForm(){
+        (<HTMLFormElement>document.getElementById('mce-EMAIL')).value == "";
+    }
 
 }
 </script>
