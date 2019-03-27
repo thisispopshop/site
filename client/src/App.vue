@@ -6,6 +6,7 @@
     <!--tab title thing-->
     <vue-headful
         title="Popshop"
+        image="@/assets/images/popshop_logo.png"
     />
 
       <RouterView/>
@@ -41,8 +42,6 @@ export default class App extends Vue {}
 
 <style lang="scss">
 
-
-
 //custom bulma variables
 //we can create the theme here!
 
@@ -50,8 +49,11 @@ $input-focus-border-color:transparent;
 $input-focus-box-shadow-color:transparent;
 $input-shadow: none;
 $input-border-color: transparent;
+
+$navbar-dropdown-boxed-radius: 0px;
 $navbar-height: 7rem;
 $navbar-item-img-max-height: 7rem;
+
 $family-primary: 'Brandon Grotesque', sans-serif;
 
 @import "~bulma/css/bulma.css";

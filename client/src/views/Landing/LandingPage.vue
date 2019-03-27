@@ -7,7 +7,7 @@
             <!--Put the Logo in the top right corner-->
             <div class="hero-head">
                 <div class="logo">
-                    <img alt="PopShop Logo" src="../assets/popshop_logo.png">
+                    <img alt="PopShop Logo" src="@/assets/popshop_logo.png">
                 </div>
             </div>
       
@@ -78,7 +78,7 @@
 /* eslint-disable */
 import Vue from "vue";
 import { Component} from "vue-property-decorator";
-import { APIConfig } from "../utils/api.utils";
+import { APIConfig } from "@/utils/api.utils";
 import axios, { AxiosError, AxiosResponse } from "axios";
 //import * as EmailValidator from "email-validator";
 

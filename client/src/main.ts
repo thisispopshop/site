@@ -12,6 +12,9 @@ import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-sv
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 //import emailvalidator from "email-validator";
 
+//import our custom css
+//require('~/assets/css/popshopUIhomepage.css');
+
 library.add(faUpload, faCoffee);
 library.add(faHeart, faUser);
 library.add( faInstagram, faTwitter, faFacebook);

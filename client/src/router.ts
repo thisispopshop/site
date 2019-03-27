@@ -1,6 +1,8 @@
 import Vue from "vue";
 import Router from "vue-router";
 
+import SubDomainNav from "./views/Subdomains/Navigation.vue";
+
 Vue.use(Router);
 
 export default new Router({
@@ -13,19 +15,27 @@ export default new Router({
       path: "/",
       name: "LandingPage",
       component:() =>
-        import("./views/LandingPage.vue")
+        import("./views/Landing/LandingPage.vue")
     },
     {
       path: "/home",
-      name: "Home",
-      component:() =>
-        import("./views/Navigation.vue")
+      name: "sub_nav",
+      component: SubDomainNav,
+      children : [
+        {
+          path: "/home",
+          name: "sub_home",
+          component:() =>
+            import("./views/Subdomains/Home.vue")
+        },
+        {
+          path: "/shop",
+          name: "shop",
+          component:() =>
+            import("./views/Subdomains/Shop.vue")
+        }
+      ]
     },
-    {
-      path: "/shop",
-      name: "Shop",
-      component:() =>
-        import("./views/Shop.vue")
-    }
+
   ]
 });

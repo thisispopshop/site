@@ -1,6 +1,6 @@
 <template>
   <div class="shop">
-
+      <a href="https://www.urbanoutfitters.com/womens-clothing" target=_blank>https://www.urbanoutfitters.com/womens-clothing</a>
   </div>
 
 </template>
@@ -14,8 +14,3 @@ export default class Shop extends Vue {
 
 }
 </script>
-
-<style scoped>
-@import 'src/assets/css/popshopUI_shop_options.css';
-@import 'src/assets/css/popshopUI_sortbyfeature.css';
-</style>
