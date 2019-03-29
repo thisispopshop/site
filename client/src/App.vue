@@ -6,7 +6,6 @@
     <!--tab title thing-->
     <vue-headful
         title="Popshop"
-        image="@/assets/images/popshop_logo.png"
     />
 
       <RouterView/>

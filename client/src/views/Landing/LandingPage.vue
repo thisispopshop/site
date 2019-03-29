@@ -5,36 +5,33 @@
         <section class="hero is-fullheight">
 
             <!--Put the Logo in the top right corner-->
-            <div class="hero-head">
-                <div class="logo">
+            <div class="hero-head logo">
+                <!--<div class="logo">-->
                     <img alt="PopShop Logo" src="@/assets/popshop_logo.png">
-                </div>
+                <!--</div>-->
             </div>
       
             <!--content-->
             <div class="hero-body more-right">
-                <section class="section ">
+                <section class="section">
                     <div class="container">
 
                         <!--Header-->
-                        <h1 class="title is-size-1 has-text-black">
+                        <h1 class="title is-size-1 is-size-4-mobile has-text-black">
                             RUSH, REDESIGNED.
                         </h1>
 
-                        <!--Description-->
-                        <h2 class="subtitle is-size-3 has-text-black">
+                        <!--Description is-size-3-->
+                        <h2 class="subtitle is-size-3 is-size-6-mobile has-text-black ">
                             <br> Say goodbye to countless hours spent shopping, creating lookbooks and approving outfits. 
                             <br> Let us handle your wardrobe so you can focus on what really matters: 
                             <br> <b>welcoming your newest sisters home.</b>
                             <br>
                             <br>
-                        </h2>             
+                        </h2>  
 
-
-                        <!--Add you email-->
-                        <div class="email-field" id="mc_embed_signup">
-
-                            <!--will post to mail chimp-->
+                        <!--Add you email desktop-->
+                        <div class="email-field is-hidden-mobile" id="mc_embed_signup">
                             <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
                              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
 
@@ -48,27 +45,65 @@
 
                                     <!-- VALIDATION? add style:"display:none"-->
                                     <div id="mce-responses" class="clear">
-                                        <!--<div class="response" id="mce-error-response" ></div>-->
+                                        <div class="response" id="mce-error-response" ></div>
                                         <div class="response" id="mce-success-response" ></div>
                                     </div>
 
                                     <!--prevents bots from signing up-->
-                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_1b710cfbce51379fff004977c_9af8420170" tabindex="-1" value=""></div>
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                        <input type="text" name="b_1b710cfbce51379fff004977c_9af8420170" tabindex="-1" value="">
+                                    </div>
 
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button" >
+                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button">
                                     </div>
 
                                 </div>
                             </form>
+                        </div> 
 
+                        <!--Add you email-->
+                        <div class="email-field-mobile is-hidden-desktop is-hidden-tablet" id="mc_embed_signup">
+                            <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
+                             method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
+
+                                <div class="field is-grouped ">
+
+                                    <!--email input form-->
+                                    <div class="control is-expanded">
+                                        <input class="input is-small custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true">
+                                        <p v-if="error" class="help is-danger">{{error}}</p>
+                                    </div>
+
+                                    <!-- VALIDATION? add style:"display:none"-->
+                                    <div id="mce-responses" class="clear">
+                                        <div class="response" id="mce-error-response" ></div>
+                                        <div class="response" id="mce-success-response" ></div>
+                                    </div>
+
+                                    <!--prevents bots from signing up-->
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                        <input type="text" name="b_1b710cfbce51379fff004977c_9af8420170" tabindex="-1" value="">
+                                    </div>
+
+                                    <!--submit email-->
+                                    <div class="control">
+                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-small custom-button">
+                                    </div>
+
+                                </div>
+                            </form>
                         </div> 
 
                     </div>
                 </section>
             </div>
 
+            <div id="toast" v-show="isShowing">
+                <div id="desc" >thanks for subscribing!</div>
+            </div>
+            
         </section>
 
     </div>
@@ -77,55 +112,52 @@
 <script lang="ts">
 /* eslint-disable */
 import Vue from "vue";
-import { Component} from "vue-property-decorator";
-import { APIConfig } from "@/utils/api.utils";
-import axios, { AxiosError, AxiosResponse } from "axios";
-//import * as EmailValidator from "email-validator";
+import { Component, Prop} from "vue-property-decorator";
 
 @Component
 export default class LandingPage extends Vue {
 
     error: string | boolean = false;
+    @Prop(String) id!: string | null;
+
+    isShowing : Boolean = false;
+
+    mounted(){
+        if (this.id == "thanks") {
+           setTimeout(this.showThankYou, 500);
+        }
+        this.isShowing=false;
+    }
+
+    showThankYou(){
+        this.isShowing = true;
+    }
 
 }
 </script>
 
-
-
 <!--"scoped" means these styles only apply to THIS page-->
 <style scoped>
 
-/*for banner background image*/
-.has-bg-img { 
-    background: url('https://cdn.vox-cdn.com/thumbor/BWaT3_PNCAHTsWlAJ0vLgGcbOAk=/0x0:2000x1333/1920x0/filters:focal(0x0:2000x1333):format(webp):no_upscale()/cdn.vox-cdn.com/uploads/chorus_asset/file/9136689/OH6A8388.jpg')center center; 
-    background-size:cover;
-}
-
-/*to change color*/
-.has-bg-color {
-    background-color: #DDC9CC;
-}
-
 /*fixed alignment of logo*/
-.logo {
+.logo{
   position: absolute;
-  right: 0px;
-  width: 350px;
-  padding: 10px;
+  right: 0%;
+  //width: 350px;
+  width: 17%;
 }
 
 /*fixed sizing and alignment of email field*/
 .email-field {
-    width: 475px;
-    align: left;
+    width: 470px;
+    float: left;
 }
-
 
 /*pushing content to the right*/
 .more-right {
     margin: auto;
     padding-top: 15%;
-    left: 5%;
+    left: 2%;
     position: absolute;
 }
 
@@ -146,6 +178,90 @@ input {
 .custom-button {
     background-color:#FAE4E9;
     border-radius: 3px;
+}
+
+/*toast notification*/
+#toast {
+    max-width: 0px;
+    height: 45px;
+    /*margin-left: -125px;*/
+    margin: auto;
+    background-color: #FAE4E9;
+    color: black;
+    text-align: center;
+    border-radius: 3px;
+    position: fixed;
+    /*z-index: 1;*/
+    left: 0;
+    right: 0;
+    bottom: 30px;
+    font-size: 17px;
+    white-space: nowrap;
+
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+#toast #desc{
+    color: black;
+    padding: 5%;
+    overflow: hidden;
+	white-space: nowrap;
+}
+
+/*
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}*/
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes expand {
+    from {min-width: 0px} 
+    to {min-width: 200px}
+}
+
+@keyframes expand {
+    from {min-width: 0px}
+    to {min-width: 200px}
+}
+@-webkit-keyframes stay {
+    from {min-width: 200px} 
+    to {min-width: 200px}
+}
+
+@keyframes stay {
+    from {min-width: 200px}
+    to {min-width: 200px}
+}
+@-webkit-keyframes shrink {
+    from {min-width: 200px;} 
+    to {min-width: 0px;}
+}
+
+@keyframes shrink {
+    from {min-width: 200px;} 
+    to {min-width: 0px;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 60px; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 60px; opacity: 0;}
 }
 
 </style>

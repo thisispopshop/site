@@ -18,6 +18,13 @@ export default new Router({
         import("./views/Landing/LandingPage.vue")
     },
     {
+      path: "/:id",
+      name: "ThanksLandingPage",
+      props: true,
+      component:() =>
+        import("./views/Landing/LandingPage.vue")
+    },
+    {
       path: "/home",
       name: "sub_nav",
       component: SubDomainNav,
