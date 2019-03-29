@@ -4,7 +4,7 @@
   <!--Banner-->
   <section class="hero banner_box" >
     <img src='@/assets/images/img0.jpg'>
-    <router-link class="bottom-text" to="/home" exact-active-class="is-active">shop</router-link>
+    <router-link class="bottom-text is-size-6-mobile" to="/shop" exact-active-class="is-active">shop</router-link>
   </section>
 
   <!--Grid View-->
@@ -12,20 +12,20 @@
     <div class="container grid_box">
       <div class="columns">
         <div class="column is-onequarter st0">
-          <img src='@/assets/images/img3.jpg'>
-          <div class="bottom-left-text">House Tours</div>
+          <img class="full-img-size" src='@/assets/images/img3.jpg'>
+          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">House Tours</router-link>
         </div>
         <div class="column is-onequarter st0">
           <img src='@/assets/images/img1.png'>
-          <div class="bottom-left-text">Sisterhood</div>
+          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Sisterhood</router-link>          
         </div>
         <div class="column is-onequarter st0">
           <img src='@/assets/images/img2.png'>
-          <div class="bottom-left-text">Philanthropy</div>
+          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Philanthropy</router-link>
         </div>
         <div class="column is-onequarter st0">
           <img src='@/assets/images/img2.png'>
-          <div class="bottom-left-text">Preference</div>
+          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Preference</router-link>          
         </div>
       </div>
     </div>
@@ -42,16 +42,34 @@ import { Component, Vue } from "vue-property-decorator";
 export default class Home extends Vue {
 
 
+
 }
 </script>
 
 <style lang='scss' scoped>
 
-@import '~/assets/css/popshopUIhomepage.css';
-
+//@import '~/assets/css/popshopUIhomepage.css';
 //banner size (doesn't even work)
 .banner_box {
-  height: 20%
+  position: relative;
+  height: 20%;
+}
+
+//shop button text
+.bottom-text {
+  position: absolute;
+  z-index:1;
+  width: 100%;
+  bottom: 5%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 40px;
+}
+
+.bottom-text:hover {
+  color:black;
 }
 
 //grid container size
@@ -75,23 +93,7 @@ export default class Home extends Vue {
   color: white;
   font-weight: bold;
   text-decoration: underline;
-  font-size: 20px;
+  font-size: 25px;
 }
-
-//shop button text
-.bottom-text {
-  position: absolute;
-  bottom: 25%;
-  left: 50%;
-  color: white;
-  font-weight: bold;
-  text-decoration: underline;
-  font-size: 40px;
-}
-
-.bottom-text:hover {
-  color:black;
-}
-
 
 </style>

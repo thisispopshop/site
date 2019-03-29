@@ -39,7 +39,8 @@
 
                                     <!--email input form-->
                                     <div class="control is-expanded">
-                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true">
+                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true" 
+                                        pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required>
                                         <p v-if="error" class="help is-danger">{{error}}</p>
                                     </div>
 
