@@ -46,6 +46,18 @@ export default new Router({
           name: "shop",
           component:() =>
             import("./views/Subdomains/Shop.vue")
+        },
+        {
+          path: "/info",
+          name: "info",
+          component:() =>
+            import("./views/Subdomains/Info.vue")
+        },
+        {
+          path: "/submit",
+          name: "submit",
+          component:() =>
+            import("./views/Subdomains/Submit.vue")
         }
       ]
     },

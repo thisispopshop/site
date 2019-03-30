@@ -1,7 +1,5 @@
 <template>
   <div>
-  <!--<div class="home">-->
-    
     <!--change this to be dynamic soon-->
     
     <!--customer navigation bar-->
@@ -106,11 +104,17 @@ export default class Navigation extends Vue {
   border-radius: 1px;
   opacity: 0.9;
   padding: 30%;
+  box-shadow: none;
+  border: none;
+  outline: none;
 }
 
 //navbar color
 .mynavbaritem {
   color:black;
+}
+.mynavbaritem:hover {
+  font-weight: bold;
 }
 
 //navbar dropdown color

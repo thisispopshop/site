@@ -39,8 +39,7 @@
 
                                     <!--email input form-->
                                     <div class="control is-expanded">
-                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true" 
-                                        pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required>
+                                        <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="enter email address" aria-required="true" >
                                         <p v-if="error" class="help is-danger">{{error}}</p>
                                     </div>
 
@@ -118,9 +117,9 @@ import { Component, Prop} from "vue-property-decorator";
 @Component
 export default class LandingPage extends Vue {
 
-    error: string | boolean = false;
     @Prop(String) id!: string | null;
 
+    error: string | boolean = false;
     isShowing : Boolean = false;
 
     mounted(){
