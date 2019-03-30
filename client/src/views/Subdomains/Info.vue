@@ -34,9 +34,9 @@
       </div>
 
       <!--content-->
-      <div class="content-body">
+      <div class="content-body" >
         <div class="content-box">
-          <p class="content-box-title">Conversations</p>
+          <p class="content-box-title" id="section-c">Conversations</p>
           <span style="display:inline-block; border:3px dotted black; width:800px;height:500px;"></span>
         </div>
         <div class="content-box">
@@ -45,9 +45,9 @@
         </div>
         <div class="content-box">
           <p class="content-box-title">Schedule</p>
-          <span style="display:inline-block; border:3px dotted black; width:800px;height:500px;"></span>
+          <iframe src="https://calendar.google.com/calendar/embed?src=kbs54jf5tb3g6cjnirg6fbd7e0%40group.calendar.google.com&ctz=America%2FLos_Angeles" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
-        <div class="content-box">
+        <div class="content-box" >
           <p class="content-box-title">Option</p>
           <span style="display:inline-block; border:3px dotted black; width:800px;height:500px;"></span>
         </div>

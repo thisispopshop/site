@@ -105,7 +105,7 @@
       <div class="product-container">
           <div class="product">
               <figure class="product-image" >
-                  <img src='@/assets/images/img1.png'>
+                  <img src='@/assets/images/img2.png'>
               </figure>
               <div class="product-name" >
                   <p>Product Name 1 blah blah blah blahblahblah</p>
@@ -380,7 +380,9 @@ ul li {
   &-image {
     background-color: white;
     display: block;
-    width: 100%;
+    overflow:hidden;
+    width: auto;
+    height: 425px;
   }
 
   &-name {
