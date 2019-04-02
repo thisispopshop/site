@@ -4,28 +4,39 @@
   <!--Banner-->
   <section class="hero banner_box" >
     <img src='@/assets/images/img0.jpg'>
-    <router-link class="bottom-text is-size-6-mobile" to="/shop" exact-active-class="is-active">shop</router-link>
+    <div class="bottom-text-section">
+      <router-link class="bottom-text is-size-6-mobile" to="/shop" exact-active-class="is-active">shop</router-link>
+    </div>
+    
   </section>
 
   <!--Grid View-->
   <section>
-    <div class="container grid_box">
+    <div class="grid-boxes">
       <div class="columns">
-        <div class="column is-onequarter st0">
-          <img class="full-img-size" src='@/assets/images/img3.jpg'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">House Tours</router-link>
+        <div class="column is-onequarter grid-box">
+          <router-link to="/shop">
+            <img src='@/assets/images/img3.jpg' class="grid-box-image">
+            <p class="bottom-left-text is-size-1-mobile">House Tours</p> 
+          </router-link>
         </div>
-        <div class="column is-onequarter st0">
-          <img src='@/assets/images/img1.png'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Sisterhood</router-link>          
+        <div class="column is-onequarter grid-box">
+          <router-link to="/shop">
+            <img src='@/assets/images/img1.png' class="grid-box-image"> 
+            <p class="bottom-left-text is-size-1-mobile">Sisterhood</p>  
+          </router-link>     
         </div>
-        <div class="column is-onequarter st0">
-          <img src='@/assets/images/img2.png'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Philanthropy</router-link>
+        <div class="column is-onequarter grid-box">
+           <router-link to="/shop">
+            <img src='@/assets/images/img2.png' class="grid-box-image">
+            <p class="bottom-left-text is-size-1-mobile">Philanthropy</p>  
+           </router-link>
         </div>
-        <div class="column is-onequarter st0">
-          <img src='@/assets/images/img2.png'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Preference</router-link>          
+        <div class="column is-onequarter grid-box">
+          <router-link to="/shop">
+            <img src='@/assets/images/img2.png' class="grid-box-image">
+            <p class="bottom-left-text is-size-1-mobile">Preference</p> 
+          </router-link>       
         </div>
       </div>
     </div>
@@ -56,38 +67,53 @@ export default class Home extends Vue {
 }
 
 //shop button text
-.bottom-text {
+.bottom-text-section {
   position: absolute;
   z-index:1;
   width: 100%;
   bottom: 5%;
   text-align: center;
+}
+.bottom-text {
   color: white;
   font-weight: bold;
-  text-decoration: underline;
   font-size: 40px;
+  text-decoration: underline;
 }
-
 .bottom-text:hover {
   color:black;
 }
 
 //grid container size
-.grid_box {
+.grid-boxes {
+  position: relative;
   padding: 5%;
   justify-content: center;
-  height: 30%;
+  height: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 //individual boxes
-.st0 {
+.grid-box {
   position: relative;
   height: 100%;
+}
+.grid-box-image {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.grid-box:hover {
+  opacity: 0.8;
 }
 
 //box text
 .bottom-left-text {
   position: absolute;
+  z-index:1;
   bottom: 8%;
   left: 8%;
   color: white;

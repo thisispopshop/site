@@ -103,9 +103,23 @@
 
       <!--product grid-->
       <div class="product-container">
-          <div class="product" v-for="(p, index) in product_list" v-bind:key="index" v-bind:value="p" v-on:click="goToProduct(p)">
+          <div class="product">
               <figure class="product-image" >
-                  <img v-bind:src='p.images[0].url'>
+                  <img src='@/assets/images/img2.png'>
+              </figure>
+              <div class="product-name" >
+                  <p>Product Name 1 blah blah blah blahblahblah</p>
+              </div>
+              <div class="product-price">
+                  <p> $100</p>
+              </div>
+              <div class="product-retailer" >
+                  <p>RetailerName</p>
+              </div>
+          </div>
+          <div class="product" v-for="(p, index) in product_list" v-bind:key="index" v-bind:value="p">
+              <figure class="product-image" >
+                  <img src='@/assets/images/img1.png'>
               </figure>
               <div class="product-name" >
                   <p>{{p.name}}</p>
@@ -114,7 +128,7 @@
                   <p> ${{p.price}}</p>
               </div>
               <div class="product-retailer" >
-                  <p>{{p.merchant}}</p>
+                  <p>{{p.retailer}}</p>
               </div>
           </div>
       </div>
@@ -130,40 +144,10 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue } from "vue-property-decorator";
-import axios, {AxiosError, AxiosResponse} from "axios";
-import { APIConfig } from "@/utils/api.utils";
-import {iProduct,iImage} from "@/models";
 
 @Component
 export default class Shop extends Vue {
 
-  error : string | boolean = false;
-
-  mounted(){
-    //get all products
-    this.error = false;
-    axios
-      .get(APIConfig.buildUrl("/api/product"))
-      .then((response: AxiosResponse) => {
-        console.log(response.data.products);
-        this.product_list = response.data.products;
-      })
-      .catch((res:AxiosError) => {
-        console.log(res.response);
-        this.error = "No Products?";
-      })
-  }
-
-  product_list : iProduct[] = [];
-
-  goToProduct(p: iProduct){
-     //window.location.href = p.url;
-     window.open(p.url, '_blank');
-  }
-
-
-
-  //side bar menu stuff
   showSortMenu : Boolean = false;
 
   toggleSortMenu() {
@@ -186,12 +170,34 @@ export default class Shop extends Vue {
       this.showMenuRating = !this.showMenuRating;
   }
 
+  temp_product : productInterface = {
+    name : "Product 1 Title Name",
+    retailer : "Example Retailer",
+    price : 59.99,
+    image : "@/assets/images/img1.png",
+    link : "http://thisisaurl/com",
+  }
+
+  product_list : productInterface[] = [ this.temp_product, this.temp_product, this.temp_product, 
+    this.temp_product,this.temp_product, this.temp_product, this.temp_product, this.temp_product, 
+    this.temp_product, this.temp_product, this.temp_product 
+  ]
+
+
   /* FILTERS AND SORTING FUNCTIONS */
   sortByPriceAsc(){}
   sortByPriceDec(){}
   sortByRecent(){}
   browseByCategory(filter:string){}
 
+}
+
+interface productInterface {
+  name: string,
+  retailer: string,
+  price: number,
+  image: string,
+  link: string,
 }
 
 </script>
@@ -231,9 +237,8 @@ export default class Shop extends Vue {
 /*side navigation box*/
 .side-nav {
   margin-left: 4%;
-
   //width: 800px;
-  width: 15%;
+  width: 40%;
   overflow: hidden;
 }
 .side-nav-box {

@@ -31,6 +31,18 @@ export default new Router({
         import("./views/Landing/LandingPage.vue")
     },
     {
+      path: "/curate",
+      name: "curate",
+      component:() =>
+        import("./views/Admin/Curate.vue")
+    },
+    {
+      path: "/collections",
+      name: "collections",
+      component:() =>
+        import("./views/Admin/Collections.vue")
+    },
+    {
       path: "/home",
       name: "sub_nav",
       component: SubDomainNav,

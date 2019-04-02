@@ -24,6 +24,7 @@
     "i": "^0.3.6",
     "mailchimp-api-v3": "^1.13.0",
     "npm": "^6.7.0",
+    "pm2" : "^3.4.1",
     "vue": "^2.5.22",
     "vue-class-component": "^6.0.0",
     "vue-headful": "^2.0.1",
