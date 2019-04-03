@@ -16,8 +16,6 @@ export class ProductController extends DefaultController {
             });
           });
 
-          //post
-
         return router;
     }
 }

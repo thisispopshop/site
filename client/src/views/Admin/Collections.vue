@@ -17,36 +17,45 @@
 
         <!--create new collection-->
         <section class="section">
-            <button class="button is-medium is-inverted" v-on:click="createCollection">
-                Create a Collection
-            </button>
+            <div class="container">
+                <button class="button is-medium is-inverted" v-on:click="createCollection">
+                    Create a Collection
+                </button>
+            </div>
         </section>
 
         <!--display all collections-->
         <section class='section'>
-            <h1 class="subtitle"> Active Collections </h1>
-            <table class="table is-fullwidth is-hoverable">
-                <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>name</th>
-                        <th>description?</th>
-                        <th>length</th>
-                        <th>status</th>
-                        <th>cancel</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0</td>
-                        <td>Sample Collection</td>
-                        <td>sample Description</td>
-                        <td>1000</td>
-                        <td>unapproved</td>
-                        <td><span aria-label="Close">X</span></td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="container" v-if="error">
+                <p>There are no active collections.</p>
+            </div>
+
+            <div class="container" v-show="!error">
+                <h1 class="subtitle"> Active Collections </h1>
+                <table class="table is-fullwidth is-hoverable">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>description?</th>
+                            <th>length</th>
+                            <th>status</th>
+                            <th>cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(c,index) in collection_list" v-bind:key="index" v-bind:value="c">
+                            <td>{{c.id}}</td>
+                            <td>{{c.name}}</td>
+                            <td>{{c.description}}</td>
+                            <td>{{c.products.length}}</td>
+                            <td>{{c.status}}</td>
+                            <td><span aria-label="Close">X</span></td>                  
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
     </div>
@@ -55,13 +64,26 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue } from "vue-property-decorator";
+import axios, {AxiosError, AxiosResponse} from "axios";
+import { APIConfig } from "@/utils/api.utils";
+import { iCollection} from "@/models";
 
 @Component
 export default class Collections extends Vue {
 
+    error : string | boolean = false;
+    collection_list : iCollection[] = [];
+
     //load all collections
     mounted(){
-
+        this.error = false;
+        axios.get(APIConfig.buildUrl("/api/collection"))
+            .then((response:AxiosResponse) => {
+                this.collection_list = response.data.collections;
+            })
+            .catch((res:AxiosError) => {
+                this.error = res.response && res.response.data.reason;
+            })
     }
 
     //create a new collection

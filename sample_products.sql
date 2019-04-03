@@ -47,3 +47,23 @@ INSERT INTO product
     VALUES (8, "Print Off The Shoulder Short Sleeve Romper", "Zaful", 11.64, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26399469", "https://www.zaful.com/print-off-the-shoulder-short-sleeve-romper-p_193934.html", '2016-09-14', "Print Off The Shoulder Short Sleeve Romper");
 INSERT INTO image
     VALUES (8, "https://c.cfjump.com/Products/37843/26399469.jpg",8); 
+
+INSERT INTO product
+    VALUES (9, "Off The Shoulder Ruffles Insert Casual Dress", "Zaful", 6.91, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33921055", "https://www.zaful.com/ruffles-spliced-off-the-shoulder-solid-color-dress-p_208420.html", '2017-01-14', "Off The Shoulder Ruffles Insert Casual Dress");
+INSERT INTO image
+    VALUES (9, "https://c.cfjump.com/Products/37843/33921055.jpg",9); 
+
+INSERT INTO product
+    VALUES (10, "Bar Layered Wrap Necklace", "Zaful", 2.49, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33921080", "https://www.zaful.com/bar-layered-wrap-necklace-p_199574.html", '2017-01-14', "Bar Layered Wrap Necklace");
+INSERT INTO image
+    VALUES (10, "https://c.cfjump.com/Products/37843/33921080.jpg",10); 
+
+INSERT INTO product
+    VALUES (11, "Ruffles Ribbed Bodysuit", "Zaful", 11.80, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33921829", "https://www.zaful.com/ruffles-ribbed-bodysuit-p_213757.html", '2017-01-14', "Ruffles Ribbed Bodysuit");
+INSERT INTO image
+    VALUES (11, "https://c.cfjump.com/Products/37843/33921829.jpg",11); 
+
+INSERT INTO product
+    VALUES (12, "Crossover Choker Blouse", "Zaful", 8.80, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33922002", "https://www.zaful.com/crossover-choker-blouse-p_214968.html", '2017-01-14', "Crossover Choker Blouse");
+INSERT INTO image
+    VALUES (12, "https://c.cfjump.com/Products/37843/33922002.jpg",12); 

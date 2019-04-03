@@ -20,11 +20,11 @@
 
             <div class="container">
                 <!--display an error-->
-                <p class="notification is-danger" v-if="error" >
+                <p class="notification is-danger" v-if="errors" >
                     <button class="delete" v-on:click="closeErrors"></button>
                     <b>Please correct the following error(s):</b>
                     <ul style="list-style-type: initial; padding-left: 2%" >
-                        <li v-for="(err,index) in error" v-bind:key="index" v-bind:value="err">{{err}}</li>
+                        <li v-for="(err,index) in errors" v-bind:key="index" v-bind:value="err" v-on:click="closeErrors">{{err}}</li>
                     </ul>
                 </p>
 
@@ -62,10 +62,11 @@
                 <label class="label">Products</label>
          
                 <!--select options and filters-->
-                <div class="buttons">
-                    <button class="button is-dark" v-on:click="selectAll">SELECT ALL</button>
-                    <button class="button is-dark" v-on:click="selectNone">SELECT NONE</button>
-                    <div class="field has-addons">
+                <div class="buttons is-full-width button-section">
+                    <button class="button is-dark is-small" v-on:click="selectAll">SELECT ALL</button>
+                    <button class="button is-dark is-small" v-on:click="selectNone">SELECT NONE</button>
+
+                    <div class="field has-addons search-field" >
                         <div class="control">
                             <input class="input is-dark" type="search" placeholder="tag, tag, tag, etc">
                         </div>
@@ -75,13 +76,12 @@
                             </button>
                         </div>
                     </div>
+
+                    <p class="is-size-5"> <strong>{{my_products.length}} out of {{all_products.length}} Products Selected</strong></p>
                 </div>
 
-                <p > {{my_products.length}} Products Selected</p>
-
                 <!--product grid-->
-                <div class="product-container">
-
+                <div class="product-container" v-show="!error">
                     <div class="product" v-for="(p, index) in all_products" v-bind:key="index" v-bind:value="p">
                             <figure class="product-image" >
                                 <img v-bind:src='p.images[0].url'>
@@ -107,8 +107,10 @@
                                 </p>
                             </div>
                     </div>
-
                 </div>
+
+                <p v-if="error"> There are No Products to Show :(</p>
+
             </div>
         </section>
 
@@ -125,7 +127,8 @@ import { iCollection, iProduct} from "@/models";
 @Component
 export default class Curate extends Vue {
 
-    error : string[] | boolean = false;
+    error : string | boolean = false;
+    errors : string[] | boolean = false;
 
     mounted(){
         //get all products
@@ -133,12 +136,10 @@ export default class Curate extends Vue {
         axios
         .get(APIConfig.buildUrl("/api/product"))
         .then((response: AxiosResponse) => {
-            //console.log(response.data.products);
             this.all_products = response.data.products;
         })
         .catch((res:AxiosError) => {
-            console.log(res.response);
-            //this.error = "No Products?";
+            this.error = res.response && res.response.data.reason;
         })
     }
 
@@ -156,6 +157,9 @@ export default class Curate extends Vue {
         this.my_products = [];
     }
 
+    //selecting tags
+    categories : string[] = ["dresses","shoes","accessories"];
+
     new_collection : iCollection = {
         name : "",
         status: "unapproved",
@@ -164,37 +168,31 @@ export default class Curate extends Vue {
         products: this.my_products,
     }
 
-    getProductIds(){
-        let productIds : number[] = [];
-        for (let i = 0; i<this.my_products.length; i++){
-            productIds.push(this.my_products[i].id);
-        }
-        return productIds;
-    }
     //submit the new collection
     submitCollection(){
-        this.error = [];
+        this.errors = [];
         if (this.new_collection.name.length < 1)
-            this.error.push("Collection Name is Required");
+            this.errors.push("Collection Name is Required");
         if (this.my_products.length < 1)
-            this.error.push("0 products are selected")
-        else{
+            this.errors.push("0 products are selected");
+
+        //no errors -submit collection
+        if (this.errors.length == 0)
+        {
+            this.errors = false;
             this.error = false;
-            let productIds = this.getProductIds();
-            //console.log(productIds);
             axios.post(APIConfig.buildUrl("/api/collection"), 
                 {
                     name : this.new_collection.name,
                     description: this.new_collection.description,
-                    productIds: productIds,
+                    products: this.my_products
                 })
                 .then((response:AxiosResponse) => {
-                    console.log("successfully created collection");
+                    alert("You Collection was Successfully Created.")
                     this.$router.push("/collections");
                 })
                 .catch((res:AxiosError)=> {
-                    console.log(res.response);
-                    console.log(res.response.data.reason);
+                    this.error = res.response && res.response.data.reason;
                 })
             
         }      
@@ -202,6 +200,7 @@ export default class Curate extends Vue {
 
     //cancel the new collection
     cancelCollection(){
+        this.error = false;
         this.$router.push("/collections");
     }
 
@@ -210,6 +209,16 @@ export default class Curate extends Vue {
 </script>
 
 <style lang="scss" scoped>
+
+/*product selection button container*/
+.button-section {
+    display: inline-block;
+    width: 100%;
+}
+/*
+.search-field {
+    justify-content: flex-end;
+}*/
 
 /*product container*/
 .product-container {
@@ -221,7 +230,8 @@ export default class Curate extends Vue {
   grid-template-columns: repeat(4, 1fr);
   position: relative;
   margin-right: 4%;
-  margin-bottom: 5%
+  margin-bottom: 5%;
+  width: 100%
 }
 
 .product {

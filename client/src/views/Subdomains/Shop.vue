@@ -31,9 +31,9 @@
         </div>
         <div class="dropdown-menu sort-menu" id="dropdown-menu" role="menu" v-show="showSortMenu">
           <div class="dropdown-content sort-menu">
-            <p class="dropdown-item is-size-5">Newest first</p>
-            <p class="dropdown-item is-size-5">Price high to low</p>
-            <p class="dropdown-item is-size-5">Price low to high</p>
+            <p class="dropdown-item is-size-5" v-on:click="sortByRecent">Newest first</p>
+            <p class="dropdown-item is-size-5" v-on:click="sortByPriceDesc">Price high to low</p>
+            <p class="dropdown-item is-size-5" v-on:click="sortByPriceAsc">Price low to high</p>
           </div>
         </div>
       </div>
@@ -182,9 +182,15 @@ export default class Shop extends Vue {
   }
 
   /* FILTERS AND SORTING FUNCTIONS */
-  sortByPriceAsc(){}
-  sortByPriceDec(){}
-  sortByRecent(){}
+  sortByPriceAsc(){
+    this.product_list.sort((p1,p2) => p1.price < p2.price ? -1 : p1.price > p2.price ? 1 : 0);
+  }
+  sortByPriceDesc(){
+    this.product_list.sort((p1,p2) => p1.price > p2.price ? -1 : p1.price < p2.price ? 1 : 0);
+  }
+  sortByRecent(){
+    this.product_list.sort((p1,p2) => p1.dateCreated < p2.dateCreated ? -1 : p1.dateCreated > p2.dateCreated ? 1 : 0);
+  }
   browseByCategory(filter:string){}
 
 }

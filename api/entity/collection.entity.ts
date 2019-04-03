@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToMany, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne ,ManyToMany } from "typeorm";
 import { Product, User } from ".";
 
 export enum CollectionStatus {
@@ -14,9 +14,6 @@ export class Collection {
   @Column()
   public name!: string;
 
-  @ManyToOne(type => Product, product => product.collections, { eager: true })
-  public products!: Product[];
-
   @Column()
   public status!: string;
 
@@ -25,5 +22,9 @@ export class Collection {
 
   @Column()
   public description!: string;
+
+  @ManyToMany(type => Product, product => product.collections, {eager:true,cascade:true})
+  @JoinTable()
+  public products!: Product[];
 
 }
