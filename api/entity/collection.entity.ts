@@ -1,8 +1,11 @@
 import { Column, Entity, JoinColumn, ManyToMany, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne } from "typeorm";
 import { Product, User } from ".";
 
-//enum status: Approved | Unapproved
-
+export enum CollectionStatus {
+  APPROVED = "approved",
+  UNAPPROVED = "unapproved",
+  CANCELED = "canceled",
+}
 @Entity()
 export class Collection {
   @PrimaryGeneratedColumn()
@@ -12,7 +15,7 @@ export class Collection {
   public name!: string;
 
   @ManyToOne(type => Product, product => product.collections, { eager: true })
-  public product!: Product;
+  public products!: Product[];
 
   @Column()
   public status!: string;

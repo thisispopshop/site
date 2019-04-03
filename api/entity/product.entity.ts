@@ -42,7 +42,7 @@ export class Product {
   @OneToMany(type => Image, image => image.product, {eager: true, cascade: ["insert", "remove"]})
   public images!: Image[];
 
-  @OneToMany(type => Collection, collection => collection.product)
+  @OneToMany(type => Collection, collection => collection.products)
   public collections!: Collection[];
 
 }

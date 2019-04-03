@@ -63,8 +63,8 @@
          
                 <!--select options and filters-->
                 <div class="buttons">
-                    <button class="button is-dark" >SELECT ALL</button>
-                    <button class="button is-dark" >SELECT NONE</button>
+                    <button class="button is-dark" v-on:click="selectAll">SELECT ALL</button>
+                    <button class="button is-dark" v-on:click="selectNone">SELECT NONE</button>
                     <div class="field has-addons">
                         <div class="control">
                             <input class="input is-dark" type="search" placeholder="tag, tag, tag, etc">
@@ -82,42 +82,31 @@
                 <!--product grid-->
                 <div class="product-container">
 
-                    <div class="product">
-                        <figure class="product-image" >
-                            <img src='@/assets/images/img2.png'>
-                        </figure>
-                        <div class="product-name" >
-                            <p>Product Name 1 blah blah blah blahblahblah</p>
-                        </div>
-                        <div class="product-price">
-                            <p> $100</p>
-                        </div>
-                        <div class="product-retailer" >
-                            <p>RetailerName</p>
-                        </div>
-                        <div class="product-middle">
-                            <font-awesome-icon class="checkmark" :icon="{ prefix: 'far', iconName: 'check-circle' }"/>
-                        </div>
+                    <div class="product" v-for="(p, index) in all_products" v-bind:key="index" v-bind:value="p">
+                            <figure class="product-image" >
+                                <img v-bind:src='p.images[0].url'>
+                            </figure>
+                            <div class="product-name" >
+                                <p>{{p.name}}</p>
+                            </div>
+                            <div class="product-price">
+                                <p> ${{p.price}}</p>
+                            </div>
+                            <div class="product-retailer" >
+                                <p>{{p.merchant}}</p>
+                            </div>
+                            <div class="product-middle">
+                                <p style="display:inline-block">
+                                    <label class="check-label">
+                                        <input class="checkbox" type="checkbox" v-bind:value="p" v-model="my_products" style="display:none"/>
+                                        <span class="checkmark-span checked"><font-awesome-icon class="checkmark" :icon="{ prefix: 'far', iconName: 'check-circle' }"/></span>
+                                        <span class="checkmark-span unchecked"><font-awesome-icon class="checkmark" :icon="{ prefix: 'far', iconName: 'circle' }"/></span>
+                                    </label>
+                                    <br>                                    
+                                    <span class="eye"><font-awesome-icon class="eye" :icon="{ prefix: 'fas', iconName: 'eye' }" v-on:click="goToProduct(p)"/></span>
+                                </p>
+                            </div>
                     </div>
-
-                    <label class="product" v-for="(p, index) in all_products" v-bind:key="index" v-bind:value="p">
-                        <input class="checkbox" type="checkbox" v-bind:value="p" v-model="my_products" style="display:none"/>
-                        <figure class="product-image" >
-                            <img src='@/assets/images/img3.jpg'>
-                        </figure>
-                        <div class="product-name" >
-                            <p>{{p.name}}</p>
-                        </div>
-                        <div class="product-price">
-                            <p> ${{p.price}}</p>
-                        </div>
-                        <div class="product-retailer" >
-                            <p>{{p.retailer}}</p>
-                        </div>
-                        <div class="product-middle">
-                            <font-awesome-icon class="checkmark" :icon="{ prefix: 'far', iconName: 'check-circle' }"/>
-                        </div>
-                    </label>
 
                 </div>
             </div>
@@ -129,42 +118,43 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue } from "vue-property-decorator";
+import axios, {AxiosError, AxiosResponse} from "axios";
+import { APIConfig } from "@/utils/api.utils";
 import { iCollection, iProduct} from "@/models";
 
 @Component
 export default class Curate extends Vue {
 
-    mounted(){
-        //load all products
-    }
-
     error : string[] | boolean = false;
-    closeErrors(){
+
+    mounted(){
+        //get all products
         this.error = false;
+        axios
+        .get(APIConfig.buildUrl("/api/product"))
+        .then((response: AxiosResponse) => {
+            //console.log(response.data.products);
+            this.all_products = response.data.products;
+        })
+        .catch((res:AxiosError) => {
+            console.log(res.response);
+            //this.error = "No Products?";
+        })
     }
 
-    temp_product : productInterface = {
-        name : "Product 1 Title Name",
-        retailer : "Example Retailer",
-        price : 59.99,
-        image : "img2.png",
-        link : "http://thisisaurl/com",
-    }
-    temp_product_2 : productInterface = {
-        name : "Product 2 Title Name",
-        retailer : "Example Retailer 2",
-        price : 30.00,
-        image : "img3.png",
-        link : "http://thisisaurl/com",
+    goToProduct(p: iProduct){
+        window.open(p.url, '_blank');
     }
 
-    all_products : productInterface[] = [ this.temp_product, this.temp_product_2, this.temp_product, 
-        this.temp_product_2,this.temp_product, this.temp_product_2, this.temp_product, this.temp_product_2, 
-        this.temp_product, this.temp_product_2, this.temp_product 
-    ]
-
-    //all_products: iProduct[] = [];  //list of all products
+    all_products: iProduct[] = [];  //list of all products
     my_products : iProduct[] = [];  //list of selected products
+
+    selectAll(){
+        this.my_products = this.all_products;
+    }
+    selectNone(){
+        this.my_products = [];
+    }
 
     new_collection : iCollection = {
         name : "",
@@ -174,16 +164,39 @@ export default class Curate extends Vue {
         products: this.my_products,
     }
 
+    getProductIds(){
+        let productIds : number[] = [];
+        for (let i = 0; i<this.my_products.length; i++){
+            productIds.push(this.my_products[i].id);
+        }
+        return productIds;
+    }
     //submit the new collection
     submitCollection(){
-        this.error= [];
+        this.error = [];
         if (this.new_collection.name.length < 1)
             this.error.push("Collection Name is Required");
         if (this.my_products.length < 1)
             this.error.push("0 products are selected")
         else{
             this.error = false;
-            this.$router.push("/collections");
+            let productIds = this.getProductIds();
+            //console.log(productIds);
+            axios.post(APIConfig.buildUrl("/api/collection"), 
+                {
+                    name : this.new_collection.name,
+                    description: this.new_collection.description,
+                    productIds: productIds,
+                })
+                .then((response:AxiosResponse) => {
+                    console.log("successfully created collection");
+                    this.$router.push("/collections");
+                })
+                .catch((res:AxiosError)=> {
+                    console.log(res.response);
+                    console.log(res.response.data.reason);
+                })
+            
         }      
     }
 
@@ -194,13 +207,6 @@ export default class Curate extends Vue {
 
 }
 
-interface productInterface {
-  name: string,
-  retailer: string,
-  price: number,
-  image: string,
-  link: string,
-}
 </script>
 
 <style lang="scss" scoped>
@@ -241,15 +247,15 @@ interface productInterface {
   }
 
   &-middle {
-    transition: .5s ease;
-    opacity: 0;
+    //transition: .5s ease;
+    opacity: 1;
     position: relative;
     margin: auto;
-    left: 60%;
-    bottom: 73%;
+    left: 40%;
+    bottom: 75%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    text-align: center;
+    text-align: right;
   }
 
   &-name {
@@ -296,16 +302,42 @@ interface productInterface {
   }
 }
 
-//check mark size
+//check mark icon size
 .checkmark {
     width: 15%;
     height: 15%;
+
+    *-span:hover{
+        opacity: 0.5;
+    }
+}
+
+.check-label input[type="checkbox"],
+.check-label .checked {
+    display: none;
+}
+.check-label input[type="checkbox"]:checked ~ .checked {
+    display: inline-block;
+}
+.check-label input[type="checkbox"]:checked ~ .unchecked {
+    display:none;
+}
+  
+
+//eye icon size
+.eye {
+    width: 15%;
+    height: 15%;
+
+    :hover {
+        opacity: 0.5;
+    }
 }
 
 //item hover style
 .product:hover {
     .product-image {
-        opacity: 0.5
+        opacity: 0.8
     }
     .product-middle {
         z-index:1;
@@ -314,14 +346,11 @@ interface productInterface {
 }
 
 //not working yet
-input:checked + label {
-    .product-image {
-        opacity: 0.5
-    }
-    .product-middle {
-        z-index:1;
-        opacity: 1;
-    }
+.input[type="checkbox"]:checked + label {
+    //opacity: 0.5
+    //display: none
+    color: red;
+    opacity: 1;
 }
 
 </style>

@@ -145,6 +145,9 @@
 /* eslint-disable */
 import { Component, Vue } from "vue-property-decorator";
 
+import { APIConfig } from "@/utils/api.utils";
+import {iProduct,iImage} from "@/models";
+
 @Component
 export default class Shop extends Vue {
 

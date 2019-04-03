@@ -98,7 +98,6 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <!--product grid-->
@@ -119,11 +118,9 @@
           </div>
       </div>
 
-
     </section>
       
   </div>
-
 </template>
 
 
@@ -160,8 +157,6 @@ export default class Shop extends Vue {
      //window.location.href = p.url;
      window.open(p.url, '_blank');
   }
-
-
 
   //side bar menu stuff
   showSortMenu : Boolean = false;
@@ -231,32 +226,38 @@ export default class Shop extends Vue {
 /*side navigation box*/
 .side-nav {
   margin-left: 4%;
-
   //width: 800px;
   width: 15%;
   overflow: hidden;
+
+  &-box {
+    padding-bottom: 20%;
+  }
+
+  &-title {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  &-content {
+    font-size: 25px;
+  }
+
+  &-checklist {
+    padding-top: 5%;
+  }
+
+  &-dropdown {
+    padding-left: 0%;
+    padding-top: 5%;
+    width: 60%;
+  }
 }
-.side-nav-box {
-  padding-bottom: 20%;
-}
-.side-nav-title {
-  font-size: 25px;
-  font-weight: bold;
-}
-.side-nav-content {
-  font-size: 25px;
-}
-.side-nav-checklist {
-  padding-top: 5%;
-}
+
 ul li { 
   padding: 8px 0px; 
 }
-.side-nav-dropdown {
-  padding-left: 0%;
-  padding-top: 5%;
-  width: 60%;
-}
+
 .dropdown-btn {
   padding: 6px 0px 6px 0px;
   display: block;
@@ -268,9 +269,10 @@ ul li {
   text-align: left;
   cursor: pointer;
   outline: none;
-}
-.dropdown-btn:hover {
-  font-weight:bold;
+
+  :hover {
+    font-weight:bold
+  }
 }
 .active {
   font-weight: bold;
@@ -354,9 +356,10 @@ ul li {
   border: none;
   box-shadow: none;
   border-radius: 1px;
-}
-.sort-menu-btn:hover{
-  border: black;
+
+  :hover{
+    border:black
+  }
 }
 .angle-icon {
   float: right;
@@ -379,6 +382,10 @@ ul li {
 .product {
   height: 100%;
   padding-bottom: 20%;
+
+  :hover {
+    opacity: 0.8;
+  }
 
   &-image {
     display: block;
@@ -436,10 +443,5 @@ ul li {
     padding-top:7%;
   }
 }
-
-.product:hover {
-  opacity: 0.8;
-}
-
 
 </style>

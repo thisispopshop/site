@@ -1,6 +1,6 @@
 import {iProduct} from ".";
 
-enum Status {
+enum CollectionStatus {
     APPROVED = "approved",
     UNAPPROVED = "unapproved",
     CANCELED = "canceled",
