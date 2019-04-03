@@ -12,8 +12,8 @@ import PrettyCheck from 'pretty-checkbox-vue/check';
 import PrettyRadio from 'pretty-checkbox-vue/radio';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUpload, faCoffee, faPlus, faAngleDown, faSearch} from "@fortawesome/free-solid-svg-icons";
-import { faHeart , faUser, faCheckCircle} from "@fortawesome/free-regular-svg-icons";
+import { faUpload, faCoffee, faPlus, faAngleDown} from "@fortawesome/free-solid-svg-icons";
+import { faHeart , faUser} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 //import emailvalidator from "email-validator";
@@ -21,8 +21,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 //import our custom css
 //require('~/assets/css/popshopUIhomepage.css');
 
-library.add(faUpload, faCoffee, faPlus, faAngleDown, faSearch);
-library.add(faHeart, faUser, faCheckCircle);
+library.add(faUpload, faCoffee, faPlus, faAngleDown);
+library.add(faHeart, faUser);
 library.add( faInstagram, faTwitter, faFacebook);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

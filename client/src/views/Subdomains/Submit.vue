@@ -21,9 +21,8 @@
     </section>
 
     <!--content-->
-    <section class="section form-section" id="forms">
-        <!--{{form}}-->
-        <!--<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfJEpOLsiD3AWMQFY6jhac9NVcd3SCnpPrR_RwX-hGidlch2Q/viewform?embedded=true" width="640" height="2780" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>-->
+    <section class="section form-section">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfJEpOLsiD3AWMQFY6jhac9NVcd3SCnpPrR_RwX-hGidlch2Q/viewform?embedded=true" width="640" height="2780" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
     </section>
 
   </div>
@@ -37,15 +36,6 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Submit extends Vue {
-
-  mounted(){
-    let form: string = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfJEpOLsiD3AWMQFY6jhac9NVcd3SCnpPrR_RwX-hGidlch2Q/viewform?embedded=true" width="640" height="2780" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>';
-    
-    //dynamically add form elements to page
-    let formSection = document.getElementById('forms')!;
-    formSection.innerHTML += form;
-    //note: you can add multiple forms!!!
-  }
 
 }
 </script>

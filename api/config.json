@@ -1,10 +1,9 @@
-
 {
   "dev": {
-    "host": "localhost",
+    "host": "thisispopshop-db-instance.c9hwndfemdo5.us-west-1.rds.amazonaws.com",
     "port": 3306,
-    "username": "root",
-    "password": "password",
-    "database": "dev"
+    "username": "thisispopshop_m",
+    "password": "makPopshop1",
+    "database": "thisispopshop-db-instance"
   }
 }

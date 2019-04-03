@@ -103,9 +103,23 @@
 
       <!--product grid-->
       <div class="product-container">
-          <div class="product" v-for="(p, index) in product_list" v-bind:key="index" v-bind:value="p" v-on:click="goToProduct(p)">
+          <div class="product">
               <figure class="product-image" >
-                  <img v-bind:src='p.images[0].url'>
+                  <img src='@/assets/images/img2.png'>
+              </figure>
+              <div class="product-name" >
+                  <p>Product Name 1 blah blah blah blahblahblah</p>
+              </div>
+              <div class="product-price">
+                  <p> $100</p>
+              </div>
+              <div class="product-retailer" >
+                  <p>RetailerName</p>
+              </div>
+          </div>
+          <div class="product" v-for="(p, index) in product_list" v-bind:key="index" v-bind:value="p">
+              <figure class="product-image" >
+                  <img src='@/assets/images/img1.png'>
               </figure>
               <div class="product-name" >
                   <p>{{p.name}}</p>
@@ -114,7 +128,7 @@
                   <p> ${{p.price}}</p>
               </div>
               <div class="product-retailer" >
-                  <p>{{p.merchant}}</p>
+                  <p>{{p.retailer}}</p>
               </div>
           </div>
       </div>
@@ -130,40 +144,10 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue } from "vue-property-decorator";
-import axios, {AxiosError, AxiosResponse} from "axios";
-import { APIConfig } from "@/utils/api.utils";
-import {iProduct,iImage} from "@/models";
 
 @Component
 export default class Shop extends Vue {
 
-  error : string | boolean = false;
-
-  mounted(){
-    //get all products
-    this.error = false;
-    axios
-      .get(APIConfig.buildUrl("/api/product"))
-      .then((response: AxiosResponse) => {
-        console.log(response.data.products);
-        this.product_list = response.data.products;
-      })
-      .catch((res:AxiosError) => {
-        console.log(res.response);
-        this.error = "No Products?";
-      })
-  }
-
-  product_list : iProduct[] = [];
-
-  goToProduct(p: iProduct){
-     //window.location.href = p.url;
-     window.open(p.url, '_blank');
-  }
-
-
-
-  //side bar menu stuff
   showSortMenu : Boolean = false;
 
   toggleSortMenu() {
@@ -186,12 +170,27 @@ export default class Shop extends Vue {
       this.showMenuRating = !this.showMenuRating;
   }
 
-  /* FILTERS AND SORTING FUNCTIONS */
-  sortByPriceAsc(){}
-  sortByPriceDec(){}
-  sortByRecent(){}
-  browseByCategory(filter:string){}
+  temp_product : productInterface = {
+    name : "Product 1 Title Name",
+    retailer : "Example Retailer",
+    price : 59.99,
+    image : "@/assets/images/img1.png",
+    link : "http://thisisaurl/com",
+  }
 
+  product_list : productInterface[] = [ this.temp_product, this.temp_product, this.temp_product, 
+    this.temp_product,this.temp_product, this.temp_product, this.temp_product, this.temp_product, 
+    this.temp_product, this.temp_product, this.temp_product 
+  ]
+
+}
+
+interface productInterface {
+  name: string,
+  retailer: string,
+  price: number,
+  image: string,
+  link: string,
 }
 
 </script>
@@ -231,9 +230,8 @@ export default class Shop extends Vue {
 /*side navigation box*/
 .side-nav {
   margin-left: 4%;
-
   //width: 800px;
-  width: 15%;
+  width: 40%;
   overflow: hidden;
 }
 .side-nav-box {
@@ -373,31 +371,25 @@ ul li {
   grid-template-columns: repeat(4, 1fr);
   position: relative;
   margin-right: 4%;
-  margin-bottom: 5%;
 }
 
 .product {
-  height: 100%;
-  padding-bottom: 20%;
+  height: 25%;
+  padding-bottom: 10%;
 
   &-image {
+    background-color: white;
     display: block;
     overflow:hidden;
-    width: 100%;
-    height: 100%;
-  }
-
-  &-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    width: auto;
+    height: 425px;
   }
 
   &-name {
     float: left;
     position: relative;
     padding-top: 0%;
-    width: 70%;
+    width: 60%;
     p {
       font-size: 20px;
       font-weight: bold;
@@ -435,11 +427,7 @@ ul li {
   &-button {
     padding-top:7%;
   }
-}
 
-.product:hover {
-  opacity: 0.8;
 }
-
 
 </style>

@@ -1,10 +1,8 @@
 import cors from "cors";
 import express, {Request,Response} from "express";
-import { LoginController, UserController } from "./controller";
+import { LoginController, UserController, MailChimpController } from "./controller";
 
 import { DBConnection } from "./connection";
-import ProductController from "./controller/product.controller";
-import CollectionController from "./controller/collection.controller";
 
 export class Server {
   private myApp: Promise<express.Application>;
@@ -32,8 +30,7 @@ export class Server {
 
       app.use("/", new UserController().router);
       app.use("/", new LoginController().router);
-      app.use("/", new ProductController().router);
-      app.use("/", new CollectionController().router);
+      app.use("/", new MailChimpController().router);
 
       return app;
     })
