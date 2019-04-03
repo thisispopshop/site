@@ -73,10 +73,29 @@ export default class Home extends Vue {
 }
 
 //grid container size
-.grid_box {
+.grid-boxes {
+  position: relative;
   padding: 5%;
   justify-content: center;
-  height: 30%;
+  height: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+//individual boxes
+.grid-box {
+  position: relative;
+  height: 100%;
+}
+.grid-box-image {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.grid-box:hover {
+  opacity: 0.8;
 }
 
 //individual boxes
