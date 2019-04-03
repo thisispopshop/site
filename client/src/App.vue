@@ -52,8 +52,8 @@ $input-shadow: none;
 $input-border-color: transparent;
 
 $navbar-dropdown-boxed-radius: 0px;
-$navbar-height: 7rem;
-$navbar-item-img-max-height: 7rem;
+$navbar-height:  6.25rem;
+$navbar-item-img-max-height: 8rem;
 
 $dropdown-item-active-background-color: none;
 

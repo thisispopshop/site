@@ -45,22 +45,25 @@
 
         <!--logo-->
         <!--current menu padding causing it to be off center-->
-        <div class="navbar-item is-hidden-mobile"  style="justify-content: center;">
-            <router-link to="/home"><img src="@/assets/popshop_logo.png" alt="logo" ></router-link>
+        <div class="navbar-item is-hidden-mobile logo-size" >
+            <router-link to="/home"><img  src="@/assets/popshop_logo.png" alt="logo" ></router-link>
         </div>
 
         <!--right side-->
         <div class="navbar-end is-hidden-mobile">
+          <span style="margin-left:33px"></span>
           <div class="navbar-item">
               <router-link class="mynavbaritem" to="/home" exact-active-class="is-active">
                 <font-awesome-icon :icon="{ prefix: 'far', iconName: 'heart' }"/>
               </router-link>
           </div>
+          <span style="width:33px"></span>
           <div class="navbar-item">
               <router-link class="mynavbaritem" to="/home" exact-active-class="is-active">
                 <font-awesome-icon :icon="{ prefix: 'far', iconName: 'user' }"/>
               </router-link>
           </div>
+          <span style="padding-right:33px"></span>
         </div>
 
       </div>
@@ -128,6 +131,21 @@ export default class Navigation extends Vue {
 //navbar enbolden upon hover
 .navbar-item:hover .mydropdown:hover{
   font-weight: bold;
+}
+
+//make centered logo bigger
+.logo-size {
+  //width: 135px;
+  //height: 96.44px;
+  overflow: hidden;
+  justify-content: center;
+  padding-right: 33px;
+  
+  & img {
+    object-fit: cover;
+    min-height: 96px;
+    min-width: 100%;
+  }
 }
 
 </style>
