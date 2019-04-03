@@ -9,23 +9,31 @@
 
   <!--Grid View-->
   <section>
-    <div class="container grid_box">
+    <div class="grid-boxes">
       <div class="columns">
-        <div class="column is-onequarter st0">
-          <img class="full-img-size" src='@/assets/images/img3.jpg'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">House Tours</router-link>
+        <div class="column is-onequarter grid-box">
+          <router-link to="/shop">
+            <img src='@/assets/images/img3.jpg' class="grid-box-image">
+            <p class="bottom-left-text is-size-1-mobile">House Tours</p> 
+          </router-link>
         </div>
-        <div class="column is-onequarter st0">
-          <img src='@/assets/images/img1.png'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Sisterhood</router-link>          
+        <div class="column is-onequarter grid-box">
+          <router-link to="/shop">
+            <img src='@/assets/images/img1.png' class="grid-box-image"> 
+            <p class="bottom-left-text is-size-1-mobile">Sisterhood</p>  
+          </router-link>     
         </div>
-        <div class="column is-onequarter st0">
-          <img src='@/assets/images/img2.png'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Philanthropy</router-link>
+        <div class="column is-onequarter grid-box">
+           <router-link to="/shop">
+            <img src='@/assets/images/img2.png' class="grid-box-image">
+            <p class="bottom-left-text is-size-1-mobile">Philanthropy</p>  
+           </router-link>
         </div>
-        <div class="column is-onequarter st0">
-          <img src='@/assets/images/img2.png'>
-          <router-link class="bottom-left-text is-size-1-mobile" to="/shop" exact-active-class="is-active">Preference</router-link>          
+        <div class="column is-onequarter grid-box">
+          <router-link to="/shop">
+            <img src='@/assets/images/img2.png' class="grid-box-image">
+            <p class="bottom-left-text is-size-1-mobile">Preference</p> 
+          </router-link>       
         </div>
       </div>
     </div>
