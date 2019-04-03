@@ -377,6 +377,10 @@ ul li {
   height: 25%;
   padding-bottom: 10%;
 
+  :hover {
+    opacity: 0.8;
+  }
+
   &-image {
     background-color: white;
     display: block;
