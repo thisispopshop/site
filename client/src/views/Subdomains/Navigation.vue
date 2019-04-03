@@ -102,7 +102,7 @@ export default class Navigation extends Vue {
 
 .mydropdownmenu {
   border-radius: 1px;
-  opacity: 0.9;
+  //opacity: 0.9;
   padding: 30%;
   box-shadow: none;
   border: none;
@@ -121,7 +121,7 @@ export default class Navigation extends Vue {
 .mydropdown {
   color:black;
   font-weight: normal;
-  font-size: 25px;
+  font-size: 24px;
   box-shadow: 0px;
 }
 

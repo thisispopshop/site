@@ -22,12 +22,11 @@
                         </h1>
 
                         <!--Description is-size-3-->
-                        <h2 class="subtitle is-size-3 is-size-6-mobile has-text-black ">
-                            <br> Say goodbye to countless hours spent shopping, creating lookbooks and approving outfits. 
-                            <br> Let us handle your wardrobe so you can focus on what really matters: 
-                            <br> <b>welcoming your newest sisters home.</b>
+                        <h2 class="body-content is-size-3 is-size-6-mobile has-text-black ">
+                            Say goodbye to countless hours spent shopping, creating lookbooks and approving outfits. 
+                            Let us handle your wardrobe so you can focus on what really matters: 
                             <br>
-                            <br>
+                            <span class="special-text">Welcoming your newest sisters home.</span>
                         </h2>  
 
                         <!--Add you email desktop-->
@@ -56,7 +55,7 @@
 
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button">
+                                        <input type="submit" value="Be the First to Know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button">
                                     </div>
 
                                 </div>
@@ -89,7 +88,7 @@
 
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="be the first to know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-small custom-button">
+                                        <input type="submit" value="Be the First to Know" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-small custom-button">
                                     </div>
 
                                 </div>
@@ -147,6 +146,21 @@ export default class LandingPage extends Vue {
   width: 17%;
 }
 
+/*spacing the body content*/
+
+.body-content {
+    width: 85%;
+    line-height: 50px;
+    padding-top: 0%;
+    padding-bottom: 3%;
+}
+
+/*special sentence style */
+.special-text {
+    font-weight: bold;
+    line-height: 80px;
+}
+
 /*fixed sizing and alignment of email field*/
 .email-field {
     width: 470px;
@@ -179,6 +193,8 @@ input {
     background-color:#FAE4E9;
     border-radius: 3px;
 }
+
+
 
 /*toast notification*/
 #toast {

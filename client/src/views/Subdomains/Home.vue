@@ -68,8 +68,8 @@ export default class Home extends Vue {
   font-size: 40px;
 }
 
-.bottom-text:hover {
-  color:black;
+.bottom-text:hover{
+  color:black
 }
 
 //grid container size
@@ -95,5 +95,6 @@ export default class Home extends Vue {
   text-decoration: underline;
   font-size: 25px;
 }
+
 
 </style>
