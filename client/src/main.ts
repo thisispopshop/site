@@ -16,6 +16,7 @@ import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye} from "@fortaw
 import { faHeart , faUser, faCheckCircle, faCircle} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import VueRouter from 'vue-router';
 //import emailvalidator from "email-validator";
 
 //import our custom css
