@@ -9,61 +9,56 @@ DELETE FROM product;
 /**DELETE FROM user;**/
 
 INSERT INTO product
-    VALUES (1, "Long Sleeve Printed Maxi Chiffon Dress", "Zaful", 35.99, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26392457", "https://www.zaful.com/plunging-neck-see-through-flower-print-dress-p_144126.html", '2016-09-14', "Long Sleeve Printed Maxi Chiffon Dress");
+    VALUES (1, "Lace Panel Tied Tassel Sheer Top", "Zaful", 8.14, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26392715", "https://www.zaful.com/one-shoulder-lace-splicing-long-sleeve-t-shirt-p_81763.html", '2016-09-14', "Lace Panel Tied Tassel Sheer Top");
 INSERT INTO image
-    VALUES (1, "https://c.cfjump.com/Products/37843/26392457.jpg",1);
+    VALUES (1, "https://c.cfjump.com/Products/37843/26392715.jpg",1);
 
 INSERT INTO product
-    VALUES (2, "Lace Panel Tied Tassel Sheer Top", "Zaful", 8.14, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26392715", "https://www.zaful.com/one-shoulder-lace-splicing-long-sleeve-t-shirt-p_81763.html", '2016-09-14', "Lace Panel Tied Tassel Sheer Top");
+    VALUES (2, "Irregular Hem Half Sleeve Hollow Out T-Shirt", "Zaful", 13.13, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26394086", "https://www.zaful.com/irregular-hem-half-sleeve-hollow-out-t-shirt-p_159137.html", '2016-09-14', "Irregular Hem Half Sleeve Hollow Out T-Shirt");
 INSERT INTO image
-    VALUES (2, "https://c.cfjump.com/Products/37843/26392715.jpg",2);
+    VALUES (2, "https://c.cfjump.com/Products/37843/26394086.jpg",2);  
 
 INSERT INTO product
-    VALUES (3, "Chinese Painting Chiffon Maxi Dress", "Zaful", 8.14, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26393031", "https://www.zaful.com/long-sleeve-chiffon-maxi-dress-p_109198.html", '2016-09-14', "Chinese Painting Chiffon Maxi Dress");
+    VALUES (3, "Caged Bandage Bikini Swimwear", "Zaful", 14.99, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26396441", "https://www.zaful.com/elastic-spaghetti-straps-solid-color-bikini-set-p_179480.html", '2016-09-14', "Caged Bandage Bikini Swimwear");
 INSERT INTO image
-    VALUES (3, "https://c.cfjump.com/Products/37843/26393031.jpg",3);
+    VALUES (3, "https://c.cfjump.com/Products/37843/26396441.jpg",3);  
 
 INSERT INTO product
-    VALUES (4, "Irregular Hem Half Sleeve Hollow Out T-Shirt", "Zaful", 13.13, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26394086", "https://www.zaful.com/irregular-hem-half-sleeve-hollow-out-t-shirt-p_159137.html", '2016-09-14', "Irregular Hem Half Sleeve Hollow Out T-Shirt");
+    VALUES (4, "Women's Chic Brazil Hit Color Print Tank Top", "Zaful", 11.44, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26396519", "https://www.zaful.com/women-s-chic-brazil-hit-color-print-tank-top-p_196417.html", '2016-09-14', "Women's Chic Brazil Hit Color Print Tank Top");
 INSERT INTO image
-    VALUES (4, "https://c.cfjump.com/Products/37843/26394086.jpg",4);
+    VALUES (4, "https://c.cfjump.com/Products/37843/26396519.jpg",4);  
 
 INSERT INTO product
-    VALUES (5, "Puppy Pattern White T-Shirt", "Zaful", 13.13, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26394615", "https://www.zaful.com/puppy-pattern-white-t-shirt-p_165030.html", '2016-09-14', "Puppy Pattern White T-Shirt");
+    VALUES (5, "Crossover Choker Blouse", "Zaful", 8.80, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33922002", "https://www.zaful.com/crossover-choker-blouse-p_214968.html", '2017-01-14', "Crossover Choker Blouse");
 INSERT INTO image
-    VALUES (5, "https://c.cfjump.com/Products/37843/26394615.jpg",5);  
+    VALUES (5, "https://c.cfjump.com/Products/37843/33922002.jpg",5); 
 
 INSERT INTO product
-    VALUES (6, "Caged Bandage Bikini Swimwear", "Zaful", 14.99, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26396441", "https://www.zaful.com/elastic-spaghetti-straps-solid-color-bikini-set-p_179480.html", '2016-09-14', "Caged Bandage Bikini Swimwear");
+    VALUES (6, "Cami Wrap Slip Dress", "Zaful", 13.86, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/37940145", "https://www.zaful.com/cami-wrap-slip-dress-p_272281.html", '2017-04-11', "Cami Wrap Slip Dress");
 INSERT INTO image
-    VALUES (6, "https://c.cfjump.com/Products/37843/26396441.jpg",6);  
+    VALUES (6, "https://c.cfjump.com/Products/37843/37940145.jpg",6); 
 
 INSERT INTO product
-    VALUES (7, "Women's Chic Brazil Hit Color Print Tank Top", "Zaful", 11.44, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26396519", "https://www.zaful.com/women-s-chic-brazil-hit-color-print-tank-top-p_196417.html", '2016-09-14', "Women's Chic Brazil Hit Color Print Tank Top");
+    VALUES (7, "Low Cut High Waist Sheer Bikini Swimsuit", "Zaful", 10.62, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33931037", "https://www.zaful.com/low-cut-mesh-high-waist-bikini-set-p_256170.html", '2017-01-14', "Low Cut High Waist Sheer Bikini Swimsuit");
 INSERT INTO image
-    VALUES (7, "https://c.cfjump.com/Products/37843/26396519.jpg",7);  
+    VALUES (7, "https://c.cfjump.com/Products/37843/33931037.jpg",7); 
 
 INSERT INTO product
-    VALUES (8, "Print Off The Shoulder Short Sleeve Romper", "Zaful", 11.64, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/26399469", "https://www.zaful.com/print-off-the-shoulder-short-sleeve-romper-p_193934.html", '2016-09-14', "Print Off The Shoulder Short Sleeve Romper");
+    VALUES (8, "Multiway Crop Top", "Zaful", 7.95, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/34680049", "https://www.zaful.com/multiway-crop-top-p_207360.html", '2017-02-01', "Multiway Crop Top");
 INSERT INTO image
-    VALUES (8, "https://c.cfjump.com/Products/37843/26399469.jpg",8); 
+    VALUES (8, "https://c.cfjump.com/Products/37843/34680049.jpg",8); 
 
 INSERT INTO product
-    VALUES (9, "Off The Shoulder Ruffles Insert Casual Dress", "Zaful", 6.91, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33921055", "https://www.zaful.com/ruffles-spliced-off-the-shoulder-solid-color-dress-p_208420.html", '2017-01-14', "Off The Shoulder Ruffles Insert Casual Dress");
+    VALUES (9, "Suede Pockets Shorts", "Zaful", 10.21, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/36639201", "https://www.zaful.com/suede-pockets-shorts-p_251180.html", '2017-03-10', "Suede Pockets Shorts");
 INSERT INTO image
-    VALUES (9, "https://c.cfjump.com/Products/37843/33921055.jpg",9); 
+    VALUES (9, "https://c.cfjump.com/Products/37843/36639201.jpg",9); 
 
 INSERT INTO product
-    VALUES (10, "Bar Layered Wrap Necklace", "Zaful", 2.49, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33921080", "https://www.zaful.com/bar-layered-wrap-necklace-p_199574.html", '2017-01-14', "Bar Layered Wrap Necklace");
+    VALUES (10, "Off Shoulder Pleuche Dress", "Zaful", 11.70, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/37873658", "https://www.zaful.com/off-shoulder-pleuche-dress-p_252664.html", '2017-04-08', "Off Shoulder Pleuche Dress");
 INSERT INTO image
-    VALUES (10, "https://c.cfjump.com/Products/37843/33921080.jpg",10); 
+    VALUES (10, "https://c.cfjump.com/Products/37843/37873658.jpg",10); 
 
 INSERT INTO product
-    VALUES (11, "Ruffles Ribbed Bodysuit", "Zaful", 11.80, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33921829", "https://www.zaful.com/ruffles-ribbed-bodysuit-p_213757.html", '2017-01-14', "Ruffles Ribbed Bodysuit");
+    VALUES (11, "Tied Checked Bikini Set", "Zaful", 18.49, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/42744802", "https://www.zaful.com/tied-checked-bikini-set-p_303851.html", '2017-08-09', "Tied Checked Bikini Set");
 INSERT INTO image
-    VALUES (11, "https://c.cfjump.com/Products/37843/33921829.jpg",11); 
-
-INSERT INTO product
-    VALUES (12, "Crossover Choker Blouse", "Zaful", 8.80, -1, "Zaful", 37843, -1, "https://t.cfjump.com/45556/p/33922002", "https://www.zaful.com/crossover-choker-blouse-p_214968.html", '2017-01-14', "Crossover Choker Blouse");
-INSERT INTO image
-    VALUES (12, "https://c.cfjump.com/Products/37843/33922002.jpg",12); 
+    VALUES (11, "https://c.cfjump.com/Products/37843/42744802.jpg",11); 
