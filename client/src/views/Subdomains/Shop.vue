@@ -92,9 +92,9 @@
               <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
             </button>
             <div class="dropdown-container" v-show="showMenuRating">
-              <a href="#">Link 1</a>
+              <!--<a href="#">Link 1</a>
               <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
+              <a href="#">Link 3</a>-->
             </div>
           </div>
         </div>
@@ -211,7 +211,7 @@ interface productInterface {
 .page-title {
   padding-top: 3%;
   //padding-left: 10%;
-  margin-left: 17%;
+  margin-left: 20%;
   text-align: left;
 }
 
@@ -231,7 +231,7 @@ interface productInterface {
 .side-nav {
   margin-left: 4%;
   //width: 800px;
-  width: 40%;
+  width: 50%;
   overflow: hidden;
 }
 .side-nav-box {
