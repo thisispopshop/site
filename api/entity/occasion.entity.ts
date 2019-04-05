@@ -27,8 +27,6 @@ export class Occasion {
 
 }
 
-
-
   //@OneToOne(type => Category, category => category.Occassion, {eager:true, cascade:true})
   //public categories! : Category;
 

@@ -19,7 +19,7 @@ export class CollectionController extends DefaultController {
             newCollection.description = req.body.description;
             newCollection.products = req.body.products;
             newCollection.categories = req.body.categories;
-            console.log(newCollection);
+            //console.log(newCollection);
             
             const collectionRepo = getRepository(Collection);
             collectionRepo.save(newCollection)
@@ -28,7 +28,7 @@ export class CollectionController extends DefaultController {
                     //productRepo.save(product_list);
                 }, 
                 (reason:any) => {
-                    console.log(reason);
+                    //console.log(reason);
                     res.sendStatus(500);
                 });
         });
@@ -78,7 +78,6 @@ export class CollectionController extends DefaultController {
 
             collectionRepo.findOne(id).then((foundCollection:Collection | undefined) => {
                 if (foundCollection){
-
                     //make the changes if they exist
                     if (req.body.name) { foundCollection.name = req.body.name };
                     if (req.body.description) { foundCollection.description = req.body.description };
@@ -86,12 +85,18 @@ export class CollectionController extends DefaultController {
                     //if (req.body.approvedBy)....
                     if (req.body.products) { foundCollection.products = req.body.products };
 
-                    res.status(200).send({collection:foundCollection})
+                    //update it in database
+                    collectionRepo.save(foundCollection).then(updatedCollection => {
+                        res.status(200).send({collection:updatedCollection})
+                    }) 
                 } 
                 else {
                     (reason:any) => 
                         res.status(404).send({error:"Collection Not Found"});
                 }
+            },
+            () => {
+                res.sendStatus(500);
             })
         });
 
