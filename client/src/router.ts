@@ -31,8 +31,9 @@ export default new Router({
         import("./views/Landing/LandingPage.vue")
     },
     {
-      path: "/home",
+      path: "/home/:id",
       name: "sub_nav",
+      props: true,
       component: SubDomainNav,
       children : [
         {

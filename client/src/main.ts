@@ -34,6 +34,32 @@ Vue.component('p-radio', PrettyRadio);
 
 Vue.config.productionTip = false;
 
+//handle subdomains?
+router.beforeEach((to,from,next) => {
+  const host = window.location.host;
+  const url = host.split('.');
+  const subdomain = url[0];
+  const domain = "localhost:8080";
+  //const domain = "thisispopshop"
+  //const domain = url[1];
+  //const com = url[2];
+  //const firstpage = url[3];
+  const firstPage = url[2];
+
+  if (subdomain === "www" || subdomain === domain){  //normal page
+    if (firstPage === "/thanks")
+      next({name:"LandingPage", params:{id:"thanks"}})
+    else
+      next();
+  } else if (subdomain == "cpaoii"){ //subdomain page
+    console.log(subdomain);
+    next({name:"sub_nav"})    //params:{id:"thanks"}
+  } else {
+    next();
+  }
+
+});
+
 new Vue({
   router,
   store,

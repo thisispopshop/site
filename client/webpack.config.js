@@ -21,8 +21,18 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    // make sure to include the plugin!
-    new VueLoaderPlugin()
-  ]
+  configureWebpack: {
+    plugins: [
+      // make sure to include the plugin!
+      new VueLoaderPlugin()
+    ],
+  },
+  devServer: {
+    disableHostCheck: true,   //not secure!!!!
+    // allows subdomains access
+    /*allowedHosts: [
+      '.thisispopshop.com',
+      '.localhost:8080',
+    ]*/
+  }
 }
