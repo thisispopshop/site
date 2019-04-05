@@ -50,7 +50,7 @@
           <ul class="side-nav-checklist">
             <li>
               <input id="checkbox_1" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_1" class="side-nav-content">Dresses</label>
+              <label for="checkbox_1" class="side-nav-content">Apparel</label>
             </li>
             <li>
               <input id="checkbox_2" type="checkbox" class="styled-checkbox">
@@ -142,12 +142,12 @@ export default class Shop extends Vue {
     axios
       .get(APIConfig.buildUrl("/api/product"))
       .then((response: AxiosResponse) => {
-        console.log(response.data.products);
+        //console.log(response.data.products);
         this.product_list = response.data.products;
       })
       .catch((res:AxiosError) => {
-        console.log(res.response);
-        this.error = "No Products?";
+        //console.log(res.response);
+        this.error = res.response && res.response.data.reason;
       })
   }
 

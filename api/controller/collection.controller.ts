@@ -18,6 +18,7 @@ export class CollectionController extends DefaultController {
             newCollection.approvedBy = -1;               //idk yet?
             newCollection.description = req.body.description;
             newCollection.products = req.body.products;
+            newCollection.categories = req.body.categories;
             console.log(newCollection);
             
             const collectionRepo = getRepository(Collection);
@@ -46,6 +47,16 @@ export class CollectionController extends DefaultController {
         //add session?
         router.route("/api/collection/:id").get((req:Request, res:Response) => {
             const collectionRepo = getRepository(Collection);
+            const productRepo = getRepository(Product);
+
+            //query from that id?
+            let query: any = {};
+            if (req.query.category) query.category = req.query.category;
+            //not sure how to do list of categories!
+            //if (req.query.brand) query.brand = req.query.brand;
+            //if (req.query.size) query.brand = req.query.size;
+            //if (req.query.color) query.brand = req.query.size;
+
             const id = parseInt(req.params.id);
             collectionRepo.findOne(id).then((foundCollection:Collection | undefined) => {
                 if (foundCollection){

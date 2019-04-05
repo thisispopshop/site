@@ -1,5 +1,5 @@
-import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne ,ManyToMany } from "typeorm";
-import { Product, User } from ".";
+import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne ,ManyToMany, OneToOne } from "typeorm";
+import { Product, User, Category, Occasion } from ".";
 
 export enum CollectionStatus {
   APPROVED = "approved",
@@ -22,6 +22,12 @@ export class Collection {
 
   @Column()
   public description!: string;
+
+  @OneToOne(type=>Occasion, occasion => occasion.collection)
+  public occasion!: Occasion;
+
+  @ManyToMany(type => Category, category => category.collections, {cascade:true})
+  public categories!: Category[];
 
   @ManyToMany(type => Product, product => product.collections, {eager:true,cascade:true})
   @JoinTable()
