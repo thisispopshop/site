@@ -53,8 +53,8 @@ router.beforeEach((to,from,next) => {
       next();
   } else if (subdomain === "cpaoii"){ //subdomain page
     //console.log(subdomain);
-    next({name:"sub_nav"});
-    //next({name:"sub_nav"})    //params:{id:"thanks"}
+    to: {path: "sub_nav"};
+    next({replace:true});
   } else {
     next();
   }
