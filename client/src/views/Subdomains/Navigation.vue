@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <!--change this to be dynamic soon-->
     
     <!--customer navigation bar-->
@@ -77,7 +77,7 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class Navigation extends Vue {
+export default class AdminNavigation extends Vue {
 
   public showNav : Boolean = false;
 

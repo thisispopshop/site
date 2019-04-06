@@ -1,4 +1,4 @@
-import {iProduct} from ".";
+import {iProduct, iCategory} from ".";
 
 enum CollectionStatus {
     APPROVED = "approved",
@@ -12,4 +12,5 @@ export interface iCollection {
     approvedBy: number | null;
     description: string;
     products: iProduct[];
+    categories: iCategory[];
   }

@@ -66,6 +66,17 @@
                     <button class="button is-dark is-small" v-on:click="selectAll">SELECT ALL</button>
                     <button class="button is-dark is-small" v-on:click="selectNone">SELECT NONE</button>
 
+                    <div class="field" >
+                        <ul style="width:20%; display:inline-block">
+                            <li v-for="(cat,index) in categories" >
+                                <input type="checkbox" v-bind:value="cat" v-model="selected_categories">{{cat.name}}
+                            </li>
+                        </ul>
+                        <div style="width:20%; display:inline-block">
+                            <p v-for="(c,index) in selected_categories">{{c.name}}</p>
+                        </div>
+                    </div>
+
                     <div class="field has-addons search-field" >
                         <div class="control">
                             <input class="input is-dark" type="search" placeholder="tag, tag, tag, etc">
@@ -122,13 +133,19 @@
 import { Component, Vue } from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
-import { iCollection, iProduct} from "@/models";
+import { iCollection, iProduct, iCategory} from "@/models";
 
 @Component
 export default class Curate extends Vue {
 
     error : string | boolean = false;
     errors : string[] | boolean = false;
+
+    all_products: iProduct[] = [];  //list of all products
+    my_products : iProduct[] = [];  //list of selected products
+
+    categories : iCategory[] = [];
+    selected_categories : iCategory[] = [];
 
     mounted(){
         //get all products
@@ -141,14 +158,23 @@ export default class Curate extends Vue {
         .catch((res:AxiosError) => {
             this.error = res.response && res.response.data.reason;
         })
+
+        //get all categories
+        this.error = false;
+        axios   
+            .get(APIConfig.buildUrl("/api/category"))
+            .then((response:AxiosResponse) => {
+                //console.log(response.data.categories);
+                this.categories = response.data.categories;
+            })
+            .catch((res:AxiosError) => {
+                this.error = res.response && res.response.data.reason;
+            })
     }
 
     goToProduct(p: iProduct){
         window.open(p.url, '_blank');
     }
-
-    all_products: iProduct[] = [];  //list of all products
-    my_products : iProduct[] = [];  //list of selected products
 
     selectAll(){
         this.my_products = this.all_products;
@@ -157,15 +183,13 @@ export default class Curate extends Vue {
         this.my_products = [];
     }
 
-    //selecting tags
-    categories : string[] = ["dresses","shoes","accessories"];
-
     new_collection : iCollection = {
         name : "",
         status: "unapproved",
         approvedBy : null,
         description: "",
         products: this.my_products,
+        categories: this.selected_categories,
     }
 
     //submit the new collection
@@ -185,14 +209,16 @@ export default class Curate extends Vue {
                 {
                     name : this.new_collection.name,
                     description: this.new_collection.description,
-                    products: this.my_products
+                    products: this.my_products,
+                    categories: this.selected_categories,
                 })
                 .then((response:AxiosResponse) => {
                     alert("You Collection was Successfully Created.")
-                    this.$router.push("/organizations");
+                    this.$router.push("/admin");
                 })
                 .catch((res:AxiosError)=> {
                     this.error = res.response && res.response.data.reason;
+                    this.errors = ["Didn't work!"];
                 })
             
         }      
@@ -201,7 +227,7 @@ export default class Curate extends Vue {
     //cancel the new collection
     cancelCollection(){
         this.error = false;
-        this.$router.push("/organizations");
+        this.$router.push("/admin");
     }
 
 }

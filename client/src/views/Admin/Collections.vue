@@ -26,12 +26,7 @@
 
         <!--display all collections-->
         <section class='section'>
-
             <div class="container">
-
-                <button class="button is-small is-inverted" v-on:click="createCollection">
-                    Create a Collection
-                </button>
 
                 <!--Show Collections-->
                 <p v-if="error">There are no unassigned collections.</p>
@@ -44,6 +39,7 @@
                                 <th>name</th>
                                 <th>length</th>
                                 <th>status</th>
+                                <th>assigned</th>
                                 <th>cancel</th>
                             </tr>
                         </thead>
@@ -53,6 +49,7 @@
                                 <td>{{c.name}}</td>
                                 <td>{{c.products.length}}</td>
                                 <td>{{c.status}}</td>
+                                <td>?</td>
                                 <td><span aria-label="Close">X</span></td>                  
                             </tr>
                         </tbody>
@@ -92,7 +89,7 @@ export default class Collections extends Vue {
 
     //create a new collection
     createCollection(){
-        this.$router.push("/curate");
+        this.$router.push("/admin/curate");
     }
 }
 </script>

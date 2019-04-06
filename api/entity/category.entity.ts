@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, OneToMany } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne, OneToMany } from "typeorm";
 import { Product, Collection } from ".";
 
 @Entity()
@@ -12,7 +12,7 @@ export class Category {
   @OneToMany(type => Product, product => product.category, {cascade:true})
   public products!: Product[];
 
-  @ManyToMany(type => Collection, collection => collection.categories)
+  @ManyToOne(type => Collection, collection => collection.categories)
   public collections!: Collection[];
 
 }

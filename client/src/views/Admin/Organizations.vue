@@ -6,10 +6,10 @@
             <div class="hero-body">
                 <div class="container">
                 <h1 class="title is-size-1">
-                    <strong>Organizations</strong>
+                    <strong>Manage Sites</strong>
                 </h1>
                 <h2 class="subtitle is-size-3">
-                    Show events and occasions. 
+                    Manage subdomains and collections.
                 </h2>
                 </div>
             </div>
@@ -43,15 +43,16 @@
                         </table>
                     </div>
                     <div class="column is-one-quarter">
+                        <button class="button is-small is-link is-outlined" v-on:click="showCreateOccasion">Create New Occasion</button>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <th >Occasions</th>
                             </thead>
                             <tbody>
-                                <tr v-for="(o,index) in occasion_list">
+                                <tr v-for="(o,index) in occasion_list" v-on:click="showUpdateOccasion">
                                     <td>{{o.name}}
 
-                                        <div>
+                                        <div v-show="updatingOccasion">
                                             <p>Update Occasion</p>
                                             <input class="input is-small" type="text" v-model="o.name">
                                             <input class="input is-small" type="text" v-model="o.description">
@@ -68,6 +69,7 @@
                         </table>
                     </div>
                     <div class="column is-one-quarter">
+                        <button class="button is-small is-link is-outlined" v-on:click="createCollection">Create New Collection</button><br>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <th>Collection</th>
@@ -76,7 +78,6 @@
                                 <tr v-for="(c,index) in collection_list" v-on:click="selectCollection(c)">
                                     <td>{{c.name}}</td>
                                 </tr>
-                                <tr><button class="button is-small" v-on:click="createCollection">Create New Collection</button><br></tr>
                             </tbody>
                         </table>
                     </div>
@@ -85,7 +86,6 @@
         </section>
 
         <section class="section">
-            <p><button class="button is-small" v-on:click="showCreateOccasion">Create New Occasion</button><br></p>
             <div class="Container" v-show="showOccasion">
                 <p>Create new Occasion</p>
                 <label class="label is-small">Occasion Name</label>
@@ -143,7 +143,7 @@ export default class Collections extends Vue {
 
     //create a new collection
     createCollection(){
-        this.$router.push("/curate");
+        this.$router.push("/admin/curate");
     }
 
     selectCollection(c){
@@ -182,6 +182,11 @@ export default class Collections extends Vue {
     showOccasion: boolean = false;
     showCreateOccasion(){
         this.showOccasion = !this.showOccasion;
+    }
+
+    updatingOccasion: boolean = false;
+    showUpdateOccasion() {
+        this.updatingOccasion = !this.updatingOccasion;
     }
 
     updateOccasion(o){

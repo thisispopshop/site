@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 
 import SubDomainNav from "./views/Subdomains/Navigation.vue";
+import AdminNav from "./views/Admin/Navigation.vue";
 
 Vue.use(Router);
 
@@ -30,24 +31,6 @@ export default new Router({
       props: (route) => ({ id: 'thanks'}),
       component:() =>
         import("./views/Landing/LandingPage.vue")
-    },
-    {
-      path: "/curate",
-      name: "curate",
-      component:() =>
-        import("./views/Admin/Curate.vue")
-    },
-    {
-      path: "/collections",
-      name: "collections",
-      component:() =>
-        import("./views/Admin/Collections.vue")
-    },
-    {
-      path: "/organizations",
-      name: "organizations",
-      component:() =>
-        import("./views/Admin/Organizations.vue")
     },
     {
       path: "/home",
@@ -85,7 +68,31 @@ export default new Router({
             import("./views/Subdomains/Submit.vue")
         }
       ]
-    },
+    }, {
+      path: "/admin",
+      name: 'admin_navigation',
+      component: AdminNav,
+      children : [
+        {
+          path: "/admin",
+          name: "organizations",
+          component:() =>
+            import("./views/Admin/Organizations.vue")
+        },
+        {
+          path: "/admin/curate",
+          name: "curate",
+          component:() =>
+            import("./views/Admin/Curate.vue")
+        },
+        {
+          path: "/admin/collections",
+          name: "collections",
+          component:() =>
+            import("./views/Admin/Collections.vue")
+        },
+      ]
+    }
 
   ]
 });

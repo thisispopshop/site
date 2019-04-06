@@ -113,9 +113,15 @@ import {iProduct,iImage,iCollection} from "@/models";
 @Component
 export default class ShopOccasion extends Vue {
 
-  //@Prop() occasion! : iOccasion;
-  @Prop() collection! :iCollection;
-  product_list : iProduct[] = this.collection.products; 
+    //@Prop() occasion! : iOccasion;
+    @Prop() collection! :iCollection;
+    product_list : iProduct[] = this.collection.products; 
+
+    mounted(){
+        console.log(this.product_list);
+        this.product_list = this.collection.products;
+        //product_list : iProduct[] = this.collection.products; 
+    }
 
   goToProduct(p: iProduct){
      window.open(p.url, '_blank');
