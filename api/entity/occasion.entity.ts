@@ -1,5 +1,5 @@
-import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne ,ManyToMany, OneToOne } from "typeorm";
-import { Product, User, Collection } from ".";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { Collection } from ".";
 
 export enum RushDay {
   HOUSETOURS = "House Tours",
@@ -22,7 +22,7 @@ export class Occasion {
   @Column()
   public submitForm!: string;
 
-  @OneToOne(type => Collection, collection => collection.occasion)
+  @OneToOne(type => Collection, collection => collection.occasion, {eager:true})
   public  collection! : Collection;
 
 }

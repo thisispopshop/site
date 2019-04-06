@@ -44,6 +44,12 @@ export default new Router({
         import("./views/Admin/Collections.vue")
     },
     {
+      path: "/organizations",
+      name: "organizations",
+      component:() =>
+        import("./views/Admin/Organizations.vue")
+    },
+    {
       path: "/home",
       name: "sub_nav",
       component: SubDomainNav,
@@ -59,6 +65,12 @@ export default new Router({
           name: "shop",
           component:() =>
             import("./views/Subdomains/Shop.vue")
+        },
+        {
+          path: "/shop1",
+          name: "shop1",
+          component:() =>
+            import("./views/Subdomains/Shop.1.vue")
         },
         {
           path: "/info",

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne ,ManyToMany, OneToOne } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, JoinTable, ManyToMany, OneToOne, JoinColumn } from "typeorm";
 import { Product, User, Category, Occasion } from ".";
 
 export enum CollectionStatus {
@@ -23,12 +23,13 @@ export class Collection {
   @Column()
   public description!: string;
 
-  @OneToOne(type=>Occasion, occasion => occasion.collection)
-  public occasion!: Occasion;
-
   @ManyToMany(type => Category, category => category.collections, {cascade:true})
   public categories!: Category[];
 
+  @OneToOne(type=>Occasion, occasion => occasion.collection)
+  @JoinColumn()
+  public occasion!: Occasion;
+  
   @ManyToMany(type => Product, product => product.collections, {eager:true,cascade:true})
   @JoinTable()
   public products!: Product[];

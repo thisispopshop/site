@@ -27,34 +27,38 @@
         <!--display all collections-->
         <section class='section'>
 
-            <div class="container" v-if="error">
-                <p>There are no active collections.</p>
-            </div>
+            <div class="container">
 
-            <div class="container" v-show="!error">
-                <h1 class="subtitle"> Active Collections </h1>
-                <table class="table is-fullwidth is-hoverable">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>description?</th>
-                            <th>length</th>
-                            <th>status</th>
-                            <th>cancel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(c,index) in collection_list" v-bind:key="index" v-bind:value="c">
-                            <td>{{c.id}}</td>
-                            <td>{{c.name}}</td>
-                            <td>{{c.description}}</td>
-                            <td>{{c.products.length}}</td>
-                            <td>{{c.status}}</td>
-                            <td><span aria-label="Close">X</span></td>                  
-                        </tr>
-                    </tbody>
-                </table>
+                <button class="button is-small is-inverted" v-on:click="createCollection">
+                    Create a Collection
+                </button>
+
+                <!--Show Collections-->
+                <p v-if="error">There are no unassigned collections.</p>
+                <div v-show="!error">
+                    <h1 class="subtitle"> <br>Unassigned Collections </h1>
+                    <table class="table is-fullwidth  is-hoverable">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>length</th>
+                                <th>status</th>
+                                <th>cancel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(c,index) in collection_list" v-bind:key="index" v-bind:value="c">
+                                <td>{{c.id}}</td>
+                                <td>{{c.name}}</td>
+                                <td>{{c.products.length}}</td>
+                                <td>{{c.status}}</td>
+                                <td><span aria-label="Close">X</span></td>                  
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </section>
 

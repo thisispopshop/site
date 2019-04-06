@@ -36,11 +36,11 @@ export class OccasionController extends DefaultController {
 
             const occasionRepo = getRepository(Occasion);
             occasionRepo.save(newOccasion)
-                .then((occasion:Occasion) =>{
-                    res.status(200).send({occasion});
+                .then((createdOccasion:Occasion) =>{
+                    console.log(createdOccasion);
+                    res.status(200).send({occasion: createdOccasion});
                 },
                 (reason:any) => {
-                    //console.log(reason);
                     res.sendStatus(500);
                 });         
         })
@@ -54,21 +54,26 @@ export class OccasionController extends DefaultController {
                 if (foundOccasion){
                     if (req.body.name) foundOccasion.name = req.body.name;
                     if (req.body.description) foundOccasion.description = req.body.description;
-                    if (req.body.submitForm) foundOccasion.submitForm = req.body.form;
+                    if (req.body.submitForm) foundOccasion.submitForm = req.body.submitForm;
                     if (req.body.collection) foundOccasion.collection = req.body.collection;
+
+                    console.log(foundOccasion);
 
                     occasionRepo.save(foundOccasion).then(updatedOccasion => {
                         res.status(200).send({occasion: updatedOccasion});
+                    }, 
+                    (reason:any) => {
+                        console.log(reason);
+                        res.sendStatus(500);
                     })
-                } 
-                else {
+                } else {
                     res.status(404).send({reason: "Occasion Not Found"});
                 }
             }, 
             () => {
                 res.sendStatus(500);
-            })
-        })
+            });
+        });
 
         return router;
     }

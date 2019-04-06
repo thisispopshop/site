@@ -1,8 +1,7 @@
 /**
     Sample Products taken from Zaful Data Feed
-    
-    Written: April 2, 2019
 **/
+
 use dev;
 DELETE FROM image;
 DELETE FROM product;
@@ -72,3 +71,6 @@ INSERT INTO category VALUES (5, "Bottoms");
 INSERT INTO category VALUES (6, "Swim");
 INSERT INTO category VALUES (7, "Intimates");
 
+
+insert into occasion 
+    values (1, "sample occasion", "sample description", "sample form");
