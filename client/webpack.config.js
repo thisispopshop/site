@@ -27,10 +27,10 @@ module.exports = {
       new VueLoaderPlugin()
     ],
   },
+  /*
   devServer: {
-    disableHostCheck: true,   //not secure!!!!
-    // allows subdomains access
-    /*allowedHosts: [
+    disableHostCheck: true, 
+    allowedHosts: [
       '.thisispopshop.com',
       '.localhost:8080',
     ]*/

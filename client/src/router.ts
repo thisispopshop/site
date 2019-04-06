@@ -5,12 +5,6 @@ import SubDomainNav from "./views/Subdomains/Navigation.vue";
 
 Vue.use(Router);
 
-/*
-To get the subdomain...
-path: 'subdomain.thisispopshop.com/'
-props: (route) => ({ id: route.query.id})
-*/
-
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
@@ -31,7 +25,7 @@ export default new Router({
         import("./views/Landing/LandingPage.vue")
     },
     {
-      path: "/home/:id",
+      path: "/home",
       name: "sub_nav",
       props: true,
       component: SubDomainNav,

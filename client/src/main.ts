@@ -48,12 +48,13 @@ router.beforeEach((to,from,next) => {
 
   if (subdomain === "www" || subdomain === domain){  //normal page
     if (firstPage === "/thanks")
-      next({name:"LandingPage", params:{id:"thanks"}})
+      next({name:"ThanksLandingPage", params:{id:"thanks"}});
     else
       next();
-  } else if (subdomain == "cpaoii"){ //subdomain page
-    console.log(subdomain);
-    next({name:"sub_nav"})    //params:{id:"thanks"}
+  } else if (subdomain === "cpaoii"){ //subdomain page
+    //console.log(subdomain);
+    next({name:"sub_nav"});
+    //next({name:"sub_nav"})    //params:{id:"thanks"}
   } else {
     next();
   }
