@@ -82,7 +82,7 @@
       </div>
 
       <!--product grid-->
-      <div class="product-container">
+      <div class="product-container" v-if="!error">
           <div class="product" v-for="(p, index) in product_list" v-bind:key="index" v-bind:value="p" v-on:click="goToProduct(p)">
               <figure class="product-image" >
                   <img v-bind:src='p.images[0].url'>
@@ -98,6 +98,9 @@
               </div>
           </div>
       </div>
+      <div v-show="error">
+        <p>{{error}}</p>
+      </div>
 
     </section>
 </div>
@@ -105,7 +108,7 @@
       
 <script lang="ts">
 /* eslint-disable */
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop ,Watch} from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
 import {iProduct,iImage,iCollection} from "@/models";
@@ -116,12 +119,19 @@ export default class ShopOccasion extends Vue {
     //@Prop() occasion! : iOccasion;
     @Prop() collection! :iCollection;
     product_list : iProduct[] = this.collection.products; 
+    error : string| boolean = false;
 
-    mounted(){
-        console.log(this.product_list);
+    @Watch("collection")
+    update(){
+      if (this.collection.products){
         this.product_list = this.collection.products;
-        //product_list : iProduct[] = this.collection.products; 
+      } else{
+        console.log("error");
+        this.error = "No Products to Show";
+        this.product_list = [];
+      }
     }
+
 
   goToProduct(p: iProduct){
      window.open(p.url, '_blank');

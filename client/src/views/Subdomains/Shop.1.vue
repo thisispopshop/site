@@ -63,7 +63,7 @@ export default class Shop extends Vue {
 
   chooseOccasion(occasion:iOccasion) {
     this.selectedOccasion = occasion;
-    console.log(this.selectedOccasion);
+    //console.log(this.selectedOccasion);
   }
 }
 </script>
