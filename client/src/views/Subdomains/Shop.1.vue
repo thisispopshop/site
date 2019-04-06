@@ -42,7 +42,7 @@ export default class Shop extends Vue {
     name: "temp",
     description: "temp",
     submitForm: "temp",
-    collection: {name:"temp", status: "temp", approvedBy:-1, description:"", products: []},
+    collection: {name:"temp", status: "temp", approvedBy:-1, description:"", products: [], categories:[]},
   };
 
   mounted(){

@@ -36,6 +36,7 @@ export default new Router({
     {
       path: "/home",
       name: "sub_nav",
+      props: true,
       component: SubDomainNav,
       children : [
         {

@@ -49,7 +49,7 @@
                                 <th >Occasions</th>
                             </thead>
                             <tbody>
-                                <tr v-for="(o,index) in occasion_list" v-on:click="showUpdateOccasion">
+                                <tr v-for="(o,index) in occasion_list" v-bind:key="index" v-bind:value="o" v-on:click="showUpdateOccasion">
                                     <td>{{o.name}}
 
                                         <div v-show="updatingOccasion">
@@ -75,7 +75,7 @@
                                 <th>Collection</th>
                             </thead>
                             <tbody>
-                                <tr v-for="(c,index) in collection_list" v-on:click="selectCollection(c)">
+                                <tr v-for="(c,index) in collection_list" v-bind:key="index" v-bind:value="c" v-on:click="selectCollection(c)">
                                     <td>{{c.name}}</td>
                                 </tr>
                             </tbody>
@@ -116,7 +116,7 @@ export default class Collections extends Vue {
     error : string | boolean = false;
     collection_list : iCollection[] = [];
     occasion_list : iOccasion[] = [];
-    selectedCollection: iCollection = {name:"temp", status: "temp", approvedBy:-1, description:"", products: []};
+    selectedCollection: iCollection = {name:"temp", status: "temp", approvedBy:-1, description:"", products: [], categories: []};
 
     mounted(){
 
