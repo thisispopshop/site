@@ -21,8 +21,12 @@ export class OccasionController extends DefaultController {
             const occasionRepo = getRepository(Occasion);
             const id = parseInt(req.params.id);
             occasionRepo.findOne(id).then((occasion: Occasion | undefined) => {
-                if (occasion) res.status(200).send({ occasion });
-                else res.status(404).send({"Occasion not found."});
+                if (occasion){ 
+                res.status(200).send({ occasion });
+                }
+                else{
+                 res.status(404).send({reason: "Occasion not found."})
+                };
             });
           });
 
@@ -68,7 +72,7 @@ export class OccasionController extends DefaultController {
                         res.sendStatus(500);
                     })
                 } else {
-                    res.status(404).send({reason: "Occasion Not Found"});
+                    res.sendStatus(404);
                 }
             }, 
             () => {

@@ -21,7 +21,10 @@
 
         <!--left side-->
         <div class="navbar-start">
-          <div class="navbar-item has-dropdownis-hoverable" >
+          <div class="navbar-item is-hoverable" >
+          <div class="navbar-item">
+            <router-link class="mynavbaritem" to="/admin" exact-active-class="is-active">Home</router-link> 
+          </div>
           <div class="navbar-item">
             <router-link class="mynavbaritem" to="/admin/collections" exact-active-class="is-active">Collections</router-link> 
           </div>
