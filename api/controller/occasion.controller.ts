@@ -21,7 +21,8 @@ export class OccasionController extends DefaultController {
             const occasionRepo = getRepository(Occasion);
             const id = parseInt(req.params.id);
             occasionRepo.findOne(id).then((occasion: Occasion | undefined) => {
-              res.status(200).send({ occasion });
+                if (occasion) res.status(200).send({ occasion });
+                else res.status(404).send({"Occasion not found."});
             });
           });
 

@@ -1,5 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
-import { Collection } from ".";
+import { Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn, ManyToOne } from "typeorm";
+import { Collection, Event, Category } from ".";
 
 export enum RushDay {
   HOUSETOURS = "House Tours",
@@ -23,11 +23,11 @@ export class Occasion {
   public submitForm!: string;
 
   @OneToOne(type => Collection, collection => collection.occasion, {eager:true})
-  public  collection! : Collection;
+  public collection! : Collection;
+
+  @ManyToOne(type=>Event, event=>event.occasions)
+  public event!: Event;
 
 }
-
-  //@OneToOne(type => Category, category => category.Occassion, {eager:true, cascade:true})
-  //public categories! : Category;
 
   

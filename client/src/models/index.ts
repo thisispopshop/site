@@ -4,3 +4,5 @@ export * from "./collection.interface";
 export * from "./image.interface";
 export * from "./occasion.interface";
 export * from "./category.interface";
+export * from "./event.interface";
+export * from "./organization.entity";

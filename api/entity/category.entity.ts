@@ -15,4 +15,5 @@ export class Category {
   @ManyToOne(type => Collection, collection => collection.categories)
   public collections!: Collection[];
 
+
 }

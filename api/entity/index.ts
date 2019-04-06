@@ -5,3 +5,5 @@ export * from "./collection.entity";
 export * from "./image.entity";
 export * from "./category.entity";
 export * from "./occasion.entity";
+export * from "./event.entity";
+export * from "./organization.entity"
