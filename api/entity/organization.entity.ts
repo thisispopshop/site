@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToOne ,ManyToMany, OneToOne } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, ManyToOne } from "typeorm";
 import {Event} from ".";
 
 @Entity()
@@ -12,7 +12,7 @@ export class Organization {
   @Column()
   public subdomain!: string;
 
-  @ManyToOne(type=>Event, event => event.organization, {eager:true, cascade:true})
+  @OneToMany(type=>Event, event => event.organization, {eager:true, cascade:true})
   public events! : Event[];
 
 }

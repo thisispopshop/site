@@ -168,7 +168,7 @@ export default class ShopOccasion extends Vue {
     this.product_list.sort((p1,p2) => p1.price > p2.price ? -1 : p1.price < p2.price ? 1 : 0);
   }
   sortByRecent(){
-    this.product_list.sort((p1,p2) => p1.dateCreated < p2.dateCreated ? -1 : p1.dateCreated > p2.dateCreated ? 1 : 0);
+    //this.product_list.sort((p1,p2) => p1.dateCreated < p2.dateCreated ? -1 : p1.dateCreated > p2.dateCreated ? 1 : 0);
   }
   browseByCategory(filter:string){}
 }

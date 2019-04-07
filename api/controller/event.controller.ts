@@ -37,7 +37,7 @@ export class EventController extends DefaultController {
             newEvent.name = req.body.name;
             newEvent.description = req.body.description;
             newEvent.occasions = req.body.occasions;
-            newEvent.organization = req.body.organization;
+            //newEvent.organization = req.body.organization;
 
             eventRepo.save(newEvent).then((createdEvent:Event) => {
                 res.status(200).send({event: createdEvent});
@@ -55,13 +55,10 @@ export class EventController extends DefaultController {
 
             eventRepo.findOne(id).then((foundEvent: Event | undefined) => {
                 if (foundEvent){
-                    foundEvent.name = req.body.name;
-                    foundEvent.description = req.body.description;
+                    if (req.body.name) foundEvent.name = req.body.name;
+                    if (req.body.description) foundEvent.description = req.body.description;
                     foundEvent.occasions = req.body.occasions;
-                    foundEvent.organization = req.body.organization;
-
-                    console.log(req.body);
-                    console.log(foundEvent);
+                    //foundEvent.organization = req.body.organization;
 
                     eventRepo.save(foundEvent).then(updatedEvent => {
                         res.status(200).send({event:updatedEvent});
@@ -70,9 +67,8 @@ export class EventController extends DefaultController {
                     (reason:any) => 
                         res.status(404).send({reason:"Event not found."});
                 }
-            },
-                () => {
-                    res.sendStatus(500);
+            },() => {
+                res.sendStatus(500);
             })
         })
 

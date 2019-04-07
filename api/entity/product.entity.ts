@@ -10,22 +10,13 @@ export class Product {
   public name!: string;
 
   @Column()
-  public brand!: string;
+  public merchant!: string;
 
   @Column({type: "double"})
   public price!: number;
 
   @Column()
-  public merchant!: string;
-
-  @Column()
   public url!: string;
-
-  @Column()
-  public originalUrl!: string;
-
-  @Column()
-  public dateCreated!: Date;
 
   @Column()
   public description!: string;
