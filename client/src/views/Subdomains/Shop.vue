@@ -87,15 +87,6 @@
                 <label>{{brand}}</label>
               </p>
             </div>
-            <button class="dropdown-btn side-nav-content"  v-on:click="toggleMenu('rating')">
-               Rating
-              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
-            </button>
-            <div class="dropdown-container" v-show="showMenuRating">
-              <!--<a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>-->
-            </div>
           </div>
         </div>
 
@@ -159,15 +150,12 @@ export default class Shop extends Vue {
 
   showMenuSize : Boolean = false;
   showMenuBrand : Boolean = false;
-  showMenuRating : Boolean = false;
 
   toggleMenu(menuId:string){
     if (menuId=='size') 
       this.showMenuSize = !this.showMenuSize;
     if (menuId == 'brand')
       this.showMenuBrand = !this.showMenuBrand;
-    if (menuId == 'rating')
-      this.showMenuRating = !this.showMenuRating;
   }
 
   temp_product : productInterface = {
@@ -230,8 +218,8 @@ interface productInterface {
 /*side navigation box*/
 .side-nav {
   margin-left: 4%;
-  //width: 800px;
-  width: 50%;
+  width: 900px;
+  //width: 25%;
   overflow: hidden;
 }
 .side-nav-box {
@@ -374,7 +362,7 @@ ul li {
 }
 
 .product {
-  height: 25%;
+  //height: 25%;
   padding-bottom: 10%;
 
   :hover {
@@ -382,11 +370,9 @@ ul li {
   }
 
   &-image {
-    background-color: white;
-    display: block;
-    overflow:hidden;
-    width: auto;
-    height: 425px;
+    height: 85%;
+    object-fit: cover;
+    overflow: hidden;
   }
 
   &-name {

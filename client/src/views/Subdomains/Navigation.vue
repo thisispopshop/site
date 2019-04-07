@@ -26,7 +26,7 @@
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable" > 
             <div class="navbar-item">
-              <router-link class="mynavbaritem" to="/shop" exact-active-class="is-active">shop</router-link>
+              <router-link class="mynavbaritem" to="/shop" exact-active-class="is-active">Shop</router-link>
             </div>
             <div class="navbar-dropdown mynavmenu mydropdownmenu is-hidden-touch" >
               <div class="navbar-item"><router-link class="mydropdown" to="/shop" exact-active-class="is-active">House Tours</router-link></div>
@@ -36,10 +36,10 @@
             </div>
           </div>
           <div class="navbar-item">
-            <router-link class="mynavbaritem" to="/info" exact-active-class="is-active">info</router-link> 
+            <router-link class="mynavbaritem" to="/info" exact-active-class="is-active">Info</router-link> 
           </div>
           <div class="navbar-item">
-            <router-link class="mynavbaritem" to="/submit" exact-active-class="is-active">submit</router-link> 
+            <router-link class="mynavbaritem" to="/submit" exact-active-class="is-active">Submit</router-link> 
           </div>
         </div>
 

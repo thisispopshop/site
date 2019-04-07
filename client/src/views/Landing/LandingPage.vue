@@ -17,16 +17,23 @@
                     <div class="container">
 
                         <!--Header-->
-                        <h1 class="title is-size-1 is-size-4-mobile has-text-black">
+                        <h1 class="title is-size-1 is-size-4-mobile has-text-black" style="letter-spacing: 1px;">
                             RUSH, REDESIGNED.
                         </h1>
 
                         <!--Description is-size-3-->
-                        <h2 class="body-content is-size-3 is-size-6-mobile has-text-black ">
+                        <h2 class="body-content is-size-3 is-hidden-mobile has-text-black ">
                             Say goodbye to countless hours spent shopping, creating lookbooks and approving outfits. 
                             Let us handle your wardrobe so you can focus on what really matters: 
                             <br>
                             <span class="special-text">Welcoming your newest sisters home.</span>
+                        </h2>  
+                        <!--mobile version-->
+                        <h2 class="body-content-mobile is-size-6 is-hidden-desktop is-hidden-tablet has-text-black is-fullwidth">
+                            Say goodbye to countless hours spent shopping, creating lookbooks and approving outfits. 
+                            Let us handle your wardrobe so you can focus on what really matters: 
+                            <br>
+                            <span class="special-text-mobile is-fullwidth">Welcoming your newest sisters home.</span>
                         </h2>  
 
                         <!--Add you email desktop-->
@@ -153,12 +160,27 @@ export default class LandingPage extends Vue {
     line-height: 50px;
     padding-top: 0%;
     padding-bottom: 3%;
+    letter-spacing: 1px;
+}
+
+
+.body-content-mobile {
+    width: 100%;
+    padding-top: 0%;
+    padding-bottom: 3%;
+    letter-spacing: 1px;
 }
 
 /*special sentence style */
 .special-text {
     font-weight: bold;
     line-height: 80px;
+    letter-spacing: 1px;
+}
+.special-text-mobile {
+    font-weight: bold;
+    //line-height: 40px;
+    letter-spacing: 1px;
 }
 
 /*fixed sizing and alignment of email field*/
