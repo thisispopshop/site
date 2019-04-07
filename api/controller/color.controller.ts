@@ -16,6 +16,18 @@ export class ColorController extends DefaultController {
             });
           });
 
+        //get a color
+        router.route("/api/color/:id").get((req: Request, res: Response) => {
+            const colorRepo = getRepository(Color);
+            const id = parseInt(req.params.id);
+            colorRepo.findOne(id).then((foundColor: Color | undefined) => {
+                if (foundColor) res.status(200).send({ color: foundColor});
+                else (reason:any) => {
+                    res.status(404).send({reason: "Color not found."});
+                }
+            });
+          });
+
         //add a color
         router.route("/api/color").post((req:Request, res:Response) => {
             const colorRepo = getRepository(Color);

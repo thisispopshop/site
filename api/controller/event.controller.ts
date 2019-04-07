@@ -23,7 +23,7 @@ export class EventController extends DefaultController {
 
             eventRepo.findOne(id).then((foundEvent : Event | undefined ) => {
                 if (foundEvent) {
-                        res.status(200).send({foundEvent});
+                        res.status(200).send({event:foundEvent});
                 }else {
                     res.status(400).send({reason: "Event not found"});
                 }
@@ -59,6 +59,9 @@ export class EventController extends DefaultController {
                     foundEvent.description = req.body.description;
                     foundEvent.occasions = req.body.occasions;
                     foundEvent.organization = req.body.organization;
+
+                    console.log(req.body);
+                    console.log(foundEvent);
 
                     eventRepo.save(foundEvent).then(updatedEvent => {
                         res.status(200).send({event:updatedEvent});

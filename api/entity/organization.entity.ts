@@ -12,10 +12,7 @@ export class Organization {
   @Column()
   public subdomain!: string;
 
-  //events
-  @OneToMany(type=>Event, event => event.organization, {eager:true, cascade:true})
-  //@JoinTable()
+  @ManyToOne(type=>Event, event => event.organization, {eager:true, cascade:true})
   public events! : Event[];
-
 
 }
