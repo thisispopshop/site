@@ -7,3 +7,4 @@ export * from "./category.entity";
 export * from "./occasion.entity";
 export * from "./event.entity";
 export * from "./organization.entity"
+export * from "./color.entity";

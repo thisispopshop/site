@@ -16,6 +16,28 @@ export class CategoryController extends DefaultController {
             });
           });
 
+        //get one category
+        router.route("/api/category/:id").get((req:Request, res:Response) => {
+          const categoryRepo = getRepository(Category);
+          const id = parseInt(req.params.id);
+          categoryRepo.findOne(id).then((foundCategory:Category | undefined) => {
+            if (foundCategory) res.status(200).send({category:foundCategory});
+            else (reason:any) =>  {res.status(404).send({reason: "Category not found."})}
+          });
+        });
+
+        //create a category
+        router.route("/api/category").post((req:Request, res:Response) => {
+          const categoryRepo = getRepository(Category);
+          const newCategory = new Category;
+          newCategory.name = req.body.name;
+          categoryRepo.save(newCategory).then(createdCategory => {
+            res.status(200).send({category:createdCategory});
+          }, () => {
+            res.sendStatus(500);
+          });
+        });
+
         return router;
     }
 }

@@ -15,30 +15,33 @@
             </div>
         </section>
 
+        <!--all info-->
         <section class="section">
             <div class="container">
                 <div class="columns">
                     <div class="column is-one-quarter">
+                        <button class="button is-small is-link is-outlined" v-on:click="createOrganization">Create New Organization</button><br>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
-                                <th>Subdomains</th>
+                                <th>Organizations</th>
                             </thead>
                             <tbody>
-                                <tr><td>Subdomain 1</td></tr>
-                                <tr><td>Subdomain 1</td></tr>
-                                <tr><td>Subdomain 1</td></tr>
+                                <tr v-for="(org, index) in org_list" v-bind:key="index" v-bind:value="org">
+                                    <td>{{org.name}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="column is-one-quarter">
+                        <button class="button is-small is-link is-outlined" v-on:click="createEvent">Create New Event</button><br>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <th>Events</th>
                             </thead>
                             <tbody>
-                                <tr><td>Event 1</td></tr>
-                                <tr><td>Event 1</td></tr>
-                                <tr><td>Event 1</td></tr>
+                                <tr v-for="(e,index) in event_list" v-bind:key="index" v-bind:value="e">
+                                    <td>{{e.name}}</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -68,6 +71,8 @@
                             </tbody>
                         </table>
                     </div>
+
+
                     <div class="column is-one-quarter">
                         <button class="button is-small is-link is-outlined" v-on:click="createCollection">Create New Collection</button><br>
                         <table class="table is-fullwidth is-hoverable">
@@ -108,26 +113,37 @@
 import { Component, Vue } from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
-import { iCollection, iOccasion ,iProduct} from "@/models";
+import { iCollection, iOccasion ,iProduct, iOrganization, iEvent} from "@/models";
 
 @Component
 export default class Collections extends Vue {
 
     error : string | boolean = false;
+    org_list : iOrganization[] = [];
+    event_list : iEvent[] = [];
     collection_list : iCollection[] = [];
     occasion_list : iOccasion[] = [];
     selectedCollection: iCollection = {name:"temp", status: "temp", approvedBy:-1, description:"", products: [], categories: []};
 
     mounted(){
-
-        //get all collections
+        //get all organizations
         this.error = false;
-        axios.get(APIConfig.buildUrl("/api/collection"))
+        axios.get(APIConfig.buildUrl('/api/organization'))
             .then((response:AxiosResponse) => {
-                this.collection_list = response.data.collections;
+                this.org_list = response.data.organizations;
             })
             .catch((res:AxiosError) => {
                 this.error = res.response && res.response.data.reason;
+            });
+
+        //get all events
+        this.error = false;
+        axios.get(APIConfig.buildUrl('/api/event'))
+            .then((response:AxiosResponse) => {
+                this.event_list = response.data.events;
+            })
+            .catch((res:AxiosError) => {
+                this.error = res.response && res.response.data.event;
             })
 
         //get all occasions
@@ -139,7 +155,25 @@ export default class Collections extends Vue {
             .catch((res:AxiosError) => {
                 this.error = res.response && res.response.data.reason;
             })
+
+        //get all collections
+        this.error = false;
+        axios.get(APIConfig.buildUrl("/api/collection"))
+            .then((response:AxiosResponse) => {
+                this.collection_list = response.data.collections;
+            })
+            .catch((res:AxiosError) => {
+                this.error = res.response && res.response.data.reason;
+            })
+
     }
+
+
+    /* HANDLE ORGANIZATIONS */
+    createOrganization() {}
+
+    /* HANDLE EVENTS */
+    createEvent() {}
 
     //create a new collection
     createCollection(){
@@ -151,6 +185,8 @@ export default class Collections extends Vue {
         console.log(this.selectedCollection);
     }
 
+
+    /* HANDLE OCCASIONS */
     newOccasion : iOccasion = {
         id: 0,
         name: '',

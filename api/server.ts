@@ -1,10 +1,12 @@
 import cors from "cors";
 import express, {Request,Response} from "express";
-import { LoginController, UserController, CategoryController, OccasionController } from "./controller";
+import { LoginController, UserController, CategoryController, OccasionController, ColorController } from "./controller";
 
 import { DBConnection } from "./connection";
 import ProductController from "./controller/product.controller";
 import CollectionController from "./controller/collection.controller";
+import EventController from "./controller/event.controller";
+import OrganizationController from "./controller/organization.controller";
 
 export class Server {
   private myApp: Promise<express.Application>;
@@ -35,7 +37,10 @@ export class Server {
       app.use("/", new ProductController().router);
       app.use("/", new CollectionController().router);
       app.use("/", new CategoryController().router);
+      app.use("/", new ColorController().router);
       app.use("/", new OccasionController().router);
+      app.use("/", new EventController().router);
+      app.use("/", new OrganizationController().router);
 
       return app;
     })

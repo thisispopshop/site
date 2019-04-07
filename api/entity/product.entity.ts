@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn,  PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToMany, OneToOne } from "typeorm";
-import { Image, Category, Collection } from "."
+import { Image, Category, Collection, Color } from ".";
 
 @Entity()
 export class Product {
@@ -16,13 +16,7 @@ export class Product {
   public price!: number;
 
   @Column()
-  public stock!: number;
-
-  @Column()
   public merchant!: string;
-
-  @Column()
-  public givenId!: number;
 
   @Column()
   public url!: string;
@@ -35,6 +29,9 @@ export class Product {
 
   @Column()
   public description!: string;
+
+  @OneToMany(type=>Color, color => color.products)
+  public color!: Color;
 
   @OneToMany(type => Image, image => image.product, {eager: true, cascade: ["insert", "remove"]})
   public images!: Image[];

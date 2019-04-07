@@ -1,5 +1,5 @@
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, ManyToMany, ManyToOne, OneToMany } from "typeorm";
-import { Product } from ".";
+import { Product, Collection } from ".";
 
 @Entity()
 export class Color {
@@ -9,10 +9,10 @@ export class Color {
   @Column()
   public name!: string;
 
-  //@OneToMany(type => Product, product => product.color, {cascade:true})
-  //public products!: Product[];
+  @OneToMany(type => Product, product => product.color, {cascade:true})
+  public products!: Product[];
 
-  //@ManyToMany(type => Collection, collection => collection.colors)
-  //public collections!: Collection[];
+  @ManyToMany(type => Collection, collection => collection.colors)
+  public collections!: Collection[];
 
 }
