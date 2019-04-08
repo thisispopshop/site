@@ -68,15 +68,6 @@
                 <label>{{brand}}</label>
               </p>
             </div>
-            <button class="dropdown-btn side-nav-content"  v-on:click="toggleMenu('rating')">
-               Rating
-              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
-            </button>
-            <div class="dropdown-container" v-show="showMenuRating">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-            </div>
           </div>
         </div>
       </div>
@@ -148,15 +139,12 @@ export default class ShopOccasion extends Vue {
 
   showMenuSize : Boolean = false;
   showMenuBrand : Boolean = false;
-  showMenuRating : Boolean = false;
 
   toggleMenu(menuId:string){
     if (menuId=='size') 
       this.showMenuSize = !this.showMenuSize;
     if (menuId == 'brand')
       this.showMenuBrand = !this.showMenuBrand;
-    if (menuId == 'rating')
-      this.showMenuRating = !this.showMenuRating;
   }
 
   /* FILTERS AND SORTING FUNCTIONS */
@@ -198,8 +186,8 @@ export default class ShopOccasion extends Vue {
 /*side navigation box*/
 .side-nav {
   margin-left: 4%;
-  //width: 800px;
-  width: 15%;
+  width: 400px;
+  //width: 15%;
   overflow: hidden;
 
   &-box {
@@ -339,6 +327,8 @@ ul li {
 }
 
 /*product container*/
+
+/*product container*/
 .product-container {
   display: grid;
   grid-auto-columns: max-content;
@@ -348,35 +338,24 @@ ul li {
   grid-template-columns: repeat(4, 1fr);
   position: relative;
   margin-right: 4%;
-  margin-bottom: 5%;
 }
-
 .product {
-  height: 100%;
-  padding-bottom: 20%;
-
+  //height: 25%;
+  padding-bottom: 10%;
+  background-color: transparent;
   :hover {
     opacity: 0.8;
   }
-
   &-image {
-    display: block;
-    overflow:hidden;
-    width: 100%;
-    height: 100%;
+    max-height: 85%;
+    object-fit: cover;
+    overflow: hidden;
   }
-
-  &-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
-
   &-name {
     float: left;
     position: relative;
     padding-top: 0%;
-    width: 70%;
+    width: 60%;
     p {
       font-size: 20px;
       font-weight: bold;
@@ -386,7 +365,6 @@ ul li {
       }
     }
   }
-
   &-retailer {
     float: left;
     position: relative;
@@ -400,7 +378,6 @@ ul li {
       }
     }
   }
-
   &-price {
     float: right;
     position: relative;
@@ -410,7 +387,6 @@ ul li {
       font-weight: bold;
     }
   }
-
   &-button {
     padding-top:7%;
   }

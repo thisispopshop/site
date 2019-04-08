@@ -5,7 +5,7 @@
   <section class="hero banner_box" >
     <img src='@/assets/images/img0.jpg'>
     <div class="bottom-text-section">
-      <router-link class="bottom-text is-size-6-mobile" to="/shop/0" exact-active-class="is-active">shop</router-link>
+      <router-link class="bottom-text is-size-6-mobile" to="/shop/0" exact-active-class="is-active">Shop</router-link>
     </div>
     
   </section>

@@ -26,7 +26,7 @@
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable" > 
             <div class="navbar-item">
-              <router-link class="mynavbaritem" to="/shop/0" exact-active-class="is-active">shop</router-link>
+              <router-link class="mynavbaritem" to="/shop/0" exact-active-class="is-active">Shop</router-link>
             </div>
             <div class="navbar-dropdown mynavmenu mydropdownmenu is-hidden-touch" >
               <!--

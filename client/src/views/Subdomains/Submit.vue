@@ -6,17 +6,16 @@
     <div class="hero-head">
       <nav class="breadcrumb is-size-4 my-breadcrumb is-hidden-mobile" aria-label="breadcrumbs">
         <ul>
-          <li class="is-active crumb"><a>House Tours</a></li>
-          <li class="is-active crumb"><a>Sisterhood</a></li>
-          <li class="is-active crumb"><a>Philanthropy</a></li>
-          <li class="is-active crumb"><a>Preference</a></li>
+          <li class="is-active crumb" v-for="(o, index) in occasions" v-bind:key="index" v-bind:value="o"  v-on:click="chooseOccasion(o,index)">
+            <a>{{o.name}}</a>
+          </li>
         </ul>
       </nav>
     </div>
     
     <div class="hero-body">
       <div class="title is-size-1 page-title"><strong>Submit Your Outfit</strong>
-        <p class="subtitle is-size-3">House Tours</p>
+        <p class="subtitle is-size-3">{{occasions[0].name}}</p>
         </div>
     </div>
 
@@ -24,7 +23,10 @@
 
     <!--content-->
     <section class="section form-section">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfJEpOLsiD3AWMQFY6jhac9NVcd3SCnpPrR_RwX-hGidlch2Q/viewform?embedded=true" width="640" height="2780" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        <!--<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfJEpOLsiD3AWMQFY6jhac9NVcd3SCnpPrR_RwX-hGidlch2Q/viewform?embedded=true" width="640" height="2780" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>-->
+        <p class="subtitle"> 
+          No forms are available for this page. <br>
+        </p>
     </section>
 
   </div>
@@ -34,10 +36,25 @@
 
 <script lang="ts">
 /* eslint-disable */
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
+import {iProduct,iImage, iOccasion, iOrganization, iEvent} from "@/models";
 
 @Component
 export default class Submit extends Vue {
+
+  @Prop() org!: iOrganization;
+  @Prop() event!: iEvent;
+  @Prop() occasions! : iOccasion[];
+
+  /*
+  @Prop() oid!: string;
+  @Watch("oid")
+  update(){
+    this.selectedOccasion = this.occasions[this.oid];
+  }
+  selectedOccasion = this.occasions[this.oid];*/
+
+  chooseOccasion(occasion:iOccasion, ind:number){}
 
 }
 </script>
@@ -67,7 +84,9 @@ export default class Submit extends Vue {
 }
 
 .form-section {
-    margin-left: 32%;
+    //margin-left: 32%;
+    text-align:center;
+
 }
 
 </style>

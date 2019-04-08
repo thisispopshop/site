@@ -19,10 +19,13 @@
 
         <div class="columns">
           <div class="column is-one-third"> 
-            <figure class="figure" >
-              <img style="float:right" src="https://makeupbytaylorvo.files.wordpress.com/2018/03/img_4257.jpg?w=414&#038;h=552"  >
+              <img style="float:right;" src="https://makeupbytaylorvo.files.wordpress.com/2018/03/img_4257.jpg?w=414&#038;h=552"  >
                <!--<img src="https://makeupbytaylorvo.files.wordpress.com/2018/03/screen-shot-2018-03-30-at-2-01-42-pm.png?w=327&#038;h=408">-->
-            </figure>
+              <div style="display:block; float:right"> 
+                <a href="https://makeupbytaylorvo.wordpress.com/aboutme/" target=_blank>https://makeupbytaylorvo.wordpress.com/aboutme/</a>
+              </div>
+              
+              
           </div>
           <div class="column" style="margin-left: 5%"> 
             <p class="subtitle" style="display:inline; justify-content:center">
@@ -87,7 +90,7 @@ export default class Info extends Vue {
 .page-title-info {
   padding-top: 5%;
   text-align: center;
-  padding-bottom: 3%;
+  padding-bottom: 1%;
   margin:auto;
   //padding-left: 10%;
  // margin-left: 17%;
