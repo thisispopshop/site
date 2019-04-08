@@ -13,11 +13,13 @@
         </ul>
       </nav>
     </div>
-    <!--
+    
     <div class="hero-body">
-      <p class="title is-size-1" style="padding-left: 20%"><strong>Sisterhood</strong></p>
-    </div>-->
-      <div class="title is-size-1 page-title"><strong>Submit Your Outfit</strong></div>
+      <div class="title is-size-1 page-title"><strong>Submit Your Outfit</strong>
+        <p class="subtitle is-size-3">House Tours</p>
+        </div>
+    </div>
+
     </section>
 
     <!--content-->
@@ -59,6 +61,9 @@ export default class Submit extends Vue {
   //margin-left: 17%;
  // text-align: left;
     text-align: center;
+    justify-content: center;
+    justify-items: center;
+    margin:auto;
 }
 
 .form-section {

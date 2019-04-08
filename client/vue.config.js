@@ -7,9 +7,10 @@ module.exports = {
       ? '/thisispopshop/'
       : '/'
 
-  }*/
+}
+*/
 
-module.exports = {
+module.export = {
   devServer: {
     disableHostCheck: true
   }

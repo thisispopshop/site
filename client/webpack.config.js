@@ -33,6 +33,6 @@ module.exports = {
     allowedHosts: [
       '.thisispopshop.com',
       '.localhost:8080',
-    ]*/
-  }
+    ]
+  }*/
 }
