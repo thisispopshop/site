@@ -82,7 +82,7 @@
 
 <script lang="ts">
 /* eslint-disable */
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
 import { iOrganization, iEvent, iOccasion} from "@/models";
@@ -92,8 +92,8 @@ export default class AdminNavigation extends Vue {
 
     //declare organization's info
     //pass in from main.ts
-    //@Prop(String) org_name! : string;
-    org_name : string = "taylorvo";
+    @Prop(String) org_name! : string;
+    //org_name : string = "taylorvo";
     public org! : iOrganization;
     public event!: iEvent;
     public occasions! : iOccasion[];

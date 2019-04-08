@@ -47,6 +47,8 @@ router.beforeEach((to,from,next) => {
   //const firstpage = url[3];
   const firstPage = url[2];
 
+  console.log("directing to : " + subdomain);
+
   if (subdomain === "www" || subdomain === domain){  //normal page
     if (firstPage === "/thanks")
       next({name:"ThanksLandingPage", params:{id:"thanks"}});
@@ -54,9 +56,16 @@ router.beforeEach((to,from,next) => {
       next();
   } else if (subdomain === "cpaoii"){ //subdomain page
     //console.log(subdomain);
+    let org_name  = subdomain;
     to: {path: "sub_nav"};
-    next({replace:true});
-  } else {
+    next({replace:true, params:{org_name}});
+  } else if (subdomain === "taylorvo"){
+    //next({path:"/home"}); 
+    to: "/home";
+    next({replace:true, path:"/home", name:"sub_nav"});
+  }
+  else {
+    //route to error page
     next();
   }
 
