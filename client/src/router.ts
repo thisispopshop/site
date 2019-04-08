@@ -7,12 +7,6 @@ import AdminNav from "./views/Admin/Navigation.vue";
 
 Vue.use(Router);
 
-/*
-To get the subdomain...
-path: 'subdomain.thisispopshop.com/'
-props: (route) => ({ id: route.query.id})
-*/
-
 export default new Router({
 //const router = new Router({
   mode: "history",

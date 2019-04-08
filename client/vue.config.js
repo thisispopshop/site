@@ -2,7 +2,10 @@
 /*
 module.exports = {
 
-  publicPath: process.env.NODE_ENV === 'production'
+    //so we can push to github repo
+    publicPath: process.env.NODE_ENV === 'production'
+      ? '/thisispopshop/'
+      : '/'
 
 }
 */

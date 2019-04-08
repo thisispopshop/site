@@ -82,21 +82,20 @@ export default class Home extends Vue {
 }
 
 //shop button text
-.bottom-text-section {
+.bottom-text {
   position: absolute;
   z-index:1;
   width: 100%;
   bottom: 5%;
   text-align: center;
-}
-.bottom-text {
   color: white;
   font-weight: bold;
-  font-size: 40px;
   text-decoration: underline;
+  font-size: 40px;
 }
-.bottom-text:hover {
-  color:black;
+
+.bottom-text:hover{
+  color:black
 }
 
 //grid container size
@@ -125,10 +124,15 @@ export default class Home extends Vue {
   opacity: 0.8;
 }
 
+//individual boxes
+.st0 {
+  position: relative;
+  height: 100%;
+}
+
 //box text
 .bottom-left-text {
   position: absolute;
-  z-index:1;
   bottom: 8%;
   left: 8%;
   color: white;
@@ -136,5 +140,6 @@ export default class Home extends Vue {
   text-decoration: underline;
   font-size: 25px;
 }
+
 
 </style>

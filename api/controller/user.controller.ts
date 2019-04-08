@@ -11,7 +11,7 @@ export class UserController extends DefaultController {
   protected initializeRoutes(): Router {
     const router = Router();
     router
-      .route("/api/users")
+      .route("/users")
       .get((req: Request, res: Response) => {
         const userRepo = getRepository(User);
         userRepo.find().then((users: User[]) => {
@@ -35,7 +35,7 @@ export class UserController extends DefaultController {
           }
         );
       });
-    router.route("/api/users/:id").post(
+    router.route("/users/:id").post(
       this.isAuthenticated(true),
       multer({
         dest: Path.join(__dirname, "..", "public", "profilePhotos")
@@ -58,7 +58,7 @@ export class UserController extends DefaultController {
         });
       }
     );
-    router.route("/api/users/:id").get((req: Request, res: Response) => {
+    router.route("/users/:id").get((req: Request, res: Response) => {
       const userRepo = getRepository(User);
       userRepo.findOne(req.params.id).then(
         (user: User | undefined) => {

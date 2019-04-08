@@ -73,7 +73,7 @@ export default class Shop extends Vue {
 .page-title {
   padding-top: 3%;
   //padding-left: 10%;
-  margin-left: 17%;
+  margin-left: 20%;
   text-align: left;
 }
 
