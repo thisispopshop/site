@@ -5,7 +5,7 @@
   <section class="hero banner_box" >
     <img src='@/assets/images/img0.jpg'>
     <div class="bottom-text-section">
-      <router-link class="bottom-text is-size-6-mobile" to="/shop" exact-active-class="is-active">shop</router-link>
+      <router-link class="bottom-text is-size-6-mobile" to="/shop/0" exact-active-class="is-active">shop</router-link>
     </div>
     
   </section>
@@ -15,30 +15,31 @@
     <div class="grid-boxes">
       <div class="columns">
         <div class="column is-onequarter grid-box">
-          <router-link to="/shop">
+          <router-link to="/shop/0">
             <img src='@/assets/images/img3.jpg' class="grid-box-image">
             <p class="bottom-left-text is-size-1-mobile">House Tours</p> 
           </router-link>
         </div>
         <div class="column is-onequarter grid-box">
-          <router-link to="/shop">
+          <router-link to="/shop/0">
             <img src='@/assets/images/img1.png' class="grid-box-image"> 
             <p class="bottom-left-text is-size-1-mobile">Sisterhood</p>  
           </router-link>     
         </div>
         <div class="column is-onequarter grid-box">
-           <router-link to="/shop">
+           <router-link to="/shop/0">
             <img src='@/assets/images/img2.png' class="grid-box-image">
             <p class="bottom-left-text is-size-1-mobile">Philanthropy</p>  
            </router-link>
         </div>
         <div class="column is-onequarter grid-box">
-          <router-link to="/shop">
+          <router-link to="/shop/0">
             <img src='@/assets/images/img2.png' class="grid-box-image">
             <p class="bottom-left-text is-size-1-mobile">Preference</p> 
           </router-link>       
         </div>
       </div>
+
     </div>
   </section>
    
@@ -47,12 +48,26 @@
 
 <script lang="ts">
 /* eslint-disable */
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
+import axios, {AxiosError, AxiosResponse} from "axios";
+import { APIConfig } from "@/utils/api.utils";
+import { iOrganization, iEvent, iOccasion} from "@/models";
 
 @Component
 export default class Home extends Vue {
 
+    //pass subomain here
+    //@Prop() org_name! : String;
+    //@Prop(String) org_name! : string;
+    @Prop() org! : iOrganization;
+    @Prop() event! : iEvent;
+    @Prop() occasion! : iOccasion[];
+    error : string | boolean = false;
 
+    occasions : iOccasion[] = [];
+
+    //load the organization
+    mounted(){}
 
 }
 </script>

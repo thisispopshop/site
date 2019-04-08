@@ -12,7 +12,7 @@
         </div>
         <div class="dropdown-menu sort-menu" id="dropdown-menu" role="menu" v-show="showSortMenu">
           <div class="dropdown-content sort-menu">
-            <p class="dropdown-item is-size-5" v-on:click="sortByRecent">Newest first</p>
+            <!--<p class="dropdown-item is-size-5" v-on:click="sortByRecent">Newest first</p>-->
             <p class="dropdown-item is-size-5" v-on:click="sortByPriceDesc">Price high to low</p>
             <p class="dropdown-item is-size-5" v-on:click="sortByPriceAsc">Price low to high</p>
           </div>
@@ -131,7 +131,6 @@ export default class ShopOccasion extends Vue {
         this.product_list = [];
       }
     }
-
 
   goToProduct(p: iProduct){
      window.open(p.url, '_blank');

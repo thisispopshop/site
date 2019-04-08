@@ -36,30 +36,28 @@ export default new Router({
     {
       path: "/home",
       name: "sub_nav",
-      props: true,
+      props:true,
       component: SubDomainNav,
       children : [
         {
           path: "/home",
           name: "sub_home",
+          props: true,
           component:() =>
             import("./views/Subdomains/Home.vue")
         },
         {
-          path: "/shop",
+          path: "/shop/:oid",
           name: "shop",
+          props: true,
+          //props: (route) => ({ occasion: route.query.occasion}),
           component:() =>
             import("./views/Subdomains/Shop.vue")
         },
         {
-          path: "/shop1",
-          name: "shop1",
-          component:() =>
-            import("./views/Subdomains/Shop.1.vue")
-        },
-        {
           path: "/info",
           name: "info",
+          props: true,
           component:() =>
             import("./views/Subdomains/Info.vue")
         },

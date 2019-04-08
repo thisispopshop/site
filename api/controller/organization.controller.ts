@@ -11,7 +11,9 @@ export class OrganizationController extends DefaultController {
         //get all organizations
         router.route("/api/organization").get((req: Request, res: Response) => {
             const organizationRepo = getRepository(Organization);
-            organizationRepo.find().then((organizations: Organization[]) => {
+            let query : any = {};
+            if (req.query.subdomain) query.subdomain = req.query.subdomain;
+            organizationRepo.find({where:query}).then((organizations: Organization[]) => {
               res.status(200).send({ organizations });
             });
           });

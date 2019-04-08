@@ -26,13 +26,18 @@
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable" > 
             <div class="navbar-item">
-              <router-link class="mynavbaritem" to="/shop" exact-active-class="is-active">shop</router-link>
+              <router-link class="mynavbaritem" to="/shop/0" exact-active-class="is-active">shop</router-link>
             </div>
             <div class="navbar-dropdown mynavmenu mydropdownmenu is-hidden-touch" >
+              <!--
               <div class="navbar-item"><router-link class="mydropdown" to="/shop" exact-active-class="is-active">House Tours</router-link></div>
               <div class="navbar-item"><router-link class="mydropdown" to="/shop" exact-active-class="is-active">Sisterhood</router-link></div>
               <div class="navbar-item"><router-link class="mydropdown" to="/shop" exact-active-class="is-active">Philanthropy</router-link></div>
               <div class="navbar-item"><router-link class="mydropdown" to="/shop" exact-active-class="is-active">Preference</router-link></div>
+              -->
+              <div class="navbar-item" v-for="(o,index) in occasions" v-bind:key="index" v-bind:value="o">
+                <router-link class="mydropdown" v-bind:to="'/shop/'+index" exact-active-class="is-active" v-on:click="chooseOccasion(o,index)">{{o.name}}</router-link>
+              </div>
             </div>
           </div>
           <div class="navbar-item">
@@ -67,7 +72,7 @@
     </nav>
 
   <!--Need this in here if you want other pages to show!!!-->
-  <router-view/>
+  <router-view v-bind:org="org" v-bind:event="event" v-bind:occasions="occasions" />
 
   </div>
 </template>
@@ -75,9 +80,43 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue } from "vue-property-decorator";
+import axios, {AxiosError, AxiosResponse} from "axios";
+import { APIConfig } from "@/utils/api.utils";
+import { iOrganization, iEvent, iOccasion} from "@/models";
 
 @Component
 export default class AdminNavigation extends Vue {
+
+    //declare organization's info
+    //pass in from main.ts
+    //@Prop(String) org_name! : string;
+    org_name : string = "taylorvo";
+    public org! : iOrganization;
+    public event!: iEvent;
+    public occasions! : iOccasion[];
+    public error : string | boolean = false;
+    public selectedOccasion!: iOccasion;
+
+    //load the organization
+    mounted(){
+
+      console.log("starting navigation to subdomain: " + this.org_name);
+      this.error = false;
+      axios.get(APIConfig.buildUrl("/api/organization?subdomain=" + this.org_name))
+        .then((response:AxiosResponse) => {
+          this.org = response.data.organizations[0];
+          this.event = this.org.events[0];
+          this.occasions = this.event.occasions;
+          this.selectedOccasion = this.occasions[0];
+          console.log(this.org);
+          console.log(this.event);
+          console.log(this.occasions);
+        })
+        .catch((res:AxiosError) => {
+          console.log("couldn't find organization?");
+          this.error = res.response && res.response.data.reason;
+        })
+    }
 
   public showNav : Boolean = false;
 
