@@ -1,5 +1,9 @@
 <template>
-  <div >
+<div>
+  <div v-if="loading" style="height:90vh">
+      <div class="cool-loader"></div>
+  </div>
+  <div v-else>
     <!--change this to be dynamic soon-->
     
     <!--customer navigation bar-->
@@ -78,11 +82,12 @@
   <router-view v-bind:org="org" v-bind:event="event" v-bind:occasions="occasions" />
 
   </div>
+  </div>
 </template>
 
 <script lang="ts">
 /* eslint-disable */
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
 import { iOrganization, iEvent, iOccasion} from "@/models";
@@ -91,19 +96,40 @@ import { iOrganization, iEvent, iOccasion} from "@/models";
 export default class AdminNavigation extends Vue {
 
     //declare organization's info
-    //pass in from main.ts
-    //@Prop(String) org_name! : string;
-    org_name : string = "taylorvo";
+    public org_name!: String;
     public org! : iOrganization;
     public event!: iEvent;
     public occasions! : iOccasion[];
     public error : string | boolean = false;
     public selectedOccasion!: iOccasion;
 
-    //load the organization
-    mounted(){
+    public loading: boolean = false;
 
-      console.log("starting navigation to subdomain: " + this.org_name);
+    created(){
+      setTimeout(() => {
+        this.loading = false;
+      },2500);
+      this.loading = true;
+    }
+
+    //load data
+    mounted(){
+      const host = window.location.host;
+      const url = host.split('.');
+      const subdomain = url[0];
+      const domain = "localhost:8080";
+      const firstPage = url[2];
+
+      if (subdomain === "www" || subdomain === domain){  //normal page
+        if (firstPage === "/thanks")
+          this.$router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+        else
+          this.$router.push("/");
+      } else {
+         this.org_name = subdomain;
+      }
+
+      
       this.error = false;
       axios.get(APIConfig.buildUrl("/api/organization?subdomain=" + this.org_name))
         .then((response:AxiosResponse) => {
@@ -114,11 +140,18 @@ export default class AdminNavigation extends Vue {
           console.log(this.org);
           console.log(this.event);
           console.log(this.occasions);
+          //this.loading = true;
         })
         .catch((res:AxiosError) => {
           console.log("couldn't find organization?");
           this.error = res.response && res.response.data.reason;
+          this.$router.push("/error");
         })
+    }
+
+    @Watch("loading")
+    update(){
+      this.mounted();
     }
 
   public showNav : Boolean = false;
@@ -133,6 +166,8 @@ export default class AdminNavigation extends Vue {
 </script>
  
 <style lang="scss">
+
+
 
 //navbar spacing
 .mynavmenu {
@@ -186,5 +221,25 @@ export default class AdminNavigation extends Vue {
     min-width: 100%;
   }
 }
+
+//cool loader
+.cool-loader{
+    border:5px solid;
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border-color:orange transparent transparent;
+    animation:spin 2s linear infinite;
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+  }
+  
+  @keyframes spin{
+    100%{transform:rotate(360deg);filter:hue-rotate(360deg)}
+  }
 
 </style>
