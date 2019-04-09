@@ -30,13 +30,15 @@ export default new Router({
     {
       path: "/home",
       name: "sub_nav",
-      props:true,
+      //props:true,
+      props: (route) => ({org_name: route.params.org_name}),
       component: SubDomainNav,
       children : [
         {
           path: "/home",
           name: "sub_home",
-          props: true,
+          //props: true,
+          props: (route) => ({org_name: route.params.org_name}),
           meta: true,
           component:() =>
             import("./views/Subdomains/Home.vue")
@@ -63,6 +65,13 @@ export default new Router({
           meta: true,
           component:() =>
             import("./views/Subdomains/Submit.vue")
+        },
+        {
+          path: "/error",
+          name: "error",
+          meta: true,
+          component:() =>
+            import("./views/Subdomains/Error.vue")
         }
       ]
     }, {
