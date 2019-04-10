@@ -12,7 +12,7 @@ import PrettyCheck from 'pretty-checkbox-vue/check';
 import PrettyRadio from 'pretty-checkbox-vue/radio';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye} from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faFontAwesomeLogoFull} from "@fortawesome/free-solid-svg-icons";
 import { faHeart , faUser, faCheckCircle, faCircle} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -35,48 +35,6 @@ Vue.component('p-radio', PrettyRadio);
 
 Vue.config.productionTip = false;
 
-//handle subdomains?
-/*
-router.beforeEach((to,from,next) => {
-  const host = window.location.host;
-  const url = host.split('.');
-  const subdomain = url[0];
-  const domain = "localhost:8080";
-  //const domain = "thisispopshop"
-  //const domain = url[1];
-  //const com = url[2];
-  //const firstpage = url[3];
-  const firstPage = url[2];
-
-  console.log("directing to : " + subdomain);
-
-  if (subdomain === "www" || subdomain === domain){  //normal page
-    if (firstPage === "/thanks")
-      next({name:"ThanksLandingPage", params:{id:"thanks"}});
-    else
-      next();
-  } else if (subdomain === "cpaoii"){ //subdomain page
-    //console.log(subdomain);
-    let org_name  = subdomain;
-    to: {path: "sub_nav"};
-    next({replace:true, params:{org_name}});
-  } else if (subdomain === "taylorvo"){
-    //next({path:"/home"}); 
-    //to: "/home";
-
-    let org_name = subdomain;
-    to: {path: "sub_nav"};
-    next({replace:true, params:{org_name:subdomain}});
-    //next({replace:true, path:"/home", name:"sub_nav"});
-    router.push()
-  }
-  else {
-    //route to error page
-    next();
-  }
-
-});*/
-
 
 new Vue({
   router,
@@ -89,15 +47,29 @@ const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
 const domain = "localhost:8080";
-const firstPage = url[2];
 
 // redirect to home page or not
-if (subdomain === "www" || subdomain === domain){  //normal page
-  if (firstPage === "/thanks")
+if (subdomain === "www"){
+  if (url.length > 2){
+    if (firstPage === "/thanks")
     router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+  else if (firstPage === "/admin")
+    router.push({name:"admin_navigation"});
+  else 
+    router.push("/");
+  }
+} else if (subdomain === domain){  //normal page
+  if (url.length > 1){
+    if (firstPage === "/thanks")
+    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+  else if (firstPage === "/admin")
+    router.push({name:"admin_navigation"});
   else
     router.push("/");
+  }
+} else if (subdomain === "admin"){
+  router.push({name: "organizations"});
 }
-else {
+ else {
   router.push({path:"home"});
 }

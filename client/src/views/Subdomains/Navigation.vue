@@ -93,7 +93,7 @@ import { APIConfig } from "@/utils/api.utils";
 import { iOrganization, iEvent, iOccasion} from "@/models";
 
 @Component
-export default class AdminNavigation extends Vue {
+export default class Navigation extends Vue {
 
     //declare organization's info
     public org_name!: String;

@@ -75,24 +75,24 @@ export default new Router({
         }
       ]
     }, {
-      path: "/admin",
+      path: "/adminHome",
       name: 'admin_navigation',
       component: AdminNav,
       children : [
         {
-          path: "/admin",
+          path: "/adminHome",
           name: "organizations",
           component:() =>
             import("./views/Admin/Organizations.vue")
         },
         {
-          path: "/admin/curate",
+          path: "/curate",
           name: "curate",
           component:() =>
             import("./views/Admin/Curate.vue")
         },
         {
-          path: "/admin/collections",
+          path: "/collections",
           name: "collections",
           component:() =>
             import("./views/Admin/Collections.vue")
