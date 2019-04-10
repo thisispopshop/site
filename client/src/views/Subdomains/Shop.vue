@@ -35,10 +35,16 @@ import ShopOccasion from "@/components/ShopOccasion.vue";
 })
 export default class Shop extends Vue {
 
-  @Prop() org!: iOrganization;
-  @Prop() event!: iEvent;
-  @Prop() occasions! : iOccasion[];
+  //@Prop() org!: iOrganization;
+  //@Prop() event!: iEvent;
+  //@Prop() occasions! : iOccasion[];
   //@Prop() selectedOccasion! : iOccasion;
+
+  public org! : iOrganization;
+  public event!: iEvent;
+  public occasions! : iOccasion[];
+  public error : string | boolean = false;
+  public selectedOccasion!: iOccasion;
   error : string | boolean = false;
 
   @Prop() oid!: string;
@@ -48,7 +54,24 @@ export default class Shop extends Vue {
   }
   selectedOccasion = this.occasions[this.oid];
 
-  mounted(){}
+  mounted(){
+      console.log("starting navigation to subdomain: " + this.org_name);
+      this.error = false;
+      axios.get(APIConfig.buildUrl("/api/organization?subdomain=" + this.org_name))
+        .then((response:AxiosResponse) => {
+          this.org = response.data.organizations[0];
+          this.event = this.org.events[0];
+          this.occasions = this.event.occasions;
+          this.selectedOccasion = this.occasions[0];
+          console.log(this.org);
+          console.log(this.event);
+          console.log(this.occasions);
+        })
+        .catch((res:AxiosError) => {
+          console.log("couldn't find organization?");
+          this.error = res.response && res.response.data.reason;
+        })
+  }
 
   chooseOccasion(occasion:iOccasion, ind:number) {
     //this.selectedOccasion = occasion;

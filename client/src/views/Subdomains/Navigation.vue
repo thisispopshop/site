@@ -88,12 +88,12 @@ import { APIConfig } from "@/utils/api.utils";
 import { iOrganization, iEvent, iOccasion} from "@/models";
 
 @Component
-export default class AdminNavigation extends Vue {
+export default class Navigation extends Vue {
 
     //declare organization's info
     //pass in from main.ts
     //@Prop(String) org_name! : string;
-    org_name : string = "taylorvo";
+    //org_name : string = "taylorvo";
     public org! : iOrganization;
     public event!: iEvent;
     public occasions! : iOccasion[];

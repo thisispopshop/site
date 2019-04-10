@@ -10,7 +10,7 @@ module.exports = {
 }
 */
 
-module.export = {
+module.exports = {
   devServer: {
     disableHostCheck: true
   }
