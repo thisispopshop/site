@@ -108,27 +108,16 @@ export default class Navigation extends Vue {
     created(){
       setTimeout(() => {
         this.loading = false;
-      },2500);
+      },1700);
       this.loading = true;
     }
 
     //load data
     mounted(){
+
       const host = window.location.host;
       const url = host.split('.');
-      const subdomain = url[0];
-      const domain = "localhost:8080";
-      const firstPage = url[2];
-
-      if (subdomain === "www" || subdomain === domain){  //normal page
-        if (firstPage === "/thanks")
-          this.$router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-        else
-          this.$router.push("/");
-      } else {
-         this.org_name = subdomain;
-      }
-
+      this.org_name = url[0];
       
       this.error = false;
       axios.get(APIConfig.buildUrl("/api/organization?subdomain=" + this.org_name))
@@ -151,8 +140,45 @@ export default class Navigation extends Vue {
 
     @Watch("loading")
     update(){
-      this.mounted();
+      //this.mounted();
     }
+
+  getDomainName(){
+      const host = window.location.host;
+      const url = host.split('.');
+      const subdomain = url[0];
+      const domain = "localhost:8080";
+      //const domain = "thisispopshop"
+
+      // redirect to home page or not
+      if (subdomain === "www"){
+        if (url.length == 2)
+          this.$router.push("/");
+        else if (url.length > 2){
+          const firstPage = url[2];
+          //const firstPage = url[3];
+          if (firstPage === "/thanks")
+            this.$router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+          else 
+            this.$router.push("/");
+        }
+      } else if (subdomain === domain){  //normal page
+        if (url.length > 1){
+          const firstPage = url[1];
+          //const firstPage = url[2];
+          if (firstPage === "/thanks")
+          this.$router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+        else
+          this.$router.push("/");
+        }
+      } else if (subdomain === "admin"){
+        this.$router.push({name: "organizations"});
+      }
+      else {
+        this.$router.push({path:"home"});
+      }
+
+  }
 
   public showNav : Boolean = false;
 

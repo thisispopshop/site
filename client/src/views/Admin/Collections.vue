@@ -89,7 +89,7 @@ export default class Collections extends Vue {
 
     //create a new collection
     createCollection(){
-        this.$router.push("/admin/curate");
+        this.$router.push("/curate");
     }
 }
 </script>

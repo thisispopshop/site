@@ -47,23 +47,26 @@ const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
 const domain = "localhost:8080";
+//const domain = "thisispopshop"
 
 // redirect to home page or not
 if (subdomain === "www"){
-  if (url.length > 2){
-    if (firstPage === "/thanks")
-    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-  else if (firstPage === "/admin")
-    router.push({name:"admin_navigation"});
-  else 
+  if (url.length == 2)
     router.push("/");
+  else if (url.length > 2){
+    const firstPage = url[2];
+    //const firstPage = url[3];
+    if (firstPage === "/thanks")
+      router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+    else 
+      router.push("/");
   }
 } else if (subdomain === domain){  //normal page
   if (url.length > 1){
+    const firstPage = url[1];
+    //const firstPage = url[2];
     if (firstPage === "/thanks")
     router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-  else if (firstPage === "/admin")
-    router.push({name:"admin_navigation"});
   else
     router.push("/");
   }
