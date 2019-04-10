@@ -20,7 +20,9 @@
             <div class="container">
                 <div class="columns">
                     <div class="column is-one-quarter">
-                        <button class="button is-small is-link is-outlined" v-on:click="createOrganization">Create New Organization</button><br>
+                        <div class="buttons">
+                            <button class="button is-small is-link is-outlined" v-on:click="createOrganization">Create New Organization</button><br>
+                        </div>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <th>Organizations</th>
@@ -33,7 +35,9 @@
                         </table>
                     </div>
                     <div class="column is-one-quarter">
-                        <button class="button is-small is-link is-outlined" v-on:click="createEvent">Create New Event</button><br>
+                        <div class="buttons">
+                            <button class="button is-small is-link is-outlined" v-on:click="createEvent">Create New Event</button><br>
+                        </div>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <th>Events</th>
@@ -46,7 +50,9 @@
                         </table>
                     </div>
                     <div class="column is-one-quarter">
-                        <button class="button is-small is-link is-outlined" v-on:click="showCreateOccasion">Create New Occasion</button>
+                        <div class="buttons">
+                            <button class="button is-small is-link is-outlined" v-on:click="showCreateOccasion">Create New Occasion</button>
+                        </div>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <th >Occasions</th>
@@ -74,7 +80,9 @@
 
 
                     <div class="column is-one-quarter">
-                        <button class="button is-small is-link is-outlined" v-on:click="createCollection">Create New Collection</button><br>
+                        <div class="buttons">
+                            <button class="button is-small is-link is-outlined" v-on:click="createCollection">Create New Collection</button><br>
+                        </div>
                         <table class="table is-fullwidth is-hoverable">
                             <thead>
                                 <th>Collection</th>
@@ -90,18 +98,37 @@
             </div>
         </section>
 
+
+
+        <!--forms-->
         <section class="section">
-            <div class="Container" v-show="showOccasion">
-                <p>Create new Occasion</p>
-                <label class="label is-small">Occasion Name</label>
-                <input class="input is-small" type="text" placeholder="Occasion Name" v-model="newOccasion.name">
-                <label class="label is-small">Occasion Description</label>
-                <input class="input is-small" type="text" placeholder="Occasion Description" v-model="newOccasion.description">
-                <label class="label is-small">Occasion Form Link</label>
-                <input class="input is-small" type="text" placeholder="Form Embed Link" v-model="newOccasion.submitForm">
-                <label class="label is-small">Select Collection: </label>
-                <p class="is-size-7">{{selectedCollection.name}}</p><br>
-                <button class="button is-small is-small" v-on:click="testCreateOccasion">create occasion</button> 
+            <div class="container" v-show="showOccasion">
+                <p class="title">Create New Occasion</p>
+                <label class="label">Occasion Name</label>
+                <input class="input" type="text" placeholder="Occasion Name" v-model="newOccasion.name">
+                <label class="label">Occasion Description</label>
+                <input class="input" type="text" placeholder="Occasion Description" v-model="newOccasion.description">
+                <label class="label">Occasion Form Link</label>
+                <input class="input" type="text" placeholder="Form Embed Link" v-model="newOccasion.submitForm">
+                <label class="label">Select Collection: </label>
+                <p class="is-size-5">{{selectedCollection.name}}</p><br>
+                <div class="buttons">
+                    <button class="button is-success" v-on:click="submitOccasion">submit</button> 
+                    <button class="button is-danger" v-on:click="cancelOccasion">cancel</button>
+                </div>
+            </div>
+            <div class="container" v-show="showEvent">
+                <p class="title">Create New Event</p>
+                <label class="label">Event Name</label>
+                <input class="input" type="text" placeholder="Occasion Name" v-model="newOccasion.name">
+                <label class="label">Event Description</label>
+                <input class="input" type="text" placeholder="Occasion Description" v-model="newOccasion.description">
+                <label class="label">Select Occasion: </label>
+                <p class="is-size-5">{{selectedCollection.name}}</p><br>
+                <div class="buttons">
+                    <button class="button is-success" v-on:click="submitOccasion">submit</button> 
+                    <button class="button is-danger" v-on:click="cancelOccasion">cancel</button>
+                </div>
             </div>
         </section>
 
@@ -177,7 +204,7 @@ export default class Collections extends Vue {
 
     //create a new collection
     createCollection(){
-        this.$router.push("/admin/curate");
+        this.$router.push("/curate");
     }
 
     selectCollection(c){
@@ -194,8 +221,7 @@ export default class Collections extends Vue {
         submitForm: "",
         collection: this.selectedCollection,
     }
-
-    testCreateOccasion() {
+    submitOccasion() {
         this.error = false;
         if (this.newOccasion.name.length <1) {
             this.error = "Must Have a name";
@@ -213,6 +239,9 @@ export default class Collections extends Vue {
             console.log(res.response);
         })
         this.showOccasion=false;
+    }
+    cancelOccasion() {
+        this.showOccasion = false;
     }
 
     showOccasion: boolean = false;

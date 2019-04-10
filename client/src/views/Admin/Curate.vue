@@ -68,12 +68,12 @@
 
                     <div class="field" >
                         <ul style="width:20%; display:inline-block">
-                            <li v-for="(cat,index) in categories" >
+                            <li v-for="(cat,index) in categories" v-bind:key="index" v-bind:value="cat">
                                 <input type="checkbox" v-bind:value="cat" v-model="selected_categories">{{cat.name}}
                             </li>
                         </ul>
                         <div style="width:20%; display:inline-block">
-                            <p v-for="(c,index) in selected_categories">{{c.name}}</p>
+                            <p v-for="(c,ind) in selected_categories" v-bind:key="ind" v-bind:value="c">{{c.name}}</p>
                         </div>
                     </div>
 
@@ -214,7 +214,7 @@ export default class Curate extends Vue {
                 })
                 .then((response:AxiosResponse) => {
                     alert("You Collection was Successfully Created.")
-                    this.$router.push("/admin");
+                    this.$router.push("/adminHome");
                 })
                 .catch((res:AxiosError)=> {
                     this.error = res.response && res.response.data.reason;
@@ -227,7 +227,7 @@ export default class Curate extends Vue {
     //cancel the new collection
     cancelCollection(){
         this.error = false;
-        this.$router.push("/admin");
+        this.$router.push("/adminHome");
     }
 
 }
