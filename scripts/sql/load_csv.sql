@@ -4,7 +4,9 @@
     and puts the data into the correct tables.
 */
 
-DELIMITER //
+USE dev;
+
+DELIMITER ||
 
 CREATE PROCEDURE importCSV()
 BEGIN
@@ -17,14 +19,24 @@ BEGIN
     /*loop through rows of csv table*/
     WHILE firstRow < lastRow DO 
 
+        /*
+
+            ~~ make name and merchant candidate keys?
+            INSERT INTO product (name,merchant,price,url,description)
+                SELECT (name,merchant,price,url,description) FROM csvTable
+                ON DUPLICATE KEY UPDATE
+                url = VALUES(price),
+                price = VALUES(url)
+        */
+
         /*fill into product table*/
         INSERT INTO product (name,merchant,price,url,description) 
         SELECT (name,merchant,price,url,description) FROM csvTable
         LIMIT firstRow, 1;
 
         /*get that product's primary key*/
-        SET @key = (SELECT SCOPE_IDENTITY())
-        SELECT SCOPE_IDENTITY()
+        SET @key = (SELECT SCOPE_IDENTITY());
+        SELECT SCOPE_IDENTITY();
 
         /*add image*/
         INSERT INTO images (url,product)
@@ -43,11 +55,10 @@ BEGIN
 
         SET firstRow = firstRow + 1;
     END WHILE;
-END; //
+END ||
 DELIMITER ;
 
 /*create the temp table*/
-USE dev;
 DROP TABLE IF EXISTS csvTable;
 CREATE TABLE csvTable(Id int, name varchar(100), merchant varchar(100) ,price double, url text,description text);
 
@@ -55,7 +66,9 @@ CREATE TABLE csvTable(Id int, name varchar(100), merchant varchar(100) ,price do
 LOAD DATA LOCAL INFILE './newProducts.csv' INTO TABLE csvTable
 FIELDS TERMINATED BY ","
 LINES TERMINATED BY "/n"
-IGNORE 1 ROWS (id, name, merchant, price, url, description, image)
+IGNORE 1 ROWS (id, name, merchant, price, url, description, image);
 
 /*apply procedure to split products*/
 CALL importCSV();
+
+DROP TABLE csvTable;
