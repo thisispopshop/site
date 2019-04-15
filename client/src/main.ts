@@ -74,10 +74,10 @@ const domain = "localhost:8080";
 
 // redirect to home page or not
 if (subdomain === "www"){
-  if (url.length == 2)
+  if (url.length == 3)
     router.push("/");
-  else if (url.length > 2){
-    const firstPage = url[2];
+  else if (url.length > 3){
+    const firstPage = url[3];
     //const firstPage = url[3];
     if (firstPage === "/thanks")
       router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
@@ -85,8 +85,8 @@ if (subdomain === "www"){
       router.push("/");
   }
 } else if (subdomain === domain){  //normal page
-  if (url.length > 1){
-    const firstPage = url[1];
+  if (url.length > 2){
+    const firstPage = url[2];
     //const firstPage = url[2];
     if (firstPage === "/thanks")
     router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
