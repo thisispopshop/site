@@ -81,9 +81,9 @@
                 <div class="columns">
                     <div class="column is-one-half">
                         <label class="label">Organization Name</label>
-                        <input class="input" type="text" placeholder="Occasion Name" v-model="newOrganization.name">
+                        <input class="input" type="text" placeholder="Name" v-model="newOrganization.name">
                         <label class="label">Subdomain</label>
-                        <input class="input" type="text" placeholder="Occasion Description" v-model="newOrganization.description">
+                        <input class="input" type="text" placeholder="Subdomain" v-model="newOrganization.subdomain">
                     </div>
                     <div class="column">
                         <label class="label">Select Event: </label>
@@ -106,9 +106,9 @@
                 <div class="columns">
                     <div class="column is-one-half">
                         <label class="label">Event Name</label>
-                        <input class="input" type="text" placeholder="Occasion Name" v-model="newEvent.name">
+                        <input class="input" type="text" placeholder="Name" v-model="newEvent.name">
                         <label class="label">Event Description</label>
-                        <input class="input" type="text" placeholder="Occasion Description" v-model="newEvent.description">
+                        <input class="input" type="text" placeholder="Description" v-model="newEvent.description">
                     </div>
                     <div class="column">
                         <label class="label">Select Occasion(s): </label>
@@ -131,9 +131,9 @@
                 <div class="columns">
                     <div class="column is-onehalf">
                         <label class="label">Occasion Name</label>
-                        <input class="input" type="text" placeholder="Occasion Name" v-model="newOccasion.name">
+                        <input class="input" type="text" placeholder="Name" v-model="newOccasion.name">
                         <label class="label">Occasion Description</label>
-                        <input class="input" type="text" placeholder="Occasion Description" v-model="newOccasion.description">
+                        <input class="input" type="text" placeholder="Description" v-model="newOccasion.description">
                         <label class="label">Occasion Form Link</label>
                         <input class="input" type="text" placeholder="Form Embed Link" v-model="newOccasion.submitForm">
                     </div>
@@ -163,7 +163,7 @@
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
-import { iCollection, iOccasion ,iProduct, iOrganization, iEvent} from "@/models";
+import { iCollection, iOccasion ,iProduct, iOrganization, iEvent, iOccImage, iOrgImage} from "@/models";
 
 @Component
 export default class Collections extends Vue {
@@ -195,7 +195,7 @@ export default class Collections extends Vue {
     occasionsForm: iOccasion[] = [];
     collectionsForm: iCollection[] = [];
     selectedCollectionForm : iCollection[] = [{name:"", status: "", approvedBy:-1, description:"", products: [], categories: []}];
-    selectedOccasionForm : iOccasion[] = [{id:0, name:"", description:"", submitForm:"", collection:this.selectedCollectionForm[0]}];
+    selectedOccasionForm : iOccasion[] = [{id:0, name:"", description:"", submitForm:"", images:[], collection:this.selectedCollectionForm[0]}];
     selectedEventForm : iEvent[] = [{id:0, name:"", description:"",occasions:this.selectedOccasionForm}];
 
     mounted(){
@@ -247,6 +247,8 @@ export default class Collections extends Vue {
         this.selectedOrg = o;
         this.showEvents = true;
         this.event_list = o.events;
+        this.occasion_list = [];
+        this.collection_list = [];
     }
     selectEvent(e:iEvent){
         this.selectedEvent = e;
@@ -273,6 +275,7 @@ export default class Collections extends Vue {
         id: 0,
         name: "",
         subdomain: "",
+        images: [],
         events: this.selectedEventForm,
     }
     submitOrganization(org: iOrganization) {
@@ -328,6 +331,7 @@ export default class Collections extends Vue {
         name: '',
         description: '',    
         submitForm: "",
+        images: [],
         collection: this.selectedCollectionForm[0],
     }
     submitOccasion() {
@@ -341,7 +345,7 @@ export default class Collections extends Vue {
             name: this.newOccasion.name,
             description: this.newOccasion.description,
             submitForm: this.newOccasion.submitForm,
-            collection: this.selectedCollectionForm,
+            collection: this.selectedCollectionForm[0],
         }).then((response:AxiosResponse) => {
             console.log(response.data.occasion);
             alert("Successfully Created Occasion " + response.data.occasion.name);

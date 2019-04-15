@@ -2,7 +2,7 @@ import DefaultController from "./default.controller";
 
 import { NextFunction, Request, Response, Router } from "express";
 import { getRepository } from "typeorm";
-import { Session ,Occasion} from "../entity";
+import { Session ,Occasion, OccImage} from "../entity";
 
 export class OccasionController extends DefaultController {
     protected initializeRoutes(): Router {
@@ -39,6 +39,15 @@ export class OccasionController extends DefaultController {
             newOccasion.submitForm = req.body.submitForm;
             newOccasion.collection = req.body.collection;
 
+            //saving image
+            const imageUrls = new Array();
+            imageUrls.push(req.body.image);
+            newOccasion.images = imageUrls.map((imageUrl:string) => {
+                const image = new OccImage();
+                image.url = imageUrl;
+                return image;
+            })
+
             const occasionRepo = getRepository(Occasion);
             occasionRepo.save(newOccasion)
                 .then((createdOccasion:Occasion) =>{
@@ -57,12 +66,23 @@ export class OccasionController extends DefaultController {
 
             occasionRepo.findOne(id).then((foundOccasion:Occasion | undefined) => {
                 if (foundOccasion){
-                    if (req.body.name) foundOccasion.name = req.body.name;
-                    if (req.body.description) foundOccasion.description = req.body.description;
-                    if (req.body.submitForm) foundOccasion.submitForm = req.body.submitForm;
-                    if (req.body.collection) foundOccasion.collection = req.body.collection;
+                    foundOccasion.name = req.body.name;
+                    foundOccasion.description = req.body.description;
+                    foundOccasion.submitForm = req.body.submitForm;
+                    foundOccasion.collection = req.body.collection;
 
-                    console.log(foundOccasion);
+                    if (foundOccasion.images.length == 0){
+                        const imageUrls = new Array();
+                        imageUrls.push(req.body.image);
+                        foundOccasion.images = imageUrls.map((imageUrl:string) => {
+                            const image = new OccImage();
+                            image.url = imageUrl;
+                            return image;
+                        })
+                    }else {
+                        foundOccasion.images[0].url = req.body.image;
+                    }
+                    
 
                     occasionRepo.save(foundOccasion).then(updatedOccasion => {
                         res.status(200).send({occasion: updatedOccasion});

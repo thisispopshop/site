@@ -8,3 +8,5 @@ export * from "./occasion.entity";
 export * from "./event.entity";
 export * from "./organization.entity"
 export * from "./color.entity";
+export * from "./orgImage.entity";
+export * from "./occImage.entity";

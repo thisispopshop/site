@@ -2,8 +2,10 @@
   <div class="home">
 
   <!--Banner-->
-  <section class="hero banner_box" >
-    <img src='@/assets/images/taylorvo_banner.jpg'>
+  <section class="hero banner_box">
+    <figure class="image is-3by1">
+      <img v-bind:src="org.images[0].url" alt="org.name">
+    </figure>
     <div class="bottom-text-section">
       <router-link class="bottom-text is-size-6-mobile" to="/shop/0" exact-active-class="is-active">Shop</router-link>
     </div>
@@ -14,7 +16,8 @@
   <section>
     <div class="grid-boxes">
       <div class="columns">
-        <div class="column is-onequarter grid-box">
+        <div class="column is-onequarter grid-box"  v-for="(occ, index) in occasions" v-bind:key="index" v-bind:value="occ">
+          <!--
           <router-link to="/shop/0">
             <img src='@/assets/images/img3.jpg' class="grid-box-image">
             <p class="bottom-left-text is-size-1-mobile">House Tours</p> 
@@ -36,7 +39,16 @@
           <router-link to="/shop/0">
             <img src='@/assets/images/img2.png' class="grid-box-image">
             <p class="bottom-left-text is-size-1-mobile">Preference</p> 
-          </router-link>       
+          </router-link>    -->
+
+          <!--<div v-for="(occ, index) in occasions" v-bind:key="index" v-bind:value="occ">-->
+            <router-link v-bind:to="'/shop/' +index">
+              <figure class='image grid-box-image '>
+              <img v-bind:src="occ.images[0].url" />
+              </figure>
+               <p class="bottom-left-text is-size-1-mobile">{{occ.name}}</p> 
+            </router-link>  
+          <!--</div> -->
         </div>
       </div>
 
@@ -48,7 +60,7 @@
 
 <script lang="ts">
 /* eslint-disable */
-import { Component, Vue, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop , Watch} from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
 import { iOrganization, iEvent, iOccasion} from "@/models";
@@ -61,10 +73,10 @@ export default class Home extends Vue {
     //@Prop(String) org_name! : string;
     @Prop() org! : iOrganization;
     @Prop() event! : iEvent;
-    @Prop() occasion! : iOccasion[];
+    @Prop() occasions! : iOccasion[];
     error : string | boolean = false;
 
-    occasions : iOccasion[] = [];
+    //occasions : iOccasion[] = [];
 
     //load the organization
     mounted(){}
@@ -78,8 +90,10 @@ export default class Home extends Vue {
 //banner size (doesn't even work)
 .banner_box {
   position: relative;
-  height: 20%;
+  height: 30%;
 }
+
+
 
 //shop button text
 .bottom-text {
