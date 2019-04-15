@@ -30,13 +30,16 @@ export default new Router({
     {
       path: "/home",
       name: "sub_nav",
-      props:true,
+      //props:true,
+      props: (route) => ({org_name: route.params.org_name}),
       component: SubDomainNav,
       children : [
         {
           path: "/home",
           name: "sub_home",
-          props: true,
+          //props: true,
+          props: (route) => ({org_name: route.params.org_name}),
+          meta: true,
           component:() =>
             import("./views/Subdomains/Home.vue")
         },
@@ -44,7 +47,7 @@ export default new Router({
           path: "/shop/:oid",
           name: "shop",
           props: true,
-          //props: (route) => ({ occasion: route.query.occasion}),
+          meta: true,
           component:() =>
             import("./views/Subdomains/Shop.vue")
         },
@@ -52,35 +55,44 @@ export default new Router({
           path: "/info",
           name: "info",
           props: true,
+          meta: true,
           component:() =>
             import("./views/Subdomains/Info.vue")
         },
         {
           path: "/submit",
           name: "submit",
+          meta: true,
           component:() =>
             import("./views/Subdomains/Submit.vue")
+        },
+        {
+          path: "/error",
+          name: "error",
+          meta: true,
+          component:() =>
+            import("./views/Subdomains/Error.vue")
         }
       ]
     }, {
-      path: "/admin",
+      path: "/adminHome",
       name: 'admin_navigation',
       component: AdminNav,
       children : [
         {
-          path: "/admin",
+          path: "/adminHome",
           name: "organizations",
           component:() =>
             import("./views/Admin/Organizations.vue")
         },
         {
-          path: "/admin/curate",
+          path: "/curate",
           name: "curate",
           component:() =>
             import("./views/Admin/Curate.vue")
         },
         {
-          path: "/admin/collections",
+          path: "/collections",
           name: "collections",
           component:() =>
             import("./views/Admin/Collections.vue")

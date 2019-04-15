@@ -23,13 +23,13 @@
         <div class="navbar-start">
           <div class="navbar-item is-hoverable" >
           <div class="navbar-item">
-            <router-link class="mynavbaritem" to="/admin" exact-active-class="is-active">Home</router-link> 
+            <router-link class="mynavbaritem" to="/adminHome" exact-active-class="is-active">Home</router-link> 
           </div>
           <div class="navbar-item">
-            <router-link class="mynavbaritem" to="/admin/collections" exact-active-class="is-active">Collections</router-link> 
+            <router-link class="mynavbaritem" to="/collections" exact-active-class="is-active">Collections</router-link> 
           </div>
           <div class="navbar-item">
-            <router-link class="mynavbaritem" to="/admin/curate" exact-active-class="is-active">Curate</router-link> 
+            <router-link class="mynavbaritem" to="/curate" exact-active-class="is-active">Curate</router-link> 
           </div>
         </div>
       </div>

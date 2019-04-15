@@ -214,7 +214,7 @@ export default class Curate extends Vue {
                 })
                 .then((response:AxiosResponse) => {
                     alert("You Collection was Successfully Created.")
-                    this.$router.push("/admin");
+                    this.$router.push("/adminHome");
                 })
                 .catch((res:AxiosError)=> {
                     this.error = res.response && res.response.data.reason;
@@ -227,7 +227,7 @@ export default class Curate extends Vue {
     //cancel the new collection
     cancelCollection(){
         this.error = false;
-        this.$router.push("/admin");
+        this.$router.push("/adminHome");
     }
 
 }

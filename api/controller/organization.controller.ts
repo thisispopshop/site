@@ -2,7 +2,7 @@ import DefaultController from "./default.controller";
 
 import { NextFunction, Request, Response, Router } from "express";
 import { getRepository, } from "typeorm";
-import { Session , Organization} from "../entity";
+import { Session , Organization, OrgImage} from "../entity";
 
 export class OrganizationController extends DefaultController {
     protected initializeRoutes(): Router {
@@ -43,7 +43,16 @@ export class OrganizationController extends DefaultController {
           const newOrganization = new Organization();
           newOrganization.name = req.body.name;
           newOrganization.subdomain = req.body.subdomain;
-          if (req.body.events) newOrganization.events = req.body.events;
+          newOrganization.events = req.body.events;
+
+          //saving the image
+          const imageUrls = new Array();
+          imageUrls.push(req.body.image);
+          newOrganization.images = imageUrls.map((imageUrl:string) => {
+            const image = new OrgImage();
+            image.url = imageUrl;
+            return image;
+          })
 
           organizationRepo.save(newOrganization).then(createdOrganization  => {
               res.status(200).send({organization:createdOrganization});
@@ -61,8 +70,19 @@ export class OrganizationController extends DefaultController {
             if (foundOrganization){
               foundOrganization.name = req.body.name;
               foundOrganization.subdomain = req.body.subdomain;
-              if (req.body.events) foundOrganization.events = req.body.events;      
-              
+              if (req.body.events) foundOrganization.events = req.body.events;  
+              if (foundOrganization.images.length==0){
+                const imageUrls = new Array();
+                imageUrls.push(req.body.image);
+                foundOrganization.images = imageUrls.map((imageUrl:string) => {
+                  const image = new OrgImage();
+                  image.url = imageUrl;
+                  return image;
+                })
+              } else {
+                foundOrganization.images[0].url = req.body.image;
+              }
+            
               organizationRepo.save(foundOrganization).then(updatedOrganization => {
                 res.status(200).send({organization: updatedOrganization});
               })

@@ -12,7 +12,7 @@ import PrettyCheck from 'pretty-checkbox-vue/check';
 import PrettyRadio from 'pretty-checkbox-vue/radio';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye} from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faFontAwesomeLogoFull} from "@fortawesome/free-solid-svg-icons";
 import { faHeart , faUser, faCheckCircle, faCircle} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -64,3 +64,38 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+
+const host = window.location.host;
+const url = host.split('.');
+const subdomain = url[0];
+const domain = "localhost:8080";
+//const domain = "thisispopshop"
+
+// redirect to home page or not
+if (subdomain === "www"){
+  if (url.length == 2)
+    router.push("/");
+  else if (url.length > 2){
+    const firstPage = url[2];
+    //const firstPage = url[3];
+    if (firstPage === "/thanks")
+      router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+    else 
+      router.push("/");
+  }
+} else if (subdomain === domain){  //normal page
+  if (url.length > 1){
+    const firstPage = url[1];
+    //const firstPage = url[2];
+    if (firstPage === "/thanks")
+    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+  else
+    router.push("/");
+  }
+} else if (subdomain === "admin"){
+  router.push({name: "organizations"});
+}
+ else {
+  router.push({path:"home"});
+}
