@@ -11,7 +11,7 @@
     </section>
 
     <!--content-->
-    <section class="parent-container">
+    <section class="parent-container" v-show="taylor">
         <div class="container" >
 
       <!--content-->
@@ -54,6 +54,62 @@
       </div>
     </section>
 
+        <!--content-->
+    <section class="parent-container" v-show="cpaoii">
+        <div class="container" >
+
+          <!--content-->
+          <div class="content-body" >
+            <div class="columns">
+              <div class='column is-onehalf'>
+                  <p class='title'>Fines</p>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Violation</th>
+                        <th>Fine</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Missed Spring Recruitment Training</td>
+                        <td>$25</td>
+                      </tr>
+                      <tr>
+                        <td>Missed 1/2 Day of Ruby Week</td>
+                        <td>$50</td>
+                      </tr>
+                      <tr>
+                        <td>Missed Full Day of Ruby Week</td>
+                        <td>$100</td>
+                      </tr>
+                      <tr>
+                        <td>Missed day of Formal Recruitment</td>
+                        <td>$200</td>
+                      </tr>
+                      <tr>
+                        <td>Every Minute late to Ruby Week/Recruitment Events</td>
+                        <td>$1</td>
+                      </tr>
+                      <tr>
+                        <td>Every day late of outfit submissions</td>
+                        <td>$5</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+              <div class="column">
+                <p class="title">Email us if you have any questions!</p>
+                <p class="is-centered"><b>aoii.recruitment.chipsi@gmail.com 
+                  <br> aoii.asstrecruitment.chipsi@gmail.com</b>
+                </p>
+              </div>
+            </div>
+          </div>
+
+      </div>
+    </section>
+
   </div>
 
 </template>
@@ -70,6 +126,15 @@ export default class Info extends Vue {
   @Prop() org! : iOrganization;
   @Prop() event! : iEvent;
   @Prop() occasions! : iOccasion[];
+
+        //temp vars
+  taylor : boolean = false;
+  cpaoii : boolean = false;
+
+  mounted(){
+      if (this.org.subdomain === "taylorvo") this.taylor = true;
+      if (this.org.subdomain === "cpaoii")  this.cpaoii = true;
+  }
 
 }
 </script>

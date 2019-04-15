@@ -7,3 +7,5 @@ export * from "./image.interface";
 export * from "./occasion.interface";
 export * from "./event.interface";
 export * from "./organization.interface";
+export * from "./occImage.interface";
+export * from "./orgImage.interface";
