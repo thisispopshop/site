@@ -69,32 +69,43 @@ new Vue({
 const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
-const domain = "localhost:8080";
-//const domain = "thisispopshop"
+//const domain = "localhost:8080";
+const domain = "thisispopshop";
 
 // redirect to home page or not
 if (subdomain === "www"){
+  const ending = url[2];
+  const firstPage = ending.slice(4);
+  console.log(firstPage);
+  router.push(firstPage);
+  /*
   if (url.length == 3)
     router.push("/");
   else if (url.length > 3){
     const firstPage = url[3];
-    //const firstPage = url[3];
     if (firstPage === "/thanks")
       router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
     else 
+      router.push("/"+firstPage);
+  }*/
+  } 
+  else if (subdomain === "admin"){
+    router.push({name: "organizations"});
+  } 
+  else if (subdomain === domain){  //normal page
+    const ending = url[1];
+    const firstPage = ending.slice(4);
+    console.log(firstPage);
+    router.push(firstPage);
+    /*
+    if (url.length > 2){
+      const firstPage = url[2];
+      if (firstPage === "/thanks")
+        router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+    else
       router.push("/");
+    }*/
   }
-} else if (subdomain === domain){  //normal page
-  if (url.length > 2){
-    const firstPage = url[2];
-    if (firstPage === "/thanks")
-      router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-  else
-    router.push("/");
-  }
-} else if (subdomain === "admin"){
-  router.push({name: "organizations"});
-}
  else {
   router.push({path:"home"});
 }
