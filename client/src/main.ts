@@ -87,9 +87,8 @@ if (subdomain === "www"){
 } else if (subdomain === domain){  //normal page
   if (url.length > 2){
     const firstPage = url[2];
-    //const firstPage = url[2];
     if (firstPage === "/thanks")
-    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+      router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
   else
     router.push("/");
   }
