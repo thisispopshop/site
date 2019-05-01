@@ -1,9 +1,15 @@
-# POPSHOP SITE
+# POPSHOP
+This repository contains the code for our site and our node server - api and all.
 
-## View our Progress
-https://thisispopshop.github.io/popshop_patternlibrary/#about
+## [Check out our Site](https://thisispopshop.com)
 
-## Running the Site
+## [Check out our Progress](https://thisispopshop.github.io/popshop_patternlibrary/#about)
+
+## Check out our Social
+[LinkedIn](https://www.linkedin.com/company/thisispopshop/about/)
+[Facebook](https://www.facebook.com/Popshop-384434792395944/)
+
+## Running the Site (Locally)
 ### Front-End
 * cd client
 * (opt) npm install
