@@ -44,13 +44,13 @@ router.beforeEach((to,from,next) => {
   const com = url[2];
   const firstPage = url[3];
 
-  if (subdomain === "www" || subdomain === domain){  //normal page
+  if (subdomain === domain){  //normal page
     if (firstPage === "/thanks")
       next({name:"ThanksLandingPage", params:{id:"thanks"}});
     else
       next();
   } else if (subdomain === "cpaoii"){ //subdomain page
-    //console.log(subdomain);
+    console.log(subdomain);
     to: {path: "sub_nav"};
     next({replace:true});
   } else {
@@ -65,7 +65,7 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-
+/*
 const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
@@ -109,3 +109,4 @@ if (subdomain === "www"){
  else {
   router.push({path:"home"});
 }
+*/
