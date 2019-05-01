@@ -149,9 +149,9 @@ export default class Navigation extends Vue {
       const subdomain = url[0];
       const domain = "localhost:8080";
       //const domain = "thisispopshop"
-
+     
       // redirect to home page or not
-      if (subdomain === "www"){
+      if (subdomain === "www" || subdomain === domain){
         if (url.length == 2)
           this.$router.push("/");
         else if (url.length > 2){
@@ -162,20 +162,11 @@ export default class Navigation extends Vue {
           else 
             this.$router.push("/");
         }
-      } else if (subdomain === domain){  //normal page
-        if (url.length > 1){
-          const firstPage = url[1];
-          //const firstPage = url[2];
-          if (firstPage === "/thanks")
-          this.$router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-        else
-          this.$router.push("/");
-        }
       } else if (subdomain === "admin"){
         this.$router.push({name: "organizations"});
       }
       else {
-        this.$router.push({path:"home"});
+        this.$router.push({path:"sub_home"});
       }
 
   }
