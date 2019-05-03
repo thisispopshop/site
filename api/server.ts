@@ -1,8 +1,8 @@
 import cors from "cors";
 import express, {Request,Response} from "express";
-import { LoginController, UserController, CategoryController, OccasionController, ColorController } from "./controller";
-
 import { DBConnection } from "./connection";
+
+import { LoginController, UserController, CategoryController, OccasionController, ColorController } from "./controller";
 import ProductController from "./controller/product.controller";
 import CollectionController from "./controller/collection.controller";
 import EventController from "./controller/event.controller";
@@ -21,14 +21,6 @@ export class Server {
       const app: express.Application = express();
 
       app.use(cors());
-
-      /*
-      app.use(function(req:Request, res:Response, next) {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-      });
-      */
       app.use(express.json());
       app.use(express.static("public"));
 

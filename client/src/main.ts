@@ -40,7 +40,8 @@ router.beforeEach((to,from,next) => {
   const host = window.location.host;
   const url = host.split('.');
   const subdomain = url[0];
-  const domain = "thisispopshop";
+  //const domain = "thisispopshop";
+  const domain = "localhost:8080"
   const com = url[2];
   const firstPage = url[3];
 
@@ -49,13 +50,14 @@ router.beforeEach((to,from,next) => {
       next({name:"ThanksLandingPage", params:{id:"thanks"}});
     else
       next();
-  } else if (subdomain === "cpaoii"){ //subdomain page
-    //console.log(subdomain);
-    to: {path: "sub_nav"};
+  } else if (subdomain == "admin") {
+    to: {path:"adminHome"};
     next({replace:true});
-  } else {
-    next();
-  }
+  }else { //subdomain page
+    //console.log(subdomain);
+    to: {path: "sub_home"};
+    next({replace:true});
+  } 
 
 });
 
@@ -69,8 +71,8 @@ new Vue({
 const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
-//const domain = "localhost:8080";
-const domain = "thisispopshop";
+const domain = "localhost:8080";
+//const domain = "thisispopshop";
 
 // redirect to home page or not
 if (subdomain === "www"){
@@ -85,13 +87,13 @@ if (subdomain === "www"){
     const firstPage = url[3];
     if (firstPage === "/thanks")
       router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-    else 
+    else
       router.push("/"+firstPage);
   }*/
-  } 
+  }
   else if (subdomain === "admin"){
     router.push({name: "organizations"});
-  } 
+  }
   else if (subdomain === domain){  //normal page
     const ending = url[1];
     const firstPage = ending.slice(4);
