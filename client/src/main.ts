@@ -75,7 +75,7 @@ const domain = "localhost:8080";
 //const domain = "thisispopshop";
 
 // redirect to home page or not
-if (subdomain === "www"){
+if (subdomain === "www" ){
   const ending = url[2];
   const firstPage = ending.slice(4);
   console.log(firstPage);
@@ -111,3 +111,4 @@ if (subdomain === "www"){
  else {
   router.push({path:"home"});
 }
+
