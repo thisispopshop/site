@@ -40,10 +40,10 @@ router.beforeEach((to,from,next) => {
   const host = window.location.host;
   const url = host.split('.');
   const subdomain = url[0];
-  //const domain = "thisispopshop";
-  const domain = "localhost:8080"
-  const com = url[2];
-  const firstPage = url[3];
+  const domain = "thisispopshop";
+  //const domain = "localhost:8080"
+  const ending = url[1];
+  const firstPage = ending.slice(4);
 
   if (subdomain === "www" || subdomain === domain){  //normal page
     if (firstPage === "/thanks")
@@ -98,15 +98,9 @@ if (subdomain === "www" ){
     const ending = url[1];
     const firstPage = ending.slice(4);
     console.log(firstPage);
-    router.push(firstPage);
-    /*
-    if (url.length > 2){
-      const firstPage = url[2];
-      if (firstPage === "/thanks")
+    //router.push(firstPage);
+    if (firstPage === "/thanks")
         router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-    else
-      router.push("/");
-    }*/
   }
  else {
   router.push({path:"home"});
