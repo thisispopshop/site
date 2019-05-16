@@ -153,9 +153,6 @@ export default class Home extends Vue {
     color:grey
   }
 }
-<<<<<<< HEAD
-=======
 /*comment*/
->>>>>>> 4168594ddfc0685d5f55168d32dd7d580b563649
 
 </style>

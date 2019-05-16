@@ -95,10 +95,5 @@ export default class Submit extends Vue {
     text-align:center;
 
 }
-<<<<<<< HEAD
-
-</style>
-=======
 /*comment*/
 </style>
->>>>>>> 4168594ddfc0685d5f55168d32dd7d580b563649
