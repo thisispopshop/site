@@ -260,4 +260,5 @@ export default class Navigation extends Vue {
     
   }
 
+/*comment*/
 </style>

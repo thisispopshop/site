@@ -1,4 +1,4 @@
-<template>
+<template> 
   <div class="shop">
 
     <section class="hero is-small">
@@ -86,4 +86,5 @@ export default class Shop extends Vue {
   font-weight: bold;
 }
 
+/*comment*/
 </style>
