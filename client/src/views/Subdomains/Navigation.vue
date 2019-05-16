@@ -7,8 +7,7 @@
     <!--change this to be dynamic soon-->
     
     <!--customer navigation bar-->
-    <!--add "is-fixed-top" for sticky-->
-    <nav class="navbar " role="navigation" aria-label="dropdown navigation">
+    <nav class="navbar is-fixed-top" style="height:8vw" role="navigation" aria-label="dropdown navigation">
 
       <!--toggle menu for mobile-->
       <div class="navbar-brand">
@@ -54,11 +53,11 @@
 
         <!--logo-->
         <!--current menu padding causing it to be off center-->
-        <div class="navbar-item is-hidden-mobile logo-size" >
+        <div class="navbar-item is-hidden-mobile is-hidden-touch logo-size" style="padding-right:45%">
             <router-link to="/home"><img  src="@/assets/popshop_logo.png" alt="logo" ></router-link>
         </div>
 
-        <!--right side-->
+        <!--right side
         <div class="navbar-end is-hidden-mobile">
           <span style="margin-left:33px"></span>
           <div class="navbar-item">
@@ -73,10 +72,12 @@
               </router-link>
           </div>
           <span style="padding-right:33px"></span>
-        </div>
+        </div>-->
 
       </div>
     </nav>
+
+  <div style="height:8vw"></div>
 
   <!--Need this in here if you want other pages to show!!!-->
   <router-view v-bind:org="org" v-bind:event="event" v-bind:occasions="occasions" />
@@ -149,9 +150,9 @@ export default class Navigation extends Vue {
       const subdomain = url[0];
       const domain = "localhost:8080";
       //const domain = "thisispopshop"
-
+     
       // redirect to home page or not
-      if (subdomain === "www"){
+      if (subdomain === "www" || subdomain === domain){
         if (url.length == 2)
           this.$router.push("/");
         else if (url.length > 2){
@@ -162,20 +163,11 @@ export default class Navigation extends Vue {
           else 
             this.$router.push("/");
         }
-      } else if (subdomain === domain){  //normal page
-        if (url.length > 1){
-          const firstPage = url[1];
-          //const firstPage = url[2];
-          if (firstPage === "/thanks")
-          this.$router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-        else
-          this.$router.push("/");
-        }
       } else if (subdomain === "admin"){
         this.$router.push({name: "organizations"});
       }
       else {
-        this.$router.push({path:"home"});
+        this.$router.push({path:"sub_home"});
       }
 
   }
@@ -192,8 +184,6 @@ export default class Navigation extends Vue {
 </script>
  
 <style lang="scss">
-
-
 
 //navbar spacing
 .mynavmenu {
@@ -250,11 +240,11 @@ export default class Navigation extends Vue {
 
 //cool loader
 .cool-loader{
-    border:5px solid;
-    width:100px;
-    height:100px;
+    border:10px solid;
+    width:200px;
+    height:200px;
     border-radius:50%;
-    border-color:orange transparent transparent;
+    border-color:#FAE4E9 transparent transparent;
     animation:spin 2s linear infinite;
     position:fixed;
     top:0;
@@ -265,7 +255,9 @@ export default class Navigation extends Vue {
   }
   
   @keyframes spin{
-    100%{transform:rotate(360deg);filter:hue-rotate(360deg)}
+    100%{transform:rotate(360deg);filter: #FAE4E9}
+    //filter:hue-rotate(360deg)}
+    
   }
 
 </style>

@@ -12,7 +12,7 @@ import PrettyCheck from 'pretty-checkbox-vue/check';
 import PrettyRadio from 'pretty-checkbox-vue/radio';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faFontAwesomeLogoFull} from "@fortawesome/free-solid-svg-icons";
+import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import { faHeart , faUser, faCheckCircle, faCircle} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -22,7 +22,7 @@ import VueRouter from 'vue-router';
 //import our custom css
 //require('~/assets/css/popshopUIhomepage.css');
 
-library.add(faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye);
+library.add(faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faArrowLeft);
 library.add(faHeart, faUser, faCheckCircle,  faCircle);
 library.add( faInstagram, faTwitter, faFacebook);
 
@@ -35,6 +35,7 @@ Vue.component('p-radio', PrettyRadio);
 
 Vue.config.productionTip = false;
 
+/*
 //handle subdomains?
 router.beforeEach((to,from,next) => {
   const host = window.location.host;
@@ -48,7 +49,7 @@ router.beforeEach((to,from,next) => {
   if (subdomain === "www" || subdomain === domain){  //normal page
     if (firstPage === "/thanks")
       next({name:"ThanksLandingPage", params:{id:"thanks"}});
-    else
+    else{
       next();
   } else if (subdomain == "admin") {
     to: {path:"adminHome"};
@@ -59,7 +60,7 @@ router.beforeEach((to,from,next) => {
     next({replace:true});
   } 
 
-});
+});*/
 
 new Vue({
   router,

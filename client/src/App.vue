@@ -13,17 +13,17 @@
       <footer class="footer my-footer">
           
             <div class="content has-text-centered">
-                <p>
-                  <b>© Popshop 2019</b> 
-                  <!--social media not ready
-                    <br>
-                  <a class="tab-space" href="https://www.facebook.com/Popshop-384434792395944/" target="_blank">
-                    <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"/>
-                  </a>
-                  <span class="tab-space"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'twitter' }"/></span>
-                  <span class="tab-space"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/></span>
-                  -->
-                </p>
+              <b>© Popshop 2019</b> 
+              <!--social media not ready-->
+                <br>
+              <a class="tab-space social-media-icon" href="https://www.facebook.com/Popshop-384434792395944/" target="_blank">
+                <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"/>
+              </a>
+              <!--<span class="tab-space"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'twitter' }"/></span>-->
+              <a class="tab-space social-media-icon" href="https://www.instagram.com/thisispopshop/" target="_blank">
+                <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/>
+              </a>
+
             </div>
       </footer>
   </div>
@@ -52,7 +52,7 @@ $input-shadow: none;
 $input-border-color: transparent;
 
 $navbar-dropdown-boxed-radius: 0px;
-$navbar-height:  6.25rem;
+//$navbar-height:  6.25rem;
 $navbar-item-img-max-height: 8rem;
 
 $dropdown-item-active-background-color: none;
@@ -85,15 +85,19 @@ $family-primary: 'Brandon Grotesque', sans-serif;
 
 //change link color to none
 a:link {
-  color:none;
+  color:black;
+}
+
+.social-media-icon {
+  color:black
 }
 
 body {
-  background: #F8F8F8
+  background: #fcfcfc
 }
 
 .my-footer {
-  background: #F5F5F5;
+  background: #F8F8F8;
 }
 
 </style>

@@ -3,8 +3,8 @@
 **/
 
 use dev;
-/**DELETE FROM image;
-DELETE FROM product;**/
+DELETE FROM image;
+DELETE FROM product;
 /**DELETE FROM user;**/
 
 INSERT INTO product

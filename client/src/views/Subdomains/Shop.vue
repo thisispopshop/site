@@ -11,10 +11,27 @@
             </ul>
           </nav>
         </div>
-         <div class="title is-size-1 page-title"><strong>{{selectedOccasion.name}}</strong></div>
     </section>
 
-    <ShopOccasion v-bind:collection="selectedOccasion.collection"/>
+
+    <!--Products-->
+    <section class="section">
+    <div class="columns">
+
+      <div class="column is-one-fifth">
+        <ShopFilterBox
+          v-bind:collection="selectedOccasion.collection"
+        />
+      </div>
+
+      <div class="column">
+        <ShopOccasion 
+          v-bind:occasion_name = "selectedOccasion.name" 
+          v-bind:collection="selectedOccasion.collection"
+        />     
+      </div>
+    </div>
+    </section>
 
   </div>
 </template>
@@ -27,12 +44,15 @@ import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
 import {iProduct,iImage, iOccasion, iOrganization, iEvent} from "@/models";
 import ShopOccasion from "@/components/ShopOccasion.vue";
+import ShopFilterBox from "@/components/ShopFilterBox.vue";
 
 @Component({
     components: {
+      ShopFilterBox,
       ShopOccasion
     }
 })
+
 export default class Shop extends Vue {
   @Prop() org!: iOrganization;
   @Prop() event!: iEvent;
@@ -51,6 +71,7 @@ export default class Shop extends Vue {
     //this.selectedOccasion = occasion;
     this.$router.push("/shop/"+ind);
   }
+
 }
 </script>
 
@@ -64,11 +85,5 @@ export default class Shop extends Vue {
 .crumb:hover {
   font-weight: bold;
 }
-/*page title style*/
-.page-title {
-  padding-top: 3%;
-  //padding-left: 10%;
-  margin-left: 20%;
-  text-align: left;
-}
+
 </style>

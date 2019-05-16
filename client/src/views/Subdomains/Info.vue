@@ -19,12 +19,10 @@
 
         <div class="columns">
           <div class="column is-one-third"> 
-              <img style="float:right;" src="https://makeupbytaylorvo.files.wordpress.com/2018/03/img_4257.jpg?w=414&#038;h=552"  >
+            <a href="https://makeupbytaylorvo.wordpress.com/aboutme/" target=_blank>
+              <img style="float:right;" src="https://makeupbytaylorvo.files.wordpress.com/2018/03/img_4257.jpg?w=414&#038;h=552" >
                <!--<img src="https://makeupbytaylorvo.files.wordpress.com/2018/03/screen-shot-2018-03-30-at-2-01-42-pm.png?w=327&#038;h=408">-->
-              <div style="display:block; float:right"> 
-                <a href="https://makeupbytaylorvo.wordpress.com/aboutme/" target=_blank>https://makeupbytaylorvo.wordpress.com/aboutme/</a>
-              </div>
-              
+            </a>
               
           </div>
           <div class="column" style="margin-left: 5%"> 
