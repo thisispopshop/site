@@ -1,12 +1,11 @@
 <template>
-    <div class="title" style="text-align: center; padding: 10%">
-        This organization doesn't exist!!!!!!
-            <br><br>
-        Email thepopshopteam@gmail.com to sign up!
-
-        <br><br>
-
+    <section class="section">
+    <div class="title error-container" >
+        Oops! Seems like this organization doesn't exist yet
+            <br>
+        Email <u>thepopshopteam@gmail.com</u> to sign up.
     </div>
+    </section>
 </template>
 
 <script lang="ts">
@@ -23,3 +22,14 @@ export default class ErrorPage extends Vue {
 }
 
 </script>
+
+<style lang="scss">
+
+.error-container {
+    height: 35vw;
+    text-align: center; 
+    padding: 10%; 
+    word-spacing: 0.1em;
+}
+
+</style>

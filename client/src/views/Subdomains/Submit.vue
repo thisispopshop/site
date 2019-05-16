@@ -1,10 +1,11 @@
 <template>
-  <div class="info">
+  <div class="submit">
 
     <!--header-->
   <section class="hero is-small">
     <div class="hero-head">
-      <nav class="breadcrumb is-size-4 my-breadcrumb is-hidden-mobile" aria-label="breadcrumbs">
+
+      <nav v-show="isTaylor" class="breadcrumb is-size-4 my-breadcrumb is-hidden-mobile" aria-label="breadcrumbs">
         <ul>
           <li class="is-active crumb" v-for="(o, index) in occasions" v-bind:key="index" v-bind:value="o"  v-on:click="chooseOccasion(o,index)">
             <a>{{o.name}}</a>
@@ -56,6 +57,10 @@ export default class Submit extends Vue {
   }
   selectedOccasion = this.occasions[this.oid];*/
 
+  get isTaylor(){
+    return this.org.subdomain != "taylorvo"
+  }
+
   chooseOccasion(occasion:iOccasion, ind:number){}
 
 }
@@ -90,5 +95,10 @@ export default class Submit extends Vue {
     text-align:center;
 
 }
+<<<<<<< HEAD
 
 </style>
+=======
+/*comment*/
+</style>
+>>>>>>> 4168594ddfc0685d5f55168d32dd7d580b563649

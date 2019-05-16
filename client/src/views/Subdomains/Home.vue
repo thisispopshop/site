@@ -7,7 +7,9 @@
       <img v-bind:src="org.images[0].url" alt="org.name">
     </figure>
     <div class="bottom-text-section">
-      <router-link class="bottom-text is-size-6-mobile" to="/shop/0" exact-active-class="is-active">Shop</router-link>
+    <router-link class="bottom-text is-size-6-mobile" to="/shop/0" exact-active-class="is-active">
+        <span class="highlight-text side-space">Shop</span>
+      </router-link>
     </div>
     
   </section>
@@ -17,36 +19,16 @@
     <div class="grid-boxes">
       <div class="columns">
         <div class="column is-onequarter grid-box"  v-for="(occ, index) in occasions" v-bind:key="index" v-bind:value="occ">
-          <!--
-          <router-link to="/shop/0">
-            <img src='@/assets/images/img3.jpg' class="grid-box-image">
-            <p class="bottom-left-text is-size-1-mobile">House Tours</p> 
-          </router-link>
-        </div>
-        <div class="column is-onequarter grid-box">
-          <router-link to="/shop/0">
-            <img src='@/assets/images/img1.png' class="grid-box-image"> 
-            <p class="bottom-left-text is-size-1-mobile">Sisterhood</p>  
-          </router-link>     
-        </div>
-        <div class="column is-onequarter grid-box">
-           <router-link to="/shop/0">
-            <img src='@/assets/images/img2.png' class="grid-box-image">
-            <p class="bottom-left-text is-size-1-mobile">Philanthropy</p>  
-           </router-link>
-        </div>
-        <div class="column is-onequarter grid-box">
-          <router-link to="/shop/0">
-            <img src='@/assets/images/img2.png' class="grid-box-image">
-            <p class="bottom-left-text is-size-1-mobile">Preference</p> 
-          </router-link>    -->
 
           <!--<div v-for="(occ, index) in occasions" v-bind:key="index" v-bind:value="occ">-->
             <router-link v-bind:to="'/shop/' +index">
               <figure class='image grid-box-image '>
               <img v-bind:src="occ.images[0].url" />
               </figure>
-               <p class="bottom-left-text is-size-1-mobile">{{occ.name}}</p> 
+               <!--<p class="bottom-left-text is-size-1-mobile">{{occ.name}}</p> -->
+               <p class="bottom-left-text is-size-1-mobile">
+                 <span class="highlight-text">{{occ.name}}</span>
+              </p>  
             </router-link>  
           <!--</div> -->
         </div>
@@ -93,8 +75,6 @@ export default class Home extends Vue {
   height: 30%;
 }
 
-
-
 //shop button text
 .bottom-text {
   position: absolute;
@@ -102,18 +82,29 @@ export default class Home extends Vue {
   width: 100%;
   bottom: 5%;
   text-align: center;
-  color: white;
+  color:black;
   font-weight: bold;
-  text-decoration: underline;
+  //text-decoration: underline;
   font-size: 40px;
 }
 
 .bottom-text:hover{
-  color:black
+  color:grey
+}
+
+.highlight-text {
+  background-color:#f9f9f9;
+  margin-left: 5%;
+  margin-right: 5%;
+  border-radius: 1px;
+  padding-left:1em ;
+  padding-right: 1em;
+  opacity: 0.7;
 }
 
 //grid container size
 .grid-boxes {
+  display: flex;
   position: relative;
   padding: 5%;
   justify-content: center;
@@ -127,33 +118,44 @@ export default class Home extends Vue {
   position: relative;
   height: 100%;
 }
+
 .grid-box-image {
   width: 100%;
-  height: 450px;
+  //height: 450px;
   object-fit: cover;
   overflow: hidden;
-}
 
-.grid-box:hover {
-  opacity: 0.8;
-}
+  img {
+    height: 25vw;
+    width: auto;
+  }
 
-//individual boxes
-.st0 {
-  position: relative;
-  height: 100%;
+  :hover {
+    opacity: 0.8;
+  }
 }
 
 //box text
 .bottom-left-text {
   position: absolute;
+  margin-bottom:auto;
   bottom: 8%;
-  left: 8%;
-  color: white;
+  //left: 8%;
+  text-align:center;
+  color: black;
   font-weight: bold;
-  text-decoration: underline;
+  //text-decoration: underline;
   font-size: 25px;
-}
+  z-index:1;
+  width: 100%;
 
+  :hover {
+    color:grey
+  }
+}
+<<<<<<< HEAD
+=======
+/*comment*/
+>>>>>>> 4168594ddfc0685d5f55168d32dd7d580b563649
 
 </style>

@@ -19,12 +19,10 @@
 
         <div class="columns">
           <div class="column is-one-third"> 
-              <img style="float:right;" src="https://makeupbytaylorvo.files.wordpress.com/2018/03/img_4257.jpg?w=414&#038;h=552"  >
+            <a href="https://makeupbytaylorvo.wordpress.com/aboutme/" target=_blank>
+              <img style="float:right;" src="https://makeupbytaylorvo.files.wordpress.com/2018/03/img_4257.jpg?w=414&#038;h=552" >
                <!--<img src="https://makeupbytaylorvo.files.wordpress.com/2018/03/screen-shot-2018-03-30-at-2-01-42-pm.png?w=327&#038;h=408">-->
-              <div style="display:block; float:right"> 
-                <a href="https://makeupbytaylorvo.wordpress.com/aboutme/" target=_blank>https://makeupbytaylorvo.wordpress.com/aboutme/</a>
-              </div>
-              
+            </a>
               
           </div>
           <div class="column" style="margin-left: 5%"> 
@@ -119,28 +117,22 @@
 /* eslint-disable */
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { iOrganization, iEvent, iOccasion } from "@/models";
-
 @Component
 export default class Info extends Vue {
-
   @Prop() org! : iOrganization;
   @Prop() event! : iEvent;
   @Prop() occasions! : iOccasion[];
-
         //temp vars
   taylor : boolean = false;
   cpaoii : boolean = false;
-
   mounted(){
       if (this.org.subdomain === "taylorvo") this.taylor = true;
       if (this.org.subdomain === "cpaoii")  this.cpaoii = true;
   }
-
 }
 </script>
 
 <style lang="scss" scoped>
-
 /*breadcrumb style*/
 .my-breadcrumb {
   float: right;
@@ -150,7 +142,6 @@ export default class Info extends Vue {
 .crumb:hover {
   font-weight: bold;
 }
-
 /*page title style*/
 .page-title-info {
   padding-top: 5%;
@@ -161,14 +152,12 @@ export default class Info extends Vue {
  // margin-left: 17%;
   //text-align: center;
 }
-
 /*parent container*/
 .parent-container {
   display: flex;
   padding-top: 1%;
   margin-left: 4%
 }
-
 /*side navigation box*/
 .side-nav {
   padding-top: 1%;
@@ -181,7 +170,6 @@ export default class Info extends Vue {
 .crumb:hover {
   font-weight: bold;
 }
-
 .content-body {
   width: 100%;
 }
@@ -193,5 +181,4 @@ export default class Info extends Vue {
   font-weight: bold;
   font-size: 35px;
 }
-
 </style>
