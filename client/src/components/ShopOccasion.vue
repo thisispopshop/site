@@ -1,5 +1,10 @@
  <template>
  <div>
+
+    <section class="parent-container-title">
+      <div class="title is-size-1 "><strong>{{occasion_name}}</strong></div>
+    </section>
+
  <!--Sort By Feature-->
     <section class="parent-container-head">
       <div class="dropdown is-active sort-menu-container">
@@ -13,79 +18,31 @@
         <div class="dropdown-menu sort-menu" id="dropdown-menu" role="menu" v-show="showSortMenu">
           <div class="dropdown-content sort-menu">
             <!--<p class="dropdown-item is-size-5" v-on:click="sortByRecent">Newest first</p>-->
-            <p class="dropdown-item is-size-5" v-on:click="sortByPriceDesc">Price high to low</p>
-            <p class="dropdown-item is-size-5" v-on:click="sortByPriceAsc">Price low to high</p>
+            <button class="dropdown-item is-size-5" v-on:click="sortByPriceDesc">Price high to low</button>
+            <button class="dropdown-item is-size-5" v-on:click="sortByPriceAsc">Price low to high</button>
           </div>
         </div>
       </div>
     </section>
 
     <section class="parent-container-body">
-      
-      <!--side navigation bar-->
-      <div class="side-nav">
-
-        <!--Browse by box-->
-        <div class="side-nav-box">
-          <p class="side-nav-title"><strong>Browse By:</strong></p>
-          <ul class="side-nav-checklist">
-            <li>
-              <input id="checkbox_1" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_1" class="side-nav-content">Apparel</label>
-            </li>
-            <li>
-              <input id="checkbox_2" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_2" class="side-nav-content">Shoes</label>
-            </li>
-            <li>
-              <input id="checkbox_3" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_3" class="side-nav-content">Accessories</label>
-            </li>
-          </ul>
-        </div>
-
-        <!--Filter by box-->
-        <div class="side-nav-box">
-          <p class="side-nav-title"><strong>Filter By:</strong></p>
-          <div class="side-nav-dropdown">
-            <button class="dropdown-btn side-nav-content" v-on:click="toggleMenu('size')">
-              Size
-              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
-            </button>
-            <div class="dropdown-container" v-show="showMenuSize">
-              <p v-for="(size, index) in sizes" v-bind:key="index">
-                <input type="checkbox" class="styled-checkbox">
-                <label>{{size}}</label>
-              </p>
-            </div>
-            <button class="dropdown-btn side-nav-content"  v-on:click="toggleMenu('brand')">
-              Brand
-              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
-            </button>
-            <div class="dropdown-container" v-show="showMenuBrand">
-              <p v-for="(brand, index) in brands" v-bind:key="index">
-                <input type="checkbox" class="styled-checkbox">
-                <label>{{brand}}</label>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <!--product grid-->
       <div class="product-container" v-if="!error">
           <div class="product" v-for="(p, index) in product_list" v-bind:key="index" v-bind:value="p" v-on:click="goToProduct(p)">
-              <figure class="product-image" >
+              <div class="product-image" >
                   <img v-bind:src='p.images[0].url'>
-              </figure>
-              <div class="product-name" >
-                  <p>{{p.name}}</p>
               </div>
-              <div class="product-price">
-                  <p> ${{p.price}}</p>
-              </div>
-              <div class="product-retailer" >
-                  <p>{{p.merchant}}</p>
+              <div class="product-details">
+                <div class="product-name" >
+                    <p>{{p.name}}</p>
+                </div>
+                <div class="product-price">
+                    <p> ${{p.price}}</p>
+                </div>
+                <div class="product-retailer" >
+                    <p>{{p.merchant}}</p>
+                </div>
               </div>
           </div>
       </div>
@@ -108,6 +65,7 @@ import {iProduct,iImage,iCollection} from "@/models";
 export default class ShopOccasion extends Vue {
 
     //@Prop() occasion! : iOccasion;
+    @Prop() occasion_name!: String;
     @Prop() collection! :iCollection;
     product_list : iProduct[] = this.collection.products; 
     error : string| boolean = false;
@@ -150,9 +108,11 @@ export default class ShopOccasion extends Vue {
   /* FILTERS AND SORTING FUNCTIONS */
   sortByPriceAsc(){
     this.product_list.sort((p1,p2) => p1.price < p2.price ? -1 : p1.price > p2.price ? 1 : 0);
+    this.showSortMenu = !this.showSortMenu;
   }
   sortByPriceDesc(){
     this.product_list.sort((p1,p2) => p1.price > p2.price ? -1 : p1.price < p2.price ? 1 : 0);
+    this.showSortMenu = !this.showSortMenu;
   }
   sortByRecent(){
     //this.product_list.sort((p1,p2) => p1.dateCreated < p2.dateCreated ? -1 : p1.dateCreated > p2.dateCreated ? 1 : 0);
@@ -163,55 +123,30 @@ export default class ShopOccasion extends Vue {
 
 <style lang="scss" scoped>
 
-/*page title style*/
-.page-title {
-  padding-top: 3%;
-  //padding-left: 10%;
-  margin-left: 17%;
-  text-align: left;
-}
 
 /*flex containers*/
-.parent-container-head {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  height: 5%;
-}
-.parent-container-body {
-  display: flex;
-  padding-top: 1%;
-}
+.parent-container {
 
-/*side navigation box*/
-.side-nav {
-  margin-left: 4%;
-  width: 400px;
-  //width: 15%;
-  overflow: hidden;
+    &-title {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      height: 10%; 
+    }
 
-  &-box {
-    padding-bottom: 20%;
-  }
+    &-head {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      height: 5%;
+    }
 
-  &-title {
-    font-size: 25px;
-    font-weight: bold;
-  }
-
-  &-content {
-    font-size: 25px;
-  }
-
-  &-checklist {
-    padding-top: 5%;
-  }
-
-  &-dropdown {
-    padding-left: 0%;
-    padding-top: 5%;
-    width: 60%;
-  }
+    &-body {
+      display: flex;
+      padding-top: 1%;
+      margin-bottom: 5%;
+      margin-right: 5%;
+    }
 }
 
 ul li { 
@@ -303,6 +238,13 @@ ul li {
   border: none;
   box-shadow: none;
 }
+
+.dropdown-item {
+  outline: none;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
 .dropdown-item:hover{
   font-weight: bold;
 }
@@ -333,29 +275,54 @@ ul li {
   display: grid;
   grid-auto-columns: max-content;
   grid-auto-flow: dense;
-  grid-auto-rows: minmax(100px, auto);
-  grid-gap: 3%;
+  //grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: min-content;
+  grid-gap: 2%;
   grid-template-columns: repeat(4, 1fr);
   position: relative;
-  margin-right: 4%;
 }
+
 .product {
   //height: 25%;
-  padding-bottom: 10%;
   background-color: transparent;
+  position: relative;
+  //display:flex;
+  //flex-direction: column;
+  //align-items: stretch;
+
   :hover {
     opacity: 0.8;
   }
-  &-image {
-    max-height: 85%;
+  
+   &-image {
+    position: relative;
+    /*min-height: 80%;
+    max-height: 100%;
+    min-width: 100%;*/
     object-fit: cover;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height:23vw;
+      width: 20vw;
+    }
   }
+
+  &-details {
+    position: relative;
+    //height: 25%;
+    padding-top: 2%;
+    margin-bottom: auto;
+    z-index: 1;
+  }
+
   &-name {
     float: left;
     position: relative;
     padding-top: 0%;
-    width: 60%;
+    width: 75%;
     p {
       font-size: 20px;
       font-weight: bold;
@@ -369,7 +336,7 @@ ul li {
     float: left;
     position: relative;
     padding-top: 0%;
-    width: 60%;
+    width: 75%;
     p {
       font-size: 15px;
       a {
@@ -391,4 +358,5 @@ ul li {
     padding-top:7%;
   }
 }
+/*comment*/
 </style>

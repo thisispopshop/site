@@ -92,6 +92,12 @@ export default new Router({
             import("./views/Admin/Curate.vue")
         },
         {
+          path: "/curate1",
+          name: "curate",
+          component:() =>
+            import("./views/Admin/Curate.1.vue")
+        },
+        {
           path: "/collections",
           name: "collections",
           component:() =>
