@@ -78,7 +78,7 @@ export default class Collections extends Vue {
     //load all collections
     mounted(){
         this.error = false;
-        axios.get(APIConfig.buildUrl("/api/collection"))
+        axios.get(APIConfig.buildUrl("/collection"))
             .then((response:AxiosResponse) => {
                 this.collection_list = response.data.collections;
             })

@@ -30,7 +30,7 @@ export class ProductController extends DefaultController {
           productRepo.findOne(id).then((foundProduct: Product | undefined) => {
             if (foundProduct) res.status(200).send({product:foundProduct});
             else (reason:any) => { res.status(404).send({reason:"Product not found."})}
-          }, () => {
+          }, () => { 
             res.sendStatus(500);
           })
         });
@@ -43,7 +43,7 @@ export class ProductController extends DefaultController {
           productRepo.findOne(id).then((foundProduct:Product | undefined) => {
             if (foundProduct) {
               foundProduct.color = req.body.color;
-              //foundProduct.category = req.body.category;
+              foundProduct.category = req.body.category;
 
               productRepo.save(foundProduct).then(updatedProduct => {
                 res.status(200).send({product:updatedProduct});

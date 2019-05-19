@@ -24,6 +24,10 @@
                 <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/>
               </a>
 
+                <br>
+
+              Contact us at thepopshopteam@gmail.com 
+
             </div>
       </footer>
   </div>

@@ -23,7 +23,8 @@ export class Collection {
   @Column()
   public description!: string;
 
-  @OneToMany(type => Category, category => category.collections, {eager:true, cascade:true})
+  @ManyToMany(type => Category, category => category.collections, {eager:true, cascade:true})
+  @JoinTable()
   public categories!: Category[];
 
   @OneToOne(type=>Occasion, occasion => occasion.collection)

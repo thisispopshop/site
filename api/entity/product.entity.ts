@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn,  PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToMany, OneToOne } from "typeorm";
+import { Column, Entity, JoinColumn,  PrimaryGeneratedColumn, JoinTable, OneToMany, ManyToMany, ManyToOne } from "typeorm";
 import { Image, Category, Collection, Color } from ".";
 
 @Entity()
@@ -27,7 +27,7 @@ export class Product {
   @OneToMany(type => Image, image => image.product, {eager: true, cascade: ["insert", "remove"]})
   public images!: Image[];
 
-  @OneToMany(type => Category, category => category.products)
+  @ManyToOne(type => Category, category => category.products, {eager:true,cascade:["insert", "remove"]})
   public category!: Category;
 
   @ManyToMany(type => Collection, collection => collection.products )

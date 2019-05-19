@@ -163,7 +163,7 @@ export default class Curate1 extends Vue {
    mounted(){
         this.error = false;
         axios
-        .get(APIConfig.buildUrl("/api/product"))
+        .get(APIConfig.buildUrl("/product"))
         .then((response: AxiosResponse) => {
             this.product_list = response.data.products;
             this.product_list = this.product_list.reverse()

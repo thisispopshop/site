@@ -1,11 +1,10 @@
  <template>
  <div>
 
-     
+    <!--To Match Spacing :)-->
     <section class="parent-container-title">
       <div class="title is-size-1 clear-page-title"><strong>Hi</strong></div>
     </section>
-
     <section class="parent-container-head">
       <div class="title is-size-1 clear-page-title"><strong>Hi</strong></div>
     </section>
@@ -19,17 +18,10 @@
         <div class="side-nav-box">
           <p class="side-nav-title"><strong>Browse By:</strong></p>
           <ul class="side-nav-checklist">
-            <li>
-              <input id="checkbox_1" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_1" class="side-nav-content">Apparel</label>
-            </li>
-            <li>
-              <input id="checkbox_2" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_2" class="side-nav-content">Shoes</label>
-            </li>
-            <li>
-              <input id="checkbox_3" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_3" class="side-nav-content">Accessories</label>
+            <li v-for="(cat,index) in category_list" v-bind:key=index v-bind:value=cat>
+                <input type="checkbox" class="styled-checkbox" 
+                     v-bind:id=index v-on:click="selectFilter(cat)">
+                <label v-bind:for=index class="side-nav-content">{{cat.name}}</label>
             </li>
           </ul>
         </div>
@@ -38,6 +30,16 @@
         <div class="side-nav-box">
           <p class="side-nav-title"><strong>Filter By:</strong></p>
           <div class="side-nav-dropdown">
+            <button class="dropdown-btn side-nav-content"  v-on:click="toggleMenu('brand')">
+              Brand
+              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
+            </button>
+            <div class="dropdown-container" v-show="showMenuBrand">
+              <p v-for="(brand, index) in brands" v-bind:key="index">
+                <input type="checkbox" class="styled-checkbox" >
+                <label>{{brand}}</label>
+              </p>
+            </div>
             <!--<button class="dropdown-btn side-nav-content" v-on:click="toggleMenu('size')">
               Size
               <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
@@ -48,18 +50,9 @@
                 <label>{{size}}</label>
               </p>
             </div>-->
-            <button class="dropdown-btn side-nav-content"  v-on:click="toggleMenu('brand')">
-              Brand
-              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
-            </button>
-            <div class="dropdown-container" v-show="showMenuBrand">
-              <p v-for="(brand, index) in brands" v-bind:key="index">
-                <input type="checkbox" class="styled-checkbox">
-                <label>{{brand}}</label>
-              </p>
-            </div>
           </div>
         </div>
+        <!--<button class="button is-dark" v-on:click="applyFilters">APPLY</button>-->
       </div>
 
     </section>
@@ -69,30 +62,57 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue, Prop ,Watch} from "vue-property-decorator";
-import axios, {AxiosError, AxiosResponse} from "axios";
-import { APIConfig } from "@/utils/api.utils";
-import {iProduct,iImage,iCollection} from "@/models";
+import {iProduct,iImage,iCollection, iCategory} from "@/models";
 
 @Component
 export default class ShopFilterBox extends Vue {
 
-    //@Prop() occasion! : iOccasion;
-    @Prop() collection! :iCollection;
-    product_list : iProduct[] = this.collection.products; 
     error : string| boolean = false;
+    @Prop() categories! : iCategory[];
+    @Prop() brands!: String[];
+    category_list = this.categories;
+    selected_categories : iCategory[] = [];
+    //selected_brands : iBrand[];
 
-    @Watch("collection")
-    update(){
-      if (this.collection.products){
-        this.product_list = this.collection.products;
-      } else{
-        console.log("error");
-        this.error = "No Products to Show";
-        this.product_list = [];
-      }
+    mounted(){
+      this.selected_categories = []
     }
 
-  browseByCategory(filter:string){}
+    //@Watch("collection")
+    @Watch("categories")
+    update(){
+      this.category_list = this.categories;
+      this.selected_categories = [];
+    }
+
+    sizes: string[] = ["xs","sm","m","l","xl","xxl"];
+    brands : string[] = ["brand1","brand2","brand3","brand4","brand5"];
+
+    showMenuSize : Boolean = false;
+    showMenuBrand : Boolean = false;
+
+    toggleMenu(menuId:string){
+      if (menuId=='size') 
+        this.showMenuSize = !this.showMenuSize;
+      if (menuId == 'brand')
+        this.showMenuBrand = !this.showMenuBrand;
+    }
+
+
+  // add or remove category upon selection
+  selectFilter(cat:iCategory){
+    const ind = this.selected_categories.indexOf(cat)
+    if (ind == -1)  this.selected_categories.push(cat);
+    else this.selected_categories.splice(ind, 1)
+    this.$emit("filters",this.selected_categories)
+  }
+
+    // send the filters to parent component
+    // so they can be sent to the occasion component
+   applyFilters(){  
+     this.$emit("filters",this.selected_categories)
+    }
+
 }
 </script>
 
