@@ -2,7 +2,7 @@ import cors from "cors";
 import express, {Request,Response} from "express";
 import { DBConnection } from "./connection";
 
-import { LoginController, UserController, CategoryController, OccasionController, ColorController } from "./controller";
+import { LoginController, UserController, CategoryController, OccasionController, ColorController, BrandController } from "./controller";
 import ProductController from "./controller/product.controller";
 import CollectionController from "./controller/collection.controller";
 import EventController from "./controller/event.controller";
@@ -30,6 +30,7 @@ export class Server {
       app.use("/", new CollectionController().router);
       app.use("/", new CategoryController().router);
       app.use("/", new ColorController().router);
+      app.use("/", new BrandController().router);
       app.use("/", new OccasionController().router);
       app.use("/", new EventController().router);
       app.use("/", new OrganizationController().router);

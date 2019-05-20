@@ -44,6 +44,7 @@ export class ProductController extends DefaultController {
             if (foundProduct) {
               foundProduct.color = req.body.color;
               foundProduct.category = req.body.category;
+              foundProduct.brand = req.body.brand;
 
               productRepo.save(foundProduct).then(updatedProduct => {
                 res.status(200).send({product:updatedProduct});

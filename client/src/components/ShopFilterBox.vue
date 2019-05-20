@@ -19,9 +19,9 @@
           <p class="side-nav-title"><strong>Browse By:</strong></p>
           <ul class="side-nav-checklist">
             <li v-for="(cat,index) in category_list" v-bind:key=index v-bind:value=cat>
-                <input type="checkbox" class="styled-checkbox" 
-                     v-bind:id=index v-on:click="selectFilter(cat)">
-                <label v-bind:for=index class="side-nav-content">{{cat.name}}</label>
+                <input type="checkbox" class="styled-checkbox"
+                     v-bind:id=index+cat.name v-on:click="selectCategory(cat)">
+                <label v-bind:for=index+cat.name class="side-nav-content">{{cat.name}}</label>
             </li>
           </ul>
         </div>
@@ -35,9 +35,10 @@
               <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
             </button>
             <div class="dropdown-container" v-show="showMenuBrand">
-              <p v-for="(brand, index) in brands" v-bind:key="index">
-                <input type="checkbox" class="styled-checkbox" >
-                <label>{{brand}}</label>
+              <p v-for="(brand, ind) in brands" v-bind:key="ind" v-bind:value="brand">
+                <input type="checkbox" class="styled-checkbox"
+                     v-bind:id=ind v-on:click="selectBrand(brand)">
+                <label v-bind:for=ind >{{brand.name}}</label>
               </p>
             </div>
             <!--<button class="dropdown-btn side-nav-content" v-on:click="toggleMenu('size')">
@@ -62,31 +63,41 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue, Prop ,Watch} from "vue-property-decorator";
-import {iProduct,iImage,iCollection, iCategory} from "@/models";
+import {iProduct,iImage,iCollection, iCategory, iBrand} from "@/models";
 
 @Component
 export default class ShopFilterBox extends Vue {
 
     error : string| boolean = false;
+
     @Prop() categories! : iCategory[];
-    @Prop() brands!: String[];
+    @Prop() brands!: iBrand[];
     category_list = this.categories;
+    brand_list = this.brands;
     selected_categories : iCategory[] = [];
-    //selected_brands : iBrand[];
+    selected_brands : iBrand[] = [];
 
     mounted(){
       this.selected_categories = []
+      this.selected_brands = []
     }
 
     //@Watch("collection")
     @Watch("categories")
-    update(){
+    updateCategories(){
       this.category_list = this.categories;
       this.selected_categories = [];
+      this.UnSelectAll()
+    }
+
+    @Watch("brands")
+    updateBrands(){
+      this.brand_list = this.brands;
+      this.selected_brands = [];
     }
 
     sizes: string[] = ["xs","sm","m","l","xl","xxl"];
-    brands : string[] = ["brand1","brand2","brand3","brand4","brand5"];
+    //brands : string[] = ["brand1","brand2","brand3","brand4","brand5"];
 
     showMenuSize : Boolean = false;
     showMenuBrand : Boolean = false;
@@ -100,18 +111,29 @@ export default class ShopFilterBox extends Vue {
 
 
   // add or remove category upon selection
-  selectFilter(cat:iCategory){
+  selectCategory(cat:iCategory){
     const ind = this.selected_categories.indexOf(cat)
     if (ind == -1)  this.selected_categories.push(cat);
     else this.selected_categories.splice(ind, 1)
-    this.$emit("filters",this.selected_categories)
+    this.$emit("selectedCategories",this.selected_categories)
   }
 
-    // send the filters to parent component
-    // so they can be sent to the occasion component
-   applyFilters(){  
-     this.$emit("filters",this.selected_categories)
-    }
+  selectBrand(b:iBrand){
+    const ind = this.selected_brands.indexOf(b)
+    if (ind == -1)  this.selected_brands.push(b);
+    else this.selected_brands.splice(ind, 1)
+    this.$emit("selectedBrands",this.selected_brands)
+  }
+
+
+  UnSelectAll() {
+      var items = document.getElementsByTagName('input');
+      for (var i = 0; i < items.length; i++) {
+          if (items[i].type == 'checkbox')
+              if (items[i].checked == true)
+                items[i].checked = false;
+      }
+  }		
 
 }
 </script>

@@ -2,17 +2,17 @@ import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, ManyToMan
 import { Product, Collection } from ".";
 
 @Entity()
-export class Color {
+export class Brand {
   @PrimaryGeneratedColumn()
   public id!: number;
 
   @Column()
   public name!: string;
 
-  @OneToMany(type => Product, product => product.color)
+  @OneToMany(type => Product, product => product.brand)
   public products!: Product[];
 
-  @ManyToMany(type => Collection, collection => collection.colors)
+  @ManyToMany(type => Collection, collection => collection.brands)
   public collections!: Collection[];
 
 }

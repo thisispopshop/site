@@ -18,12 +18,23 @@ export class CollectionController extends DefaultController {
             newCollection.approvedBy = -1;               //idk yet?
             newCollection.description = req.body.description;
             newCollection.products = req.body.products;
-            newCollection.categories = req.body.categories;
+
+            newCollection.categories = newCollection.products.map((p:Product)=>{
+                return p.category;
+            })
+            newCollection.brands = newCollection.products.map((p:Product) => {
+                return p.brand;
+            })
+            newCollection.colors = newCollection.products.map((p:Product) =>{
+                return p.color;
+            })
+
             //console.log(newCollection);
             
             const collectionRepo = getRepository(Collection);
             collectionRepo.save(newCollection)
                 .then((createdCollection:Collection) => {
+                    console.log(createdCollection)
                     res.status(200).send({collection:createdCollection});
                     //productRepo.save(product_list);
                 }, 
@@ -99,7 +110,18 @@ export class CollectionController extends DefaultController {
                     if (req.body.status) { foundCollection.status = req.body.status };
                     //if (req.body.approvedBy)....
                     if (req.body.products) { foundCollection.products = req.body.products };
-                    if (req.body.categories) { foundCollection.categories = req.body.categories};
+                    //if (req.body.categories) { foundCollection.categories = req.body.categories};
+                    //if (req.body.brands) { foundCollection.brands = req.body.brands}
+
+                    foundCollection.categories = foundCollection.products.map((p:Product)=>{
+                        return p.category;
+                    })
+                    foundCollection.brands = foundCollection.products.map((p:Product) => {
+                        return p.brand;
+                    })
+                    foundCollection.colors = foundCollection.products.map((p:Product) =>{
+                        return p.color;
+                    })
 
                     //update it in database
                     collectionRepo.save(foundCollection).then(updatedCollection => {
