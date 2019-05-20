@@ -204,7 +204,6 @@ ul li {
   padding: 6px 0px 6px 0px;
   display: block;
   border: none;
-  border-top: 1px solid #F8F8F8;
   border-bottom: 1px solid darkgrey;
   background: none;
   width: 100%;
@@ -227,6 +226,7 @@ ul li {
 .dropdown-container {
   background-color: none;
   padding-left: 8px;
+  padding-top: 5px;
 }
 
 // pretty checkbox

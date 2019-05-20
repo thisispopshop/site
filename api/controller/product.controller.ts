@@ -8,6 +8,27 @@ export class ProductController extends DefaultController {
     protected initializeRoutes(): Router {
         const router = Router();
 
+        //create a product
+        router.route("/api/product").post((req:Request, res:Response) => {
+          const productRepo = getRepository(Product);
+          const product = new Product()
+          product.name = req.query.name;
+          product.merchant = req.query.merchant;
+          product.price = req.query.price;
+          product.url = req.query.url;
+          product.description = req.query.description;
+          product.images = req.query.images;
+          product.brand = req.query.brand;
+          product.category = req.query.category;
+          product.color = req.query.color;
+
+          productRepo.save(product).then((newProduct: Product) => {
+            res.status(200).send({product:newProduct})
+          }, (reason:any) => {
+            res.status(404).send({reason: "Failed to create product :("})
+          })
+        })
+
         //get all products
         router.route("/api/product").get((req: Request, res: Response) => {
             const productRepo = getRepository(Product);

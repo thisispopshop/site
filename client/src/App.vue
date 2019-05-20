@@ -13,20 +13,26 @@
       <footer class="footer my-footer">
           
             <div class="content has-text-centered">
-              <b>© Popshop 2019</b> 
-              <!--social media not ready-->
-                <br>
-              <a class="tab-space social-media-icon" href="https://www.facebook.com/Popshop-384434792395944/" target="_blank">
-                <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"/>
-              </a>
-              <!--<span class="tab-space"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'twitter' }"/></span>-->
-              <a class="tab-space social-media-icon" href="https://www.instagram.com/thisispopshop/" target="_blank">
-                <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/>
-              </a>
+              <b style="font-size: 25px; padding-bottom: 10px">© Popshop 2019</b> <br>
 
-                <br>
-
-              Contact us at thepopshopteam@gmail.com 
+              <!--social media-->
+              <a id="mail" class="social-media-icon" href="mailto:thepopshopteam@gmail.com">
+                <img src="@/assets/icons/footer_mail.png" alt="mail logo">
+              </a>
+              <a id="instagram" class="tab-space social-media-icon" href="https://www.instagram.com/thisispopshop/" target="_blank">
+                <img src="@/assets/icons/footer_instagram.png" alt="instagram logo">
+              </a>
+              <a id="facebook" class="tab-space social-media-icon" href="https://www.facebook.com/Popshop-384434792395944/" target="_blank">
+                <img src="@/assets/icons/footer_facebook.png" alt="facebook logo">
+              </a>
+              <a id="linkedin" class="tab-space social-media-icon" href="https://www.linkedin.com/company/thisispopshop/about/" target="_blank">
+                <img src="@/assets/icons/footer_linkedin.png" alt="linkedin logo">
+              </a>
+              <a id="github" class="tab-space social-media-icon" href="https://github.com/thisispopshop/site" target="_blank">
+                <img src="@/assets/icons/footer_github.png" alt="github logo">
+              </a>
+              <!--<font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/>-->
+              <!--<font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"/>-->
 
             </div>
       </footer>
@@ -84,7 +90,8 @@ $family-primary: 'Brandon Grotesque', sans-serif;
 
 //add slight tabbing
 .tab-space {
-  padding-left:1em 
+  //padding-left:1em 
+  padding-left:0.5em
 }
 
 //change link color to none
