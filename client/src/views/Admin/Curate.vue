@@ -151,7 +151,7 @@ export default class Curate extends Vue {
         //get all products
         this.error = false;
         axios
-        .get(APIConfig.buildUrl("/api/product"))
+        .get(APIConfig.buildUrl("/product"))
         .then((response: AxiosResponse) => {
             this.all_products = response.data.products;
         })
@@ -162,7 +162,7 @@ export default class Curate extends Vue {
         //get all categories
         this.error = false;
         axios   
-            .get(APIConfig.buildUrl("/api/category"))
+            .get(APIConfig.buildUrl("/category"))
             .then((response:AxiosResponse) => {
                 //console.log(response.data.categories);
                 this.categories = response.data.categories;
@@ -205,7 +205,7 @@ export default class Curate extends Vue {
         {
             this.errors = false;
             this.error = false;
-            axios.post(APIConfig.buildUrl("/api/collection"), 
+            axios.post(APIConfig.buildUrl("/collection"), 
                 {
                     name : this.new_collection.name,
                     description: this.new_collection.description,

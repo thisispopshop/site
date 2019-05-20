@@ -121,7 +121,7 @@ export default class Navigation extends Vue {
       this.org_name = url[0];
       
       this.error = false;
-      axios.get(APIConfig.buildUrl("/api/organization?subdomain=" + this.org_name))
+      axios.get(APIConfig.buildUrl("/organization?subdomain=" + this.org_name))
         .then((response:AxiosResponse) => {
           this.org = response.data.organizations[0];
           this.event = this.org.events[0];

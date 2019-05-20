@@ -39,6 +39,8 @@ export class EventController extends DefaultController {
             newEvent.occasions = req.body.occasions;
             //newEvent.organization = req.body.organization;
 
+            console.log(newEvent)
+
             eventRepo.save(newEvent).then((createdEvent:Event) => {
                 res.status(200).send({event: createdEvent});
             }, 

@@ -3,8 +3,6 @@
 **/
 
 use dev;
-DELETE FROM image;
-DELETE FROM product;
 /**DELETE FROM user;**/
 
 INSERT INTO product
@@ -73,7 +71,7 @@ INSERT INTO image
 INSERT INTO product
     (name,merchant,price,url,description)
     VALUES ("Off Shoulder Pleuche Dress", "Zaful", 11.70, "https://t.cfjump.com/45556/p/37873658", "Off Shoulder Pleuche Dress");
-INSERT INTO 
+INSERT INTO image
     (url,productId)
     VALUES ("https://c.cfjump.com/Products/37843/37873658.jpg",LAST_INSERT_ID()); 
 

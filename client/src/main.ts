@@ -35,33 +35,6 @@ Vue.component('p-radio', PrettyRadio);
 
 Vue.config.productionTip = false;
 
-/*
-//handle subdomains?
-router.beforeEach((to,from,next) => {
-  const host = window.location.host;
-  const url = host.split('.');
-  const subdomain = url[0];
-  const domain = "thisispopshop";
-  //const domain = "localhost:8080"
-  const ending = url[1];
-  const firstPage = ending.slice(4);
-
-  if (subdomain === "www" || subdomain === domain){  //normal page
-    if (firstPage === "/thanks")
-      next({name:"ThanksLandingPage", params:{id:"thanks"}});
-    else{
-      next();
-  } else if (subdomain == "admin") {
-    to: {path:"adminHome"};
-    next({replace:true});
-  }else { //subdomain page
-    //console.log(subdomain);
-    to: {path: "sub_home"};
-    next({replace:true});
-  } 
-
-});*/
-
 new Vue({
   router,
   store,
@@ -72,25 +45,44 @@ new Vue({
 const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
-const domain = "localhost:8080";
-//const domain = "thisispopshop";
+//const domain = "localhost:8080";
+const domain = "thisispopshop";
+/*
+// redirect to home page or not
+if (subdomain === "www" ){
+  const ending = url[2];
+  const firstPage = ending.slice(4);
+  //console.log(firstPage);
+  router.push(firstPage);
+  }
+else if (subdomain === "admin"){
+    router.push({name: "organizations"});
+}
+else if (subdomain === domain){  //normal page
+    const ending = url[1];
+    const firstPage = ending.slice(4);
+    //console.log(firstPage);
+    router.push(firstPage);
+    //if (firstPage === "/thanks")
+    //    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+  }
+else {
+  router.push({path:"home"});
+}*/
+
+// PRODUCTION
+const host = window.location.host;
+const url = host.split('.');
+const subdomain = url[0];
+//const domain = "localhost:8080";
+const domain = "thisispopshop";
 
 // redirect to home page or not
 if (subdomain === "www" ){
   const ending = url[2];
   const firstPage = ending.slice(4);
-  console.log(firstPage);
+  //console.log(firstPage);
   router.push(firstPage);
-  /*
-  if (url.length == 3)
-    router.push("/");
-  else if (url.length > 3){
-    const firstPage = url[3];
-    if (firstPage === "/thanks")
-      router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-    else
-      router.push("/"+firstPage);
-  }*/
   }
   else if (subdomain === "admin"){
     router.push({name: "organizations"});
@@ -98,12 +90,11 @@ if (subdomain === "www" ){
   else if (subdomain === domain){  //normal page
     const ending = url[1];
     const firstPage = ending.slice(4);
-    console.log(firstPage);
-    //router.push(firstPage);
-    if (firstPage === "/thanks")
-        router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
-  }
+    //console.log(firstPage);
+    router.push(firstPage);
+    //if (firstPage === "/thanks")
+    //    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+}
  else {
   router.push({path:"home"});
 }
-

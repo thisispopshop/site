@@ -1,11 +1,10 @@
  <template>
  <div>
 
-     
+    <!--To Match Spacing :)-->
     <section class="parent-container-title">
       <div class="title is-size-1 clear-page-title"><strong>Hi</strong></div>
     </section>
-
     <section class="parent-container-head">
       <div class="title is-size-1 clear-page-title"><strong>Hi</strong></div>
     </section>
@@ -19,17 +18,10 @@
         <div class="side-nav-box">
           <p class="side-nav-title"><strong>Browse By:</strong></p>
           <ul class="side-nav-checklist">
-            <li>
-              <input id="checkbox_1" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_1" class="side-nav-content">Apparel</label>
-            </li>
-            <li>
-              <input id="checkbox_2" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_2" class="side-nav-content">Shoes</label>
-            </li>
-            <li>
-              <input id="checkbox_3" type="checkbox" class="styled-checkbox">
-              <label for="checkbox_3" class="side-nav-content">Accessories</label>
+            <li v-for="(cat,index) in category_list" v-bind:key=index v-bind:value=cat>
+                <input type="checkbox" class="styled-checkbox"
+                     v-bind:id=index+cat.name v-on:click="selectCategory(cat)">
+                <label v-bind:for=index+cat.name class="side-nav-content">{{cat.name}}</label>
             </li>
           </ul>
         </div>
@@ -38,6 +30,17 @@
         <div class="side-nav-box">
           <p class="side-nav-title"><strong>Filter By:</strong></p>
           <div class="side-nav-dropdown">
+            <button class="dropdown-btn side-nav-content"  v-on:click="toggleMenu('brand')">
+              Brand
+              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
+            </button>
+            <div class="dropdown-container" v-show="showMenuBrand">
+              <p v-for="(brand, ind) in brands" v-bind:key="ind" v-bind:value="brand">
+                <input type="checkbox" class="styled-checkbox"
+                     v-bind:id=ind v-on:click="selectBrand(brand)">
+                <label v-bind:for=ind >{{brand.name}}</label>
+              </p>
+            </div>
             <!--<button class="dropdown-btn side-nav-content" v-on:click="toggleMenu('size')">
               Size
               <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
@@ -48,18 +51,9 @@
                 <label>{{size}}</label>
               </p>
             </div>-->
-            <button class="dropdown-btn side-nav-content"  v-on:click="toggleMenu('brand')">
-              Brand
-              <span class="plus-icon"><font-awesome-icon class="fa-xs" icon="plus"/></span>
-            </button>
-            <div class="dropdown-container" v-show="showMenuBrand">
-              <p v-for="(brand, index) in brands" v-bind:key="index">
-                <input type="checkbox" class="styled-checkbox">
-                <label>{{brand}}</label>
-              </p>
-            </div>
           </div>
         </div>
+        <!--<button class="button is-dark" v-on:click="applyFilters">APPLY</button>-->
       </div>
 
     </section>
@@ -69,30 +63,78 @@
 <script lang="ts">
 /* eslint-disable */
 import { Component, Vue, Prop ,Watch} from "vue-property-decorator";
-import axios, {AxiosError, AxiosResponse} from "axios";
-import { APIConfig } from "@/utils/api.utils";
-import {iProduct,iImage,iCollection} from "@/models";
+import {iProduct,iImage,iCollection, iCategory, iBrand} from "@/models";
 
 @Component
 export default class ShopFilterBox extends Vue {
 
-    //@Prop() occasion! : iOccasion;
-    @Prop() collection! :iCollection;
-    product_list : iProduct[] = this.collection.products; 
     error : string| boolean = false;
 
-    @Watch("collection")
-    update(){
-      if (this.collection.products){
-        this.product_list = this.collection.products;
-      } else{
-        console.log("error");
-        this.error = "No Products to Show";
-        this.product_list = [];
-      }
+    @Prop() categories! : iCategory[];
+    @Prop() brands!: iBrand[];
+    category_list = this.categories;
+    brand_list = this.brands;
+    selected_categories : iCategory[] = [];
+    selected_brands : iBrand[] = [];
+
+    mounted(){
+      this.selected_categories = []
+      this.selected_brands = []
     }
 
-  browseByCategory(filter:string){}
+    //@Watch("collection")
+    @Watch("categories")
+    updateCategories(){
+      this.category_list = this.categories;
+      this.selected_categories = [];
+      this.UnSelectAll()
+    }
+
+    @Watch("brands")
+    updateBrands(){
+      this.brand_list = this.brands;
+      this.selected_brands = [];
+    }
+
+    sizes: string[] = ["xs","sm","m","l","xl","xxl"];
+    //brands : string[] = ["brand1","brand2","brand3","brand4","brand5"];
+
+    showMenuSize : Boolean = false;
+    showMenuBrand : Boolean = false;
+
+    toggleMenu(menuId:string){
+      if (menuId=='size') 
+        this.showMenuSize = !this.showMenuSize;
+      if (menuId == 'brand')
+        this.showMenuBrand = !this.showMenuBrand;
+    }
+
+
+  // add or remove category upon selection
+  selectCategory(cat:iCategory){
+    const ind = this.selected_categories.indexOf(cat)
+    if (ind == -1)  this.selected_categories.push(cat);
+    else this.selected_categories.splice(ind, 1)
+    this.$emit("selectedCategories",this.selected_categories)
+  }
+
+  selectBrand(b:iBrand){
+    const ind = this.selected_brands.indexOf(b)
+    if (ind == -1)  this.selected_brands.push(b);
+    else this.selected_brands.splice(ind, 1)
+    this.$emit("selectedBrands",this.selected_brands)
+  }
+
+
+  UnSelectAll() {
+      var items = document.getElementsByTagName('input');
+      for (var i = 0; i < items.length; i++) {
+          if (items[i].type == 'checkbox')
+              if (items[i].checked == true)
+                items[i].checked = false;
+      }
+  }		
+
 }
 </script>
 
@@ -162,7 +204,6 @@ ul li {
   padding: 6px 0px 6px 0px;
   display: block;
   border: none;
-  border-top: 1px solid #F8F8F8;
   border-bottom: 1px solid darkgrey;
   background: none;
   width: 100%;
@@ -185,6 +226,7 @@ ul li {
 .dropdown-container {
   background-color: none;
   padding-left: 8px;
+  padding-top: 5px;
 }
 
 // pretty checkbox

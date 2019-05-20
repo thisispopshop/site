@@ -3,9 +3,10 @@
 
     <section class="parent-container-title">
       <div class="title is-size-1 "><strong>{{occasion_name}}</strong></div>
+      <!--<span>Filters: {{filters_display}}</span>-->
     </section>
 
- <!--Sort By Feature-->
+    <!--Sort By Feature-->
     <section class="parent-container-head">
       <div class="dropdown is-active sort-menu-container">
         <div class="dropdown-trigger">
@@ -59,16 +60,24 @@
 import { Component, Vue, Prop ,Watch} from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
-import {iProduct,iImage,iCollection} from "@/models";
+import {iProduct,iImage,iCollection, iCategory} from "@/models";
 
 @Component
 export default class ShopOccasion extends Vue {
 
     //@Prop() occasion! : iOccasion;
+    error : string| boolean = false;
     @Prop() occasion_name!: String;
     @Prop() collection! :iCollection;
+    @Prop() filters_display! : String;
+
     product_list : iProduct[] = this.collection.products; 
-    error : string| boolean = false;
+    filters = this.filters_display;
+
+    @Watch("filters_display")
+    updateFilters(){
+      this.filters = this.filters_display;
+    }
 
     @Watch("collection")
     update(){
@@ -79,6 +88,7 @@ export default class ShopOccasion extends Vue {
         this.error = "No Products to Show";
         this.product_list = [];
       }
+      //this.filters_display  = ""
     }
 
   goToProduct(p: iProduct){
@@ -87,25 +97,12 @@ export default class ShopOccasion extends Vue {
 
   //side bar menu stuff
   showSortMenu : Boolean = false;
-
   toggleSortMenu() {
     this.showSortMenu = !this.showSortMenu;
   }
 
-  sizes: string[] = ["xs","sm","m","l","xl","xxl"];
-  brands : string[] = ["brand1","brand2","brand3","brand4","brand5"];
-
-  showMenuSize : Boolean = false;
-  showMenuBrand : Boolean = false;
-
-  toggleMenu(menuId:string){
-    if (menuId=='size') 
-      this.showMenuSize = !this.showMenuSize;
-    if (menuId == 'brand')
-      this.showMenuBrand = !this.showMenuBrand;
-  }
-
   /* FILTERS AND SORTING FUNCTIONS */
+
   sortByPriceAsc(){
     this.product_list.sort((p1,p2) => p1.price < p2.price ? -1 : p1.price > p2.price ? 1 : 0);
     this.showSortMenu = !this.showSortMenu;
@@ -117,7 +114,7 @@ export default class ShopOccasion extends Vue {
   sortByRecent(){
     //this.product_list.sort((p1,p2) => p1.dateCreated < p2.dateCreated ? -1 : p1.dateCreated > p2.dateCreated ? 1 : 0);
   }
-  browseByCategory(filter:string){}
+  
 }
 </script>
 
@@ -144,7 +141,7 @@ export default class ShopOccasion extends Vue {
     &-body {
       display: flex;
       padding-top: 1%;
-      margin-bottom: 5%;
+      margin-bottom: 10%;
       margin-right: 5%;
     }
 }

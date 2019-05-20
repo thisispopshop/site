@@ -55,6 +55,7 @@ export class OccasionController extends DefaultController {
                     res.status(200).send({occasion: createdOccasion});
                 },
                 (reason:any) => {
+                    console.log(reason);
                     res.sendStatus(500);
                 });         
         })

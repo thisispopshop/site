@@ -1,8 +1,8 @@
 import DefaultController from "./default.controller";
 
 import { NextFunction, Request, Response, Router } from "express";
-import { getRepository } from "typeorm";
-import { Session, User, Product, Collection, CollectionStatus } from "../entity";
+import { getRepository, Any, In } from "typeorm";
+import { Session, User, Product, Collection, CollectionStatus, Category } from "../entity";
 
 export class CollectionController extends DefaultController {
     protected initializeRoutes(): Router {
@@ -18,17 +18,18 @@ export class CollectionController extends DefaultController {
             newCollection.approvedBy = -1;               //idk yet?
             newCollection.description = req.body.description;
             newCollection.products = req.body.products;
-            newCollection.categories = req.body.categories;
-            //console.log(newCollection);
+
+            newCollection.categories = newCollection.products.map((p:Product)=>{return p.category;})
+            newCollection.brands = newCollection.products.map((p:Product) => {return p.brand;})
+            newCollection.colors = newCollection.products.map((p:Product) =>{return p.color;})
             
             const collectionRepo = getRepository(Collection);
             collectionRepo.save(newCollection)
                 .then((createdCollection:Collection) => {
+                    console.log(createdCollection)
                     res.status(200).send({collection:createdCollection});
-                    //productRepo.save(product_list);
                 }, 
                 (reason:any) => {
-                    //console.log(reason);
                     res.sendStatus(500);
                 });
         });
@@ -49,18 +50,51 @@ export class CollectionController extends DefaultController {
             const collectionRepo = getRepository(Collection);
             const productRepo = getRepository(Product);
 
-            //query from that id?
-            let query: any = {};
-            if (req.query.category) query.category = req.query.category;
-            //not sure how to do list of categories!
-            //if (req.query.brand) query.brand = req.query.brand;
-            //if (req.query.size) query.brand = req.query.size;
-            //if (req.query.color) query.brand = req.query.size;
-
             const id = parseInt(req.params.id);
             collectionRepo.findOne(id).then((foundCollection:Collection | undefined) => {
                 if (foundCollection){
-                    res.status(200).send({collection:foundCollection})
+
+                    //if you need to query ...
+                    if (req.query.categories && req.query.brands){
+                        const productIds = foundCollection.products.map((product:Product)=>{return product.id})
+                        let selectedCategoryIds : number[] = [];
+                        selectedCategoryIds = req.query.categories.split(',').map((cat:number) => {return Number(cat)});
+                        let selectedBrandIds : number[] = [];
+                        selectedBrandIds = req.query.brands.split(',').map((bran:number) => {return Number(bran)});
+                        productRepo.find({
+                                id: In(productIds),
+                                category: In(selectedCategoryIds),
+                                brand: In(selectedBrandIds)
+                            }).then((products:Product[])=> {
+                                foundCollection.products = products
+                                res.status(200).send({collection:foundCollection})
+                            }).catch((reason:any)=>{console.log(reason)})
+                    } else if (req.query.categories && !req.query.brands) {
+                        const productIds = foundCollection.products.map((product:Product)=>{return product.id})
+                        let selectedCategoryIds : number[] = [];
+                        selectedCategoryIds = req.query.categories.split(',').map((cat:number) => {return Number(cat)});
+                        productRepo.find({
+                                id: In(productIds),
+                                category: In(selectedCategoryIds)
+                            }).then((products:Product[])=> {
+                                foundCollection.products = products
+                                res.status(200).send({collection:foundCollection})
+                            }).catch((reason:any)=>{console.log(reason)})                  
+                    } else if (req.query.brands && !req.query.categories ){
+                        const productIds = foundCollection.products.map((product:Product)=>{return product.id})
+                        let selectedBrandIds : number[] = [];
+                        selectedBrandIds = req.query.brands.split(',').map((bran:number) => {return Number(bran)});
+                        productRepo.find({
+                                id: In(productIds),
+                                brand: In(selectedBrandIds)
+                            }).then((products:Product[])=> {
+                                foundCollection.products = products
+                                res.status(200).send({collection:foundCollection})
+                            }).catch((reason:any)=>{console.log(reason)})
+                    }
+                    //send all of them...
+                    else 
+                        res.status(200).send({collection:foundCollection})
                 } else {
                     (reason:any) => 
                         res.status(404).send({error:"Collection Not Found"});
@@ -74,6 +108,7 @@ export class CollectionController extends DefaultController {
         router.route("/api/collection/:id").put((req:Request, res:Response) => {
             const collectionRepo = getRepository(Collection);
             const productRepo = getRepository(Product);
+            const categoryRepo = getRepository(Category);
             const id = parseInt(req.params.id);
 
             collectionRepo.findOne(id).then((foundCollection:Collection | undefined) => {
@@ -85,8 +120,13 @@ export class CollectionController extends DefaultController {
                     //if (req.body.approvedBy)....
                     if (req.body.products) { foundCollection.products = req.body.products };
 
+                    foundCollection.categories = foundCollection.products.map((p:Product)=>{return p.category;})
+                    foundCollection.brands = foundCollection.products.map((p:Product) => {return p.brand;})
+                    foundCollection.colors = foundCollection.products.map((p:Product) =>{return p.color;})
+
                     //update it in database
                     collectionRepo.save(foundCollection).then(updatedCollection => {
+                        console.log(updatedCollection)
                         res.status(200).send({collection:updatedCollection})
                     }) 
                 } 

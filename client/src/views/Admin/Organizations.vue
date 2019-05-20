@@ -201,7 +201,7 @@ export default class Collections extends Vue {
     mounted(){
         //get all organizations
         this.error = false;
-        axios.get(APIConfig.buildUrl('/api/organization'))
+        axios.get(APIConfig.buildUrl('/organization'))
             .then((response:AxiosResponse) => {
                 this.org_list = response.data.organizations;
             })
@@ -211,7 +211,7 @@ export default class Collections extends Vue {
 
         //get all events
         this.error = false;
-        axios.get(APIConfig.buildUrl('/api/event'))
+        axios.get(APIConfig.buildUrl('/event'))
             .then((response:AxiosResponse) => {
                 this.eventsForm = response.data.events;
             })
@@ -221,7 +221,7 @@ export default class Collections extends Vue {
 
         //get all occasions
         this.error=false;
-         axios.get(APIConfig.buildUrl("/api/occasion"))
+         axios.get(APIConfig.buildUrl("/occasion"))
             .then((response:AxiosResponse) => {
                 this.occasionsForm = response.data.occasions;
             })
@@ -231,7 +231,7 @@ export default class Collections extends Vue {
 
         //get all collections
         this.error = false;
-        axios.get(APIConfig.buildUrl("/api/collection"))
+        axios.get(APIConfig.buildUrl("/collection"))
             .then((response:AxiosResponse) => {
                 this.collectionsForm = response.data.collections;
             })
@@ -280,7 +280,7 @@ export default class Collections extends Vue {
     }
     submitOrganization(org: iOrganization) {
         this.error = false;
-        axios.post(APIConfig.buildUrl("/api/organization"), {
+        axios.post(APIConfig.buildUrl("/organization"), {
             name: this.newOrganization.name,
             subdomain: this.newOrganization.subdomain,
             events: this.selectedEventForm,
@@ -307,7 +307,7 @@ export default class Collections extends Vue {
     }
     submitEvent(event: iEvent) {
         this.error = false;
-        axios.post(APIConfig.buildUrl("/api/event"), {
+        axios.post(APIConfig.buildUrl("/event"), {
             name: this.newEvent.name,
             description: this.newEvent.description,
             occasions: this.selectedOccasionForm,
@@ -340,7 +340,7 @@ export default class Collections extends Vue {
             this.error = "Must Have a name";
             return;
         }
-        axios.post(APIConfig.buildUrl("/api/occasion"), 
+        axios.post(APIConfig.buildUrl("/occasion"), 
         {
             name: this.newOccasion.name,
             description: this.newOccasion.description,
