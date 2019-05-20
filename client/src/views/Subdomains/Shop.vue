@@ -111,40 +111,15 @@ export default class Shop extends Vue {
     this.$router.push("/shop/"+ind);
   }
 
-  clearFilters(){
-    this.filters_c = [];
-    this.filters_b = [];
-    this.filter_query = ""
-  }
+  /* FILTER HANDLERS */
 
   updateCategoryFilters(event){
     this.filters_c = event
-    /*
-    const c_length = this.filters_c.length;
-    if (c_length > 0){
-        this.filter_query += "?categories="
-        for (let c=0; c< c_length; c++){
-          this.filter_query = this.filter_query + event[c].id + ","
-        };
-        this.filter_query = this.filter_query.slice(0,-1);
-    } */
     this.filter_query = this.updateFilters()
   }
 
   updateBrandFilters(event){
     this.filters_b = event
-    /*
-    const b_length = this.filters_b.length;
-    if (b_length > 0){
-        this.filter_query += "?brands="
-        for (let b=0; b< b_length; b++){
-          this.filters["brands"].push(event[b].id)
-          this.filter_query = this.filter_query + event[b].id + ","
-        };
-        this.filter_query = this.filter_query.slice(0,-1);
-        console.log(this.filters)
-        //console.log(this.filter_query)
-    } else this.filter_query = ""  */
     this.filter_query = this.updateFilters()
   }
 
@@ -177,6 +152,12 @@ export default class Shop extends Vue {
 
     if (temp_filter_query.length == 1) return ""
     return temp_filter_query
+  }
+
+  clearFilters(){
+    this.filters_c = [];
+    this.filters_b = [];
+    this.filter_query = ""
   }
 
 }

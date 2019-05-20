@@ -64,27 +64,46 @@ export class CollectionController extends DefaultController {
             collectionRepo.findOne(id).then((foundCollection:Collection | undefined) => {
                 if (foundCollection){
 
-                    //if you need to query by category...
-                    if (req.query.categories){
-
-                        const productIds = foundCollection.products.map((product:Product)=>{
-                            return product.id
-                        })
-
+                    //if you need to query ...
+                    if (req.query.categories && req.query.brands){
+                        const productIds = foundCollection.products.map((product:Product)=>{return product.id})
                         let selectedCategoryIds : number[] = [];
                         selectedCategoryIds = req.query.categories.split(',').map((cat:number) => {return Number(cat)});
-
-                        productRepo
-                            .find({
+                        let selectedBrandIds : number[] = [];
+                        selectedBrandIds = req.query.brands.split(',').map((bran:number) => {return Number(bran)});
+                        productRepo.find({
                                 id: In(productIds),
-                                category: In(selectedCategoryIds)
-                                //category: In(selectedCategories)
+                                category: In(selectedCategoryIds),
+                                brand: In(selectedBrandIds)
                             }).then((products:Product[])=> {
-                                //console.log(products)
                                 foundCollection.products = products
                                 res.status(200).send({collection:foundCollection})
                             }).catch((reason:any)=>{console.log(reason)})
-                    } else 
+                    } else if (req.query.categories && !req.query.brands) {
+                        const productIds = foundCollection.products.map((product:Product)=>{return product.id})
+                        let selectedCategoryIds : number[] = [];
+                        selectedCategoryIds = req.query.categories.split(',').map((cat:number) => {return Number(cat)});
+                        productRepo.find({
+                                id: In(productIds),
+                                category: In(selectedCategoryIds)
+                            }).then((products:Product[])=> {
+                                foundCollection.products = products
+                                res.status(200).send({collection:foundCollection})
+                            }).catch((reason:any)=>{console.log(reason)})                  
+                    } else if (req.query.brands && !req.query.categories ){
+                        const productIds = foundCollection.products.map((product:Product)=>{return product.id})
+                        let selectedBrandIds : number[] = [];
+                        selectedBrandIds = req.query.brands.split(',').map((bran:number) => {return Number(bran)});
+                        productRepo.find({
+                                id: In(productIds),
+                                brand: In(selectedBrandIds)
+                            }).then((products:Product[])=> {
+                                foundCollection.products = products
+                                res.status(200).send({collection:foundCollection})
+                            }).catch((reason:any)=>{console.log(reason)})
+                    }
+                    //send all of them...
+                    else 
                         res.status(200).send({collection:foundCollection})
                 } else {
                     (reason:any) => 

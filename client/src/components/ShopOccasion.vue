@@ -3,7 +3,7 @@
 
     <section class="parent-container-title">
       <div class="title is-size-1 "><strong>{{occasion_name}}</strong></div>
-      <span>Filters: {{filters_display}}</span>
+      <!--<span>Filters: {{filters_display}}</span>-->
     </section>
 
     <!--Sort By Feature-->
