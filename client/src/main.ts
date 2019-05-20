@@ -45,9 +45,9 @@ new Vue({
 const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
-const domain = "localhost:8080";
-//const domain = "thisispopshop";
-
+//const domain = "localhost:8080";
+const domain = "thisispopshop";
+/*
 // redirect to home page or not
 if (subdomain === "www" ){
   const ending = url[2];
@@ -68,10 +68,9 @@ else if (subdomain === domain){  //normal page
   }
 else {
   router.push({path:"home"});
-}
+}*/
 
 // PRODUCTION
-/*
 const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
@@ -99,4 +98,3 @@ if (subdomain === "www" ){
  else {
   router.push({path:"home"});
 }
-*/

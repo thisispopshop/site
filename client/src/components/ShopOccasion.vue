@@ -141,7 +141,7 @@ export default class ShopOccasion extends Vue {
     &-body {
       display: flex;
       padding-top: 1%;
-      margin-bottom: 5%;
+      margin-bottom: 10%;
       margin-right: 5%;
     }
 }

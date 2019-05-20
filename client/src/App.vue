@@ -13,7 +13,7 @@
       <footer class="footer my-footer">
           
             <div class="content has-text-centered">
-              <b style="font-size: 25px; padding-bottom: 10px">© Popshop 2019</b> <br>
+              <b style="font-size: 23px; padding-bottom: 10px">© Popshop 2019</b> <br>
 
               <!--social media-->
               <a id="mail" class="social-media-icon" href="mailto:thepopshopteam@gmail.com">

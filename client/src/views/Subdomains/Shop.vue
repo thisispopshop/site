@@ -35,6 +35,7 @@
           v-bind:filters_display="this.filter_query"
         />     
       </div>
+      
     </div>
     </section>
 
