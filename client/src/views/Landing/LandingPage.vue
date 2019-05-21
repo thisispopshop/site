@@ -1,5 +1,17 @@
 <template>
-    <div>
+    <div class="LandingPage">
+
+        <section id="navbar" class="my-nav">
+            <div class="my-nav-menu">
+                <div class="my-nav-item" v-scroll-to="'#section2'">About</div> 
+                <div class="my-nav-item" v-scroll-to="'#section5'">How It Works</div> 
+                <div class="my-nav-item" v-scroll-to="'#section6'">Team</div> 
+            </div>
+            <div class="my-nav-end">
+                <button class="button my-nav-end-button">Create a Popshop</button>
+            </div>
+        </section>
+
         <section id="section1" class="hero is-fullheight has-bg-img-1" >
 
             <div class="hero-head center">
@@ -10,18 +22,18 @@
                     <div class="big-hero-text-one">
                         <p>Stree free style for every occasion.</p>
                         <div class="big-hero-text-one-space-between"></div>
-                        <!--<button class="button custom-button">Create a Popshop</button>-->
+                        <button class="button custom-button">Create a Popshop</button>
                     </div>
             </div>
         </section>
 
         <section id="section2" >
             <div class="standard-container">
-                <div class="center section2-title">Say Goodbye To</div>
+                <div class="center section2-title section-title">Say Goodbye To</div>
                 <div class='center'>
                     <ul class="section2-list">
                          <li class='section2-item'> 
-                             <div class="section2-item-icon">
+                             <div class="section2-item-icon" style="margin-top:1%;">
                                 <img src="@/assets/icons/Goodbye_clock.png" alt="mail logo">
                              </div>
                              <div class="section2-item-text">Countless hours spent shopping</div>
@@ -52,11 +64,11 @@
         </section>
 
         <section id="section4" class="section4 has-bg-img-2">
-              <div class="center section4-text">welcoming your newest sisters home.</div>
+              <div class="center section4-text section-title">welcoming your newest sisters home.</div>
         </section>
 
         <section id="section5">
-            <div class="section5-title center">How It Works</div>
+            <div class="section5-title center section-title">How It Works</div>
             <div id="howitworks-step1" class="section5-steps">
                 <div class="section5-step">
                     <img class="section5-step-img" src="@/assets/images/howitworks_step1.png" alt="how it works 1">
@@ -83,6 +95,7 @@
         </section>
 
         <section id="section6">
+            <div class="section6-title section-title">Team</div>
             <div class="section6-grid">
                 <div id="tiffany" class="section6-grid-item" style="background-color:#FAE4E9">
                     <h1 >Tiffany Yeung</h1>
@@ -114,7 +127,7 @@
 
         <section id="section7">
             <div class="section7">
-                <div class="section7-title">
+                <div class="section7-title section-title">
                     What People Are Saying
                 </div>
                 <div class="section7-content">
@@ -122,7 +135,7 @@
                         <img src="@/assets/images/whatpeoplearesaying_maggy.png" alt="maggy">
                     </div>
                     <p>
-                        <span class="section7-content-quote">"I shop through Popshop because I don't want to risk getting fined or buyin the wrong outfit."</span>
+                        <span class="section7-content-quote">"I shop through Popshop because I don't want to risk getting fined or buying the wrong outfit."</span>
                         <br><br>
                         <span class="section7-content-quote-author">Maggy Kepler, Cal Poly Theta Recruitment Director</span>
                     </p>
@@ -133,7 +146,7 @@
          <section id="section8">
              <div class="standard-container">
                  <div class="section8-title">
-                     Your personal event wardrove awaits.
+                     Your personal event wardrobe awaits.
                  </div>
                         <div class="email-field is-hidden-mobile" id="mc_embed_signup">
                             <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
@@ -203,7 +216,7 @@
              </div>
          </section>
 
-        <div id="toast" v-show="isShowing">
+        <div id="toast" v-show="isShowing" >
             <div id="desc" >YAY, You've been added to our mailing list!</div>
         </div>
     </div>
@@ -232,6 +245,7 @@ export default class LandingPage extends Vue {
     showThankYou(){
         this.isShowing = true;
     }
+
 }
 </script>
 
@@ -258,7 +272,8 @@ export default class LandingPage extends Vue {
 
 .logo-top {  
     //height: 23v;
-    width:20vw;
+    margin-top: 3%;
+    width:15vw;
     position: absolute;
 }
 
@@ -270,6 +285,53 @@ export default class LandingPage extends Vue {
     font-weight: bold;
     font-size: 1.5vw;
     width: 15vw;
+}
+
+.my-nav {
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.7;
+
+     //sticky
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f7f4f4;
+
+    &-menu{
+        width: 70%;
+        padding: 1%;
+        padding-left:1.5%;
+        font-size: 1.3vw;
+        color:black;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    &-item {
+        padding-left: 1.5%;
+        padding-right: 1.5%;
+    }
+    
+    &-item:hover {
+        font-weight: bold;
+    }
+
+    &-end {
+        margin-right: 0%; 
+        padding-right:1.5%;
+        padding: 1%;
+
+        &-button {
+            background-color:#FAE4E9;
+            border-radius: 3.5px;
+            border: none;
+            box-shadow: 0.5px 0.5px rgb(224, 223, 223);
+            font-weight: bold;
+            font-size: 1vw;
+            width: 10vw;  
+        }
+    }
 }
 
 .big-hero-text {
@@ -297,15 +359,18 @@ export default class LandingPage extends Vue {
     
 }
 
+.section-title{
+    font-size: 4vw;
+    font-weight: bold;
+    font-family: 'Brandon Grotesque Thick';
+}
+
 .standard-container {
     padding: 10%;
 }
 
 .section2 {
     &-title{
-        font-size: 4vw;
-        font-weight: bold;
-        font-family: 'Brandon Grotesque Thick';
         padding-bottom: 5%;
     }
 
@@ -322,7 +387,7 @@ export default class LandingPage extends Vue {
         &-icon {
             width:6vw;
             padding-right: 3%;
-            //padding-top: 1%;
+            padding-top: 1%;
 
             img{
                 display:block;
@@ -361,23 +426,18 @@ export default class LandingPage extends Vue {
 
 .section4 {
     &-text {
-        font-weight: bold;
-        font-family: 'Brandon Grotesque Thick';
-        font-size: 4vw;
         padding: 20%;
     }
 }
 
 .section5 {
-    &-title{
-        font-weight: bold;
-        font-family: 'Brandon Grotesque Thick';
-        font-size: 4vw;   
+    &-title{ 
         padding-top: 5%;     
     }
 
     &-steps {
         padding:7%;
+        padding-bottom: 0%;
     }
 
     &-step {
@@ -398,6 +458,12 @@ export default class LandingPage extends Vue {
             }
         }
     }
+}
+
+.section6-title {  
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;   
 }
 
 .section6-grid {
@@ -435,9 +501,6 @@ export default class LandingPage extends Vue {
     padding: 10%;
 
     &-title{
-        font-weight: bold;
-        font-family: 'Brandon Grotesque Thick';
-        font-size: 3vw; 
         text-align:center;
        // padding-bottom: 3%;
     }
