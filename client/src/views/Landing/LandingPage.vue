@@ -1,7 +1,8 @@
 <template>
     <div class="LandingPage">
 
-        <section id="navbar" class="my-nav">
+        <!--desktop-->
+        <section id="navbar" class="my-nav is-hidden-mobile">
             <div class="my-nav-menu">
                 <div class="my-nav-item" v-scroll-to="'#section2'">About</div> 
                 <div class="my-nav-item" v-scroll-to="'#section5'">How It Works</div> 
@@ -9,6 +10,17 @@
             </div>
             <div class="my-nav-end">
                 <button class="button my-nav-end-button">Create a Popshop</button>
+            </div>
+        </section>
+        <!--mobile-->
+        <section id="navbar" class="my-nav is-hidden-desktop is-hidden-tablet">
+            <div class="my-nav-menu-mobile">
+                <div class="my-nav-item-mobile" v-scroll-to="'#section2'">About</div> 
+                <div class="my-nav-item-mobile" v-scroll-to="'#section5'">How It Works</div> 
+                <div class="my-nav-item-mobile" v-scroll-to="'#section6'">Team</div> 
+            </div>
+            <div class="my-nav-end">
+                <button class="button my-nav-end-button-mobile">Create a Popshop</button>
             </div>
         </section>
 
@@ -19,12 +31,18 @@
             </div>
                     
             <div class="hero-body center">
-                    <div class="big-hero-text-one">
-                        <p>Stree free style for every occasion.</p>
-                        <div class="big-hero-text-one-space-between"></div>
-                        <button class="button custom-button">Create a Popshop</button>
-                    </div>
+                <div class="big-hero-text-one is-hidden-mobile">
+                    <p>Stress free style for every occasion.</p>
+                    <div class="big-hero-text-one-space-between"></div>
+                    <button class="button custom-button">Create a Popshop</button>
+                </div>
+                <div class="big-hero-text-one-mobile is-hidden-desktop is-hidden-tablet">
+                    <p>Stress free style for every occasion.</p>
+                    <div class="big-hero-text-one-space-between"></div>
+                    <button class="button custom-button-mobile">Create a Popshop</button>
+                </div>
             </div>
+
         </section>
 
         <section id="section2" >
@@ -67,36 +85,65 @@
               <div class="center section4-text section-title">welcoming your newest sisters home.</div>
         </section>
 
-        <section id="section5">
-            <div class="section5-title center section-title">How It Works</div>
-            <div id="howitworks-step1" class="section5-steps">
-                <div class="section5-step">
-                    <img class="section5-step-img" src="@/assets/images/howitworks_step1.png" alt="how it works 1">
-                    <div class="section5-step-content">
-                        <h1>Step 1: Curate Your Collections</h1>
-                        <p>Easily build custom shopping collections for your events from our wide variety of products.</p>
+        
+        <section id="section5" >
+                <div class="section5-title center section-title">How It Works</div>
+
+                 <!--desktop-->
+                <div  class="section5-steps is-hidden-mobile ">
+                    <div id="howitworks-step1" class="section5-step">
+                        <img class="section5-step-img" src="@/assets/images/howitworks_step1.png" alt="how it works 1">
+                        <div class="section5-step-content">
+                            <h1>Step 1: Curate Your Collections</h1>
+                            <p>Easily build custom shopping collections for your events from our wide variety of products.</p>
+                        </div>
+                    </div>
+                    <div id="howitworks-step2" class="section5-step">
+                        <img class="section5-step-img" src="@/assets/images/howitworks_step2.png" alt="how it works 2">
+                        <div class="section5-step-content">
+                            <h1>Step 2: Customize Your Site</h1>
+                            <p>Customize your Popshop with your event information, submission forms, and more.</p>
+                        </div>
+                    </div>
+                    <div id="howitworks-step3" class="section5-step">
+                        <img class="section5-step-img" src="@/assets/images/howitworks_step3.png" alt="how it works 3">
+                        <div class="section5-step-content">
+                            <h1>Step 3: Publish and Share</h1>
+                            <p>Publish your Popshop so your friends can shop all the brands they love in one place.</p>
+                        </div>
                     </div>
                 </div>
-                <div id="howitworks-step2" class="section5-step">
-                    <img class="section5-step-img" src="@/assets/images/howitworks_step2.png" alt="how it works 2">
-                    <div class="section5-step-content">
-                        <h1>Step 2: Customize Your Site</h1>
-                        <p>Customize your Popshop with your event information, submission forms, and more.</p>
+                <div class="section5-steps-mobile is-hidden-desktop is-hidden-tablet">
+                    <div id="howitworks-step1" class="section5-step-mobile">
+                        <div class="section5-step-content-mobile">
+                            <h1>Step 1: Curate Your Collections</h1>
+                            <p>Easily build custom shopping collections for your events from our wide variety of products.</p>
+                        </div>
+                        <img class="section5-step-img-mobile" src="@/assets/images/howitworks_step1.png" alt="how it works 1">
+                    </div>
+
+                    <div id="howitworks-step2" class="section5-step-mobile">
+                        <div class="section5-step-content-mobile">
+                            <h1>Step 2: Customize Your Site</h1>
+                            <p>Customize your Popshop with your event information, submission forms, and more.</p>
+                        </div>
+                        <img class="section5-step-img-mobile" src="@/assets/images/howitworks_step2.png" alt="how it works 2">
+                    </div>
+
+                    <div id="howitworks-step3" class="section5-step-mobile">
+                        <div class="section5-step-content-mobile">
+                            <h1>Step 3: Publish and Share</h1>
+                            <p>Publish your Popshop so your friends can shop all the brands they love in one place.</p>
+                        </div>                    
+                        <img class="section5-step-img-mobile" src="@/assets/images/howitworks_step3.png" alt="how it works 3">
                     </div>
                 </div>
-                <div id="howitworks-step3" class="section5-step">
-                    <img class="section5-step-img" src="@/assets/images/howitworks_step3.png" alt="how it works 3">
-                    <div class="section5-step-content">
-                        <h1>Step 3: Publish and Share</h1>
-                        <p>Publish your Popshop so your friends can shop all the brands they love in one place.</p>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section id="section6">
             <div class="section6-title section-title">Team</div>
-            <div class="section6-grid">
+            <!--desktop-->
+            <div class="section6-grid is-hidden-mobile">
                 <div id="tiffany" class="section6-grid-item" style="background-color:#FAE4E9">
                     <h1 >Tiffany Yeung</h1>
                     <img src="@/assets/team/team_tiffany.png" alt="tiffany">
@@ -123,10 +170,39 @@
                     </p>
                 </div>
             </div>
+            <!--mobile-->
+            <div class="section6-grid is-hidden-desktop is-hidden-tablet">
+                <div id="tiffany" class="section6-grid-item-mobile" style="background-color:#FAE4E9">
+                    <h1 >Tiffany Yeung</h1>
+                    <img src="@/assets/team/team_tiffany.png" alt="tiffany">
+                    <p>Tiffany is your ultimate, savvy business gal always executing on her next greatest business idea.  First in the office
+                         and the last to go. At 5:01 PM, you’ll see her at the office changing into her PJ’s and getting ready for a long night! 
+                    </p>
+                </div>
+                <div id="rutu" class="section6-grid-item-mobile">
+                    <h1>Rutu Samai</h1>
+                    <img src="@/assets/team/team_rutu.png" alt="rutu">
+                    <p>Rutu is our beloved  Product Pro. As driven as she is talented, she is always ready to tackle her next challenge head on!
+                        In her downtime, she’s doing one of two things - napping or cracking another one of her infamous puns.  
+                    </p>
+                </div>
+                <div id="makena" class="section6-grid-item-mobile" style="background-color:#FAE4E9">
+                    <h1>Makena Kong</h1>
+                    <img src="@/assets/team/team_makena.png" alt="makena">
+                    <p>Makena is your resident, amazingly talented hacker. When she’s not on her couch building new algorithms for Popshop, 
+                        you’ll find her petting the nearest dog and asking for chicken nuggets.
+                    </p>
+                </div>
+                 <div id="team" class="section6-grid-item-mobile">
+                    <br><br>
+                    <img src="@/assets/team/team_teampic.png" alt="team">
+                </div>
+            </div>
         </section>
 
         <section id="section7">
-            <div class="section7">
+            <!--desktop-->
+            <div class="section7 is-hidden-mobile ">
                 <div class="section7-title section-title">
                     What People Are Saying
                 </div>
@@ -138,6 +214,19 @@
                         <span class="section7-content-quote">"I shop through Popshop because I don't want to risk getting fined or buying the wrong outfit."</span>
                         <br><br>
                         <span class="section7-content-quote-author">Maggy Kepler, Cal Poly Theta Recruitment Director</span>
+                    </p>
+                </div>
+            </div>
+            <!--mobile-->
+            <div class="section7 is-hidden-desktop ">
+                <div class="section7-title section-title">
+                    What People Are Saying
+                </div>
+                <div class="section7-content">
+                    <p>
+                        <span class="section7-content-quote-mobile">"I shop through Popshop because I don't want to risk getting fined or buying the wrong outfit."</span>
+                        <img class="section7-content-img-mobile" src="@/assets/images/whatpeoplearesaying_maggy.png" alt="maggy">
+                        <span class="section7-content-quote-author-mobile">Maggy Kepler <br> Cal Poly Theta Recruitment Director</span>
                     </p>
                 </div>
             </div>
@@ -179,7 +268,7 @@
                                 </div>
                             </form>
                         </div> 
-                        <div class="email-field-mobile is-hidden-desktop is-hidden-tablet" id="mc_embed_signup">
+                        <div class="email-field is-hidden-desktop is-hidden-tablet" id="mc_embed_signup">
                             <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
                              method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
 
@@ -204,7 +293,7 @@
 
                                     <!--submit email-->
                                     <div class="control">
-                                        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-small custom-button">
+                                        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-small custom-button-form">
                                     </div>
 
                                 </div>
@@ -272,7 +361,7 @@ export default class LandingPage extends Vue {
 
 .logo-top {  
     //height: 23v;
-    margin-top: 3%;
+    margin-top: 8vh;
     width:15vw;
     position: absolute;
 }
@@ -285,6 +374,16 @@ export default class LandingPage extends Vue {
     font-weight: bold;
     font-size: 1.5vw;
     width: 15vw;
+
+    &-mobile {
+       background-color:#FAE4E9;
+        border-radius: 3.5px;
+        border: none;
+        box-shadow: 0.5px 0.5px rgb(224, 223, 223);
+        font-weight: bold;
+        font-size: 3vw;
+        width: 25vw;     
+    }
 }
 
 .my-nav {
@@ -306,11 +405,26 @@ export default class LandingPage extends Vue {
         color:black;
         display: flex;
         justify-content: flex-start;
+
+        &-mobile{
+            width: 70%;
+            padding: 2%;
+            padding-left:1.5%;
+            font-size: 2.5vw;
+            color:black;
+            display: flex;
+            justify-content: flex-start; 
+        }
     }
 
     &-item {
         padding-left: 1.5%;
         padding-right: 1.5%;
+
+        &-mobile{
+            padding-left: 5%;
+            padding-right: 5%;
+        }
     }
     
     &-item:hover {
@@ -330,8 +444,22 @@ export default class LandingPage extends Vue {
             font-weight: bold;
             font-size: 1vw;
             width: 10vw;  
+
+            &-mobile{
+                background-color:#FAE4E9;
+                border-radius: 3.5px;
+                border: none;
+                box-shadow: 0.5px 0.5px rgb(224, 223, 223);
+                font-weight: bold;
+                font-size: 2.5vw;
+                width: 25vw;        
+            }
         }
     }
+}
+
+.my-nav:hover{
+    opacity:1;
 }
 
 .big-hero-text {
@@ -355,6 +483,18 @@ export default class LandingPage extends Vue {
         button {
             margin-bottom: 0%;
         }
+
+        &-mobile {
+            position: absolute;
+            width: 90%;
+            text-align:center;
+            padding-top: 20vh;
+
+            p {
+                font-size: 10vw;
+                margin-top:0%;
+            }
+        }
     }
     
 }
@@ -377,6 +517,7 @@ export default class LandingPage extends Vue {
     &-list{
         width: 50vw;
         margin:auto;
+
     }
 
     &-item {
@@ -403,6 +544,7 @@ export default class LandingPage extends Vue {
             margin-bottom:0px
         }
     }
+
 }
 
 .section3 {
@@ -430,25 +572,27 @@ export default class LandingPage extends Vue {
     }
 }
 
+
 .section5 {
     &-title{ 
         padding-top: 5%;     
     }
-
     &-steps {
         padding:7%;
         padding-bottom: 0%;
-    }
 
+        &-mobile{
+            padding:7%;
+            padding-bottom: 0%;
+        }
+    }
     &-step {
         display:flex;
         padding-bottom: 5%;
-
         &-img {
             //padding-right: 5%;
             width: 50vw;
         }
-
         &-content {
             padding-left: 5%;
             font-size: 2.5vw;
@@ -457,8 +601,34 @@ export default class LandingPage extends Vue {
                 font-style: italic
             }
         }
+
+        //mobile
+        &-mobile{
+            display:flex;
+            flex-wrap: wrap;
+            padding-bottom: 5%;
+        }
+
+        &-img-mobile {
+            width: 100%;
+            padding-top: 3%; 
+            margin-left:auto; 
+            margin-right:auto
+        }
+
+        &-content-mobile {
+            width:90%; 
+            text-align:center;
+            //padding-left: 5%;
+            font-size: 3vw;
+            h1{
+                font-family: "Brandon Grotesque Thin";
+                font-style: italic
+            }
+        }
     }
 }
+
 
 .section6-title {  
     text-align: center;
@@ -469,7 +639,7 @@ export default class LandingPage extends Vue {
 .section6-grid {
     display:flex;
     flex-wrap: wrap;
-    grid-template-columns: repeat(2,1fr);
+    //grid-template-columns: repeat(2,1fr);
     
     &-item {
         padding: 3%;
@@ -494,6 +664,33 @@ export default class LandingPage extends Vue {
             font-size: 1.75vw;
         }
     }
+
+    &-item-mobile {
+        padding: 3%;
+        width: 100%;
+        text-align: center;
+
+        h1 {
+            font-weight: bold;
+            font-family: 'Brandon Grotesque Thick';
+            font-size: 3vw;  
+        }
+
+        img {
+            display:block;
+            margin-left: auto;
+            margin-right:auto;
+            margin-top: 3%;
+            margin-bottom: 3%;
+        }
+
+        p {
+            padding-left: 5%;
+            padding-right:5%;
+            font-size: 3vw;
+        }
+    }
+
 }
 
 .section7 {
@@ -517,6 +714,12 @@ export default class LandingPage extends Vue {
             width: 15vw;
         }
 
+        &-img-mobile {
+            padding-top: 5%;
+            padding-bottom:5%;
+            width: 100%;
+        }
+
         &-quote {
             font-family: 'Brandon Grotesque Thin';
             font-style: italic;
@@ -524,8 +727,22 @@ export default class LandingPage extends Vue {
             padding-top: 5%;
             padding-left: 5%;
 
+            &-mobile{
+                font-family: 'Brandon Grotesque Thin';
+                font-style: italic;
+                font-size: 2.5vw;
+                padding-top: 5%;
+                padding-left: 5%;
+                font-size: 3.5vw;
+            }
+
             &-author {
                 font-size: 1.5vw;
+
+                &-mobile{
+                    font-size:2.5vw;
+                    text-align:center;
+                }
             }
         }
     }
