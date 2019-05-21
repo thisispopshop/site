@@ -149,7 +149,6 @@ export default class LandingPage extends Vue {
 .logo{
   position: absolute;
   right: 0%;
-  //width: 350px;
   width: 17%;
 }
 

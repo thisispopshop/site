@@ -66,7 +66,6 @@ $navbar-dropdown-boxed-radius: 0px;
 $navbar-item-img-max-height: 8rem;
 
 $dropdown-item-active-background-color: none;
-
 $family-primary: 'Brandon Grotesque', sans-serif;
 
 @import "~bulma/css/bulma.css";
@@ -78,6 +77,33 @@ $family-primary: 'Brandon Grotesque', sans-serif;
   font-family: "Brandon Grotesque";
   src: url('./assets/fonts/Brandon_light.otf');
       font-weight: normal;
+      font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url('./assets/fonts/Brandon_reg.otf');
+      font-weight: bold;
+      font-style: normal;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque Thin";
+  src: url('./assets/fonts/Brandon_thin.otf');
+      font-weight: normal;
+      font-style: normal;
+}
+@font-face {
+  font-family: "Brandon Grotesque Thin";
+  src: url('./assets/fonts/Brandon_thin_it.otf');
+      font-weight: normal;
+      font-style: italic;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque Thick";
+  src: url('./assets/fonts/Brandon_bld.otf');
+      font-weight: bold;
       font-style: normal;
 }
 

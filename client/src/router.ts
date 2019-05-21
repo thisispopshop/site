@@ -26,6 +26,11 @@ export default new Router({
       props: (route) => ({ id: 'thanks'}),
       component:() =>
         import("./views/Landing/LandingPage.vue")
+    },{
+      path:"/newlanding",
+      name: "NewLandingPage",
+      component:() => 
+        import("./views/Landing/NewLandingPage.vue")
     },
     {
       path: "/home",
