@@ -6,6 +6,7 @@ import router from "./router";
 import store from "./store";
 
 import  vueheadful  from "vue-headful";
+import vueScrollto from 'vue-scrollto';
 
 import PrettyInput from 'pretty-checkbox-vue/input';
 import PrettyCheck from 'pretty-checkbox-vue/check';
@@ -28,6 +29,8 @@ library.add( faInstagram, faTwitter, faFacebook);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("vue-headful", vueheadful);
+//Vue.component('VueScrollTo', vueScrollto);
+Vue.use(vueScrollto);
 
 Vue.component('p-input', PrettyInput);
 Vue.component('p-check', PrettyCheck);
@@ -46,22 +49,16 @@ const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
 const domain = "localhost:8080";
-//const domain = "thisispopshop";
+
 // redirect to home page or not
-if (subdomain === "www" ){
-  const ending = url[2];
-  const firstPage = ending.slice(4);
-  //console.log(firstPage);
-  router.push(firstPage);
-  }
-else if (subdomain === "admin"){
+if (subdomain === "admin"){
     router.push({name: "organizations"});
 }
 else if (subdomain === domain){  //normal page
     const ending = url[1];
     const firstPage = ending.slice(4);
     //console.log(firstPage);
-    router.push(firstPage);
+    router.push({path:"ThanksLandingPage",params:{id:"thanks"}});
     //if (firstPage === "/thanks")
     //    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
   }
@@ -82,7 +79,9 @@ if (subdomain === "www" ){
   const ending = url[2];
   const firstPage = ending.slice(4);
   //console.log(firstPage);
-  router.push(firstPage);
+  //router.push(firstPage);
+  if (firstPage === "/thanks")
+        router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
   }
   else if (subdomain === "admin"){
     router.push({name: "organizations"});
@@ -91,10 +90,11 @@ if (subdomain === "www" ){
     const ending = url[1];
     const firstPage = ending.slice(4);
     //console.log(firstPage);
-    router.push(firstPage);
-    //if (firstPage === "/thanks")
-    //    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
+    //router.push(firstPage);
+    if (firstPage === "/thanks")
+        router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
 }
  else {
   router.push({path:"home"});
 }
+

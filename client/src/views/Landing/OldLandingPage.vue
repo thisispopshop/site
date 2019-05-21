@@ -1,5 +1,5 @@
 <template>
-    <div class="LandingPage">
+    <div >
 
         <!--whatever this thing is called-->
         <section class="hero is-fullheight">
