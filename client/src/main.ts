@@ -41,7 +41,7 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-
+/*
 const host = window.location.host;
 const url = host.split('.');
 const subdomain = url[0];
@@ -68,8 +68,8 @@ else if (subdomain === domain){  //normal page
 else {
   router.push({path:"home"});
 }
+*/
 
-/*
 // PRODUCTION
 const host = window.location.host;
 const url = host.split('.');
@@ -98,4 +98,3 @@ if (subdomain === "www" ){
  else {
   router.push({path:"home"});
 }
-*/
