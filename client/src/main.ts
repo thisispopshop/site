@@ -17,7 +17,7 @@ import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faArrowLeft} 
 import { faHeart , faUser, faCheckCircle, faCircle} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import VueRouter from 'vue-router';
+//import VueRouter from 'vue-router';
 //import emailvalidator from "email-validator";
 
 //import our custom css
@@ -44,7 +44,7 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-/*
+
 //DEVELOPMENT
 const host = window.location.host;
 const url = host.split('.');
@@ -66,8 +66,9 @@ else if (subdomain === domain){  //normal page
 else {
   router.push({path:"home"});
 }
-*/
 
+
+/*
 // PRODUCTION
 const host = window.location.host;
 const url = host.split('.');
@@ -98,3 +99,4 @@ if (subdomain === "www" ){
  else {
   router.push({path:"home"});
 }
+*/

@@ -1,32 +1,34 @@
 <template>
-    <div class="LandingPage">
-
+    <div class="LandingMobile">
         <div class="is-hidden-desktop is-hidden-tablet">
-            <LandingMobile v-bind:id="id"/>
-        </div>
 
-        <div class="is-hidden-mobile">
-            <!--desktop-->
+            <!--mobile-->
+            <!--CHANGE THIS TO HAMBURGER?-->
             <section id="navbar" class="my-nav">
-                <div class="my-nav-menu">
-                    <button class="my-nav-item" v-scroll-to="'#section2'">About</button> 
-                    <button class="my-nav-item" v-scroll-to="'#section5'">How It Works</button> 
-                    <button class="my-nav-item" v-scroll-to="'#section6'">Team</button> 
+                <div class="my-nav-menu-mobile">
+                    <div class="my-nav-item-mobile" v-scroll-to="'#section2'">About</div> 
+                    <div class="my-nav-item-mobile" v-scroll-to="'#section5'">How It Works</div> 
+                    <div class="my-nav-item-mobile" v-scroll-to="'#section6'">Team</div> 
                 </div>
                 <div class="my-nav-end">
-                    <button class="my-nav-end-button" v-scroll-to="'#section6'">Create a Popshop</button>
+                    <button class="button my-nav-end-button-mobile">Create a Popshop</button>
                 </div>
             </section>
 
             <!--Hero Landing Page-->
             <section id="section1" class="hero is-fullheight has-bg-img-1" >
+
+                <!--logo=-->
                 <div class="hero-head center">
                     <img id="logo" class="logo-top" src="@/assets/popshop_logo.png" alt="logo" >
-                </div>    
+                </div>
+                        
                 <div class="hero-body center">
-                    <div class="big-hero-text-one ">
+                    <div class="big-hero-text-one">
                         <p>Stress free style for every occasion.</p>
                         <div class="big-hero-text-one-space-between"></div>
+
+                        <!--Button-->
                         <button class="button big-hero-button">Create a Popshop</button>
                     </div>
                 </div>
@@ -71,40 +73,40 @@
             <section id="section4" class="section4 has-bg-img-2">
                 <div class="center section4-text section-title">welcoming your newest sisters home.</div>
             </section>
-            
+
             <section id="section5" >
-                <div class="standard-container">
-                <div class="center section-title">How It Works</div>
-                <div  class="section5-steps ">
-                    <div id="howitworks-step1" class="section5-step">
-                        <div class="section5-step-img">
-                            <img src="@/assets/images/howitworks_step1.png" alt="how it works 1">
+                    <div class="section5-title center section-title">How It Works</div>
+                    <div class="section5-steps">
+                        <div id="howitworks-step1" class="section5-step">
+                            <div class="section5-step-content">
+                                <h1>Step 1: Curate Your Collections</h1>
+                                <p>Easily build custom shopping collections for your events from our wide variety of products.</p>
+                            </div>
+                            <div class="section5-step-img">
+                                <img src="@/assets/images/howitworks_step1.png" alt="how it works 1">
+                            </div>                        
                         </div>
-                        <div class="section5-step-content">
-                            <h1>Step 1: Curate Your Collections</h1>
-                            <p>Easily build custom shopping collections for your events from our wide variety of products.</p>
+
+                        <div id="howitworks-step2" class="section5-step">
+                            <div class="section5-step-content">
+                                <h1>Step 2: Customize Your Site</h1>
+                                <p>Customize your Popshop with your event information, submission forms, and more.</p>
+                            </div>
+                            <div class="section5-step-img">
+                                <img src="@/assets/images/howitworks_step2.png" alt="how it works 2">
+                            </div>
+                        </div>
+
+                        <div id="howitworks-step3" class="section5-step">
+                            <div class="section5-step-content">
+                                <h1>Step 3: Publish and Share</h1>
+                                <p>Publish your Popshop so your friends can shop all the brands they love in one place.</p>
+                            </div>    
+                            <div class="section5-step-img">
+                                <img src="@/assets/images/howitworks_step3.png" alt="how it works 3">
+                            </div>                
                         </div>
                     </div>
-                    <div id="howitworks-step2" class="section5-step">
-                        <div class="section5-step-img">
-                            <img src="@/assets/images/howitworks_step2.png" alt="how it works 2">
-                         </div>
-                        <div class="section5-step-content">
-                            <h1>Step 2: Customize Your Site</h1>
-                            <p>Customize your Popshop with your event information, submission forms and more.</p>
-                        </div>
-                    </div>
-                    <div id="howitworks-step3" class="section5-step">
-                        <div class="section5-step-img">
-                            <img src="@/assets/images/howitworks_step3.png" alt="how it works 3">
-                         </div>
-                        <div class="section5-step-content">
-                            <h1>Step 3: Publish and Share</h1>
-                            <p>Publish your Popshop so your friends can shop all the brands they love in one place.</p>
-                        </div>
-                    </div>
-                </div>
-                </div>
             </section>
 
             <section id="section6">
@@ -116,11 +118,6 @@
                         <p>Tiffany is your ultimate, savvy business gal always executing on her next greatest business idea.  First in the office
                             and the last to go. At 5:01 PM, you’ll see her at the office changing into her PJ’s and getting ready for a long night! 
                         </p>
-                    </div>
-                    <div id="team" class="section6-grid-item">
-                        <div class="section6-big-photo">
-                            <img src="@/assets/team/team_teampic.png" alt="team">
-                        </div>
                     </div>
                     <div id="rutu" class="section6-grid-item">
                         <h1>Rutu Samai</h1>
@@ -136,6 +133,10 @@
                             you’ll find her petting the nearest dog and asking for chicken nuggets.
                         </p>
                     </div>
+                    <div id="team" class="section6-grid-item">
+                        <br><br>
+                        <img src="@/assets/team/team_teampic.png" alt="team">
+                    </div>
                 </div>
             </section>
 
@@ -145,32 +146,29 @@
                         What People Are Saying
                     </div>
                     <div class="section7-content">
-                        <div class="section7-content-img">
-                            <img src="@/assets/images/whatpeoplearesaying_cayla.jpg" alt="maggy">
-                        </div>
                         <p>
-                            <span class="section7-content-quote">“I love using pop shop because it makes my job as our recruitment chair so much easier and it is super convenient for all of my sisters to use!”</span>
-                            <br><br>
-                            <span class="section7-content-quote-author">Cayla Quinn, Cal Poly AOII Recruitment Officer</span>
+                            <span class="section7-content-quot">“I love using pop shop because it makes my job as our recruitment chair so much easier and it is super convenient for all of my sisters to use!”</span>
+                            <img class="section7-content-img-mobile" src="@/assets/images/whatpeoplearesaying_cayla.jpg" alt="maggy">
+                            <span class="section7-content-quote-author">Cayla Quinn <br> Cal Poly AOII Recruitment Officer</span>
                         </p>
                     </div>
                 </div>
             </section>
 
-            <section id="section8">
+             <section id="section8">
                 <div class="standard-container">
                     <div class="section8-title center">
                         Your personal event wardrobe awaits.
                     </div>
-                    <div class="email-field is-hidden-mobile" id="mc_embed_signup">
+              
+                    <div class="email-field " id="mc_embed_signup">
                         <form action="https://thisispopshop.us20.list-manage.com/subscribe/post?u=1b710cfbce51379fff004977c&amp;id=9af8420170" 
                         method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
-
                             <div class="custom-field">
 
                                 <!--email input form-->
                                 <div class="control is-expanded">
-                                    <input class="input is-medium custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter email address" aria-required="true" >
+                                    <input class="input is-small custom-input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter email address" aria-required="true">
                                     <p v-if="error" class="help is-danger">{{error}}</p>
                                 </div>
 
@@ -189,7 +187,6 @@
                                 <div class="control">
                                     <input type="submit" value="Let's Get Started" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button-form">
                                 </div>
-
                             </div>
                         </form>
                     </div> 
@@ -199,9 +196,6 @@
                 </div>
             </section>
 
-            <div id="toast" v-show="isShowing" >
-                <div id="desc" >YAY, You've been added to our mailing list!</div>
-            </div>
         </div>
     </div>
 </template>
@@ -210,14 +204,9 @@
 /* eslint-disable */
 import Vue from "vue";
 import { Component, Prop} from "vue-property-decorator";
-import LandingMobile from "@/mobile/Landing/LandingMobile.vue";
 
-@Component({
-    components: {
-        LandingMobile
-    }
-})
-export default class LandingPage extends Vue {
+@Component
+export default class LandingMobile extends Vue {
 
     @Prop(String) id!: string | null;
     error: string | boolean = false;
@@ -240,33 +229,7 @@ export default class LandingPage extends Vue {
 
 <style lang="scss" scoped>
 
-// STANDARD STYLE
-
-.center {
-    display:flex;
-    justify-content: center;
-}
-
-.logo-top {  
-    margin-top: 8vh;
-    width:15vw;
-    position: absolute;
-}
-
-.section-title{
-    font-size: 4vw;
-    font-weight: bold;
-    font-family: 'Brandon Grotesque Thick';
-    padding-bottom: 3%;
-}
-
-.standard-container {
-    padding: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-}
-
-// BACKGROUND JERO IMAGES
+//hero page background images
 .has-bg-img {
     &-1 {
         background: url("https://i.ibb.co/jDsWcSm/Hero-Image.png")center center; 
@@ -278,7 +241,31 @@ export default class LandingPage extends Vue {
     }
 }
 
-// NAVBAR STYLE
+//standard styles
+
+.center {
+    display:flex;
+    justify-content: center;
+}
+
+.logo-top {  
+    margin-top: 8vh;
+    width:35vw;
+    position: absolute;
+}
+
+.section-title{
+    font-size: 5vw;
+    font-weight: bold;
+    font-family: 'Brandon Grotesque Thick';
+    padding-bottom: 3%;
+}
+
+.standard-container {
+    padding: 5%;
+}
+
+//nav bar
 .my-nav {
     display: flex;
     justify-content: space-between;
@@ -298,13 +285,26 @@ export default class LandingPage extends Vue {
         color:black;
         display: flex;
         justify-content: flex-start;
+
+        &-mobile{
+            width: 70%;
+            padding: 2%;
+            padding-left:1.5%;
+            font-size: 2.5vw;
+            color:black;
+            display: flex;
+            justify-content: flex-start; 
+        }
     }
 
     &-item {
         padding-left: 1.5%;
         padding-right: 1.5%;
-        border: none;
-        background: none;
+
+        &-mobile{
+            padding-left: 5%;
+            padding-right: 5%;
+        }
     }
     
     &-item:hover {
@@ -324,23 +324,33 @@ export default class LandingPage extends Vue {
             font-weight: bold;
             font-size: 1vw;
             width: 10vw;  
+
+            &-mobile{
+                background-color:#FAE4E9;
+                border-radius: 3.5px;
+                border: none;
+                box-shadow: 0.5px 0.5px rgb(224, 223, 223);
+                font-weight: bold;
+                font-size: 2.5vw;
+                width: 25vw;        
+            }
         }
     }
+}
 
-    :hover {
-        opacity: 1;
-    }
+.my-nav:hover{
+    opacity:1;
 }
 
 .big-hero {
     &-text {
         &-one {
             position: absolute;
-            width: 35%;
+            width: 90%;
             text-align:center;
             padding-top: 20vh;
             p {
-                font-size: 4.5vw;
+                font-size: 10vw;
                 margin-top:0%;
             }
             &-space-between {
@@ -349,7 +359,7 @@ export default class LandingPage extends Vue {
             button {
                 margin-bottom: 0%;
             }
-        }   
+        }
     }
     &-button {
         background-color:black;
@@ -357,16 +367,17 @@ export default class LandingPage extends Vue {
         border: none;
         box-shadow: 0.5px 0.5px rgb(224, 223, 223);
         font-weight: bold;
-        font-size: 1.5vw;
-        color: white;
-        width: 15vw;
+        font-size: 5vw;
+        color:white;
+        width: 50vw;
 
         :hover {
             background-color: #FAE4E9;
-            color: black;
+            color: white;
         }
     }
 }
+
 
 .section2 {
     &-list{
@@ -419,32 +430,45 @@ export default class LandingPage extends Vue {
 .section4 {
     &-text {
         padding: 20%;
+        text-align:center;
     }
 }
 
 .section5 {
-    // &-steps{}
+    &-title{
+        padding-top: 5%;
+    }
+    &-steps {
+        padding:7%;
+        padding-bottom: 0%;
+
+    }
     &-step {
         display:flex;
+        flex-wrap: wrap;
         padding-bottom: 5%;
+
         &-img {
-            width: 50%;
+            width: 100%;
+            height: auto;
+            padding-top: 3%; 
+            margin-left:auto; 
+            margin-right:auto;
+
             img {
                 display: block;
                 width: 100%;
                 height: auto;
             }
         }
+
         &-content {
-            width: 50%;
-            padding-left: 5%;
-            font-size: 2.5vw;
+            width:90%; 
+            text-align:center;
+            font-size: 3vw;
             h1{
-                font-weight: bold;
-                font-style: italic;
-            }
-            p {
                 font-family: "Brandon Grotesque Thin";
+                font-style: italic
             }
         }
     }
@@ -456,12 +480,12 @@ export default class LandingPage extends Vue {
         flex-wrap: wrap;
         &-item {
             padding: 3%;
-            width: 50%;
+            width: 100%;
             text-align: center;
             h1 {
                 font-weight: bold;
                 font-family: 'Brandon Grotesque Thick';
-                font-size: 2.5vw;  
+                font-size: 3vw;  
             }
             img {
                 display:block;
@@ -469,41 +493,48 @@ export default class LandingPage extends Vue {
                 margin-right:auto;
                 margin-top: 3%;
                 margin-bottom: 3%;
-                max-width: 100%;
-                height: auto;
             }
             p {
-                font-size: 1.75vw;
+                padding-left: 5%;
+                padding-right:5%;
+                font-size: 3vw;
             }
         }
-    }
-    &-big-photo {
-        width: 100%;
-        object-fit: cover
     }
 }
 
 .section7 {
     background-color: #F8F8F8;
+
     &-content {
         display: flex;
         text-align: center;
         padding: 5%;
-        img{
-            display: block;
-            margin-left: auto;
-            margin-right:auto;
-            width: 80%;
+
+        &-img-mobile {
+            padding-top: 5%;
+            padding-bottom:5%;
+            width: 100%;
+            
+            img{
+                display: block;
+                margin-left: auto;
+                margin-right:auto;
+                width: 15vw;
+            }
         }
+
         &-quote {
             font-family: 'Brandon Grotesque Thin';
             font-style: italic;
             font-size: 2.5vw;
             padding-top: 5%;
             padding-left: 5%;
+            font-size: 3.5vw;
 
             &-author {
-                font-size: 1.5vw;
+                font-size:2.5vw;
+                text-align:center;
             }
         }
     }
@@ -513,7 +544,7 @@ export default class LandingPage extends Vue {
     &-title{
         font-weight: bold;
         font-family: 'Homemade Apple';
-        font-size: 2vw; 
+        font-size: 3vw; 
     }
     &-toast {
         text-align: center;
@@ -527,13 +558,16 @@ export default class LandingPage extends Vue {
     margin-left: auto;
     margin-right:auto;
     display:block;
+    padding: 5%;
 }
 
 .custom {
     &-field {
         display: flex;
-        justify-content:space-between;
-        padding-top: 10%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10%;
     }
     &-input {
         border:  transparent;
@@ -542,103 +576,21 @@ export default class LandingPage extends Vue {
         border-bottom: 1px solid #8c8c8c;
         border-radius: 0px;
         box-shadow: 0;
-        width: 38vw;
+        width: 50vw;
+        //padding-bottom: 5%;
+        margin-bottom: 10%;
+        text-align: center;
     }
     &-button-form {
+        //padding-top: 5%;
+        margin-top: 10%;
         background-color:#FAE4E9;
         font-weight: bold;
         font-family: "Brandon Grotesque";
         border-radius: 3px;
-        //font-size: 1vw;
-        width: 15vw;
-        padding: 1%;
-        margin-bottom: 0%;
+        font-size: 4vw;
+        width: 20vw;
     }
 }
-
-/*toast notification*/
-#toast {
-    max-width: 0px;
-    height: 3vw;
-    /*margin-left: -125px;*/
-    margin: auto;
-    background-color: #FAE4E9;
-    color: black;
-    text-align: center;
-    border-radius: 3px;
-    position: fixed;
-    /*z-index: 1;*/
-    left: 0;
-    right: 0;
-    bottom: 30px;
-    font-size: 1vw;
-    white-space: nowrap;
-
-    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
-}
-
-#toast #desc{
-    color: black;
-    padding: 5%;
-    overflow: hidden;
-	white-space: nowrap;
-}
-
-/*
-#toast.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
-}*/
-
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-}
-
-@keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-}
-
-@-webkit-keyframes expand {
-    from {min-width: 0px} 
-    to {min-width: 20vw}
-}
-
-@keyframes expand {
-    from {min-width: 0px}
-    to {min-width: 20vw}
-}
-@-webkit-keyframes stay {
-    from {min-width: 20vw} 
-    to {min-width: 20vw}
-}
-
-@keyframes stay {
-    from {min-width: 20vw}
-    to {min-width: 20vw}
-}
-@-webkit-keyframes shrink {
-    from {min-width: 20vw;} 
-    to {min-width: 0px;}
-}
-
-@keyframes shrink {
-    from {min-width: 20vw;} 
-    to {min-width: 0px;}
-}
-
-@-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 60px; opacity: 0;}
-}
-
-@keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 60px; opacity: 0;}
-}
-
 
 </style>
