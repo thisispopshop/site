@@ -13,6 +13,7 @@
       <footer class="footer my-footer">
           
             <div class="content has-text-centered">
+              <br><br><br>
               <b style="font-size: 23px; padding-bottom: 10px">© Popshop 2019</b> <br>
 
               <!--social media-->

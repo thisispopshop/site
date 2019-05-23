@@ -6,9 +6,9 @@
             <!--CHANGE THIS TO HAMBURGER?-->
             <section id="navbar" class="my-nav">
                 <div class="my-nav-menu-mobile">
-                    <div class="my-nav-item-mobile" v-scroll-to="'#section2'">About</div> 
-                    <div class="my-nav-item-mobile" v-scroll-to="'#section5'">How It Works</div> 
-                    <div class="my-nav-item-mobile" v-scroll-to="'#section6'">Team</div> 
+                    <div class="my-nav-item-mobile" v-scroll-to="'#section2-mobile'">About</div> 
+                    <div class="my-nav-item-mobile" v-scroll-to="'#section5-mobile'">How It Works</div> 
+                    <div class="my-nav-item-mobile" v-scroll-to="'#section6-mobile'">Team</div> 
                 </div>
                 <div class="my-nav-end">
                     <button class="button my-nav-end-button-mobile">Create a Popshop</button>
@@ -16,7 +16,7 @@
             </section>
 
             <!--Hero Landing Page-->
-            <section id="section1" class="hero is-fullheight has-bg-img-1" >
+            <section id="section1-mobile" class="hero is-fullheight has-bg-img-1" >
 
                 <!--logo=-->
                 <div class="hero-head center">
@@ -34,7 +34,7 @@
                 </div>
             </section>
 
-            <section id="section2" >
+            <section id="section2-mobile" >
                 <div class="standard-container">
                     <div class="center section-title">Say Goodbye To</div>
                     <div class='center'>
@@ -62,7 +62,7 @@
                 </div>
             </section>
 
-            <section id="section3" class='section3'>
+            <section id="section3-mobile" class='section3'>
                 <div class="standard-container">
                     <div class="center section3-text1">Let us handle your wardrobe</div>
                     <div class="center section3-text2">so you can focus on</div>
@@ -70,11 +70,11 @@
                 </div>
             </section>
 
-            <section id="section4" class="section4 has-bg-img-2">
+            <section id="section4-mobile" class="section4 has-bg-img-2">
                 <div class="center section4-text section-title">welcoming your newest sisters home.</div>
             </section>
 
-            <section id="section5" >
+            <section id="section5-mobile" >
                     <div class="section5-title center section-title">How It Works</div>
                     <div class="section5-steps">
                         <div id="howitworks-step1" class="section5-step">
@@ -109,7 +109,7 @@
                     </div>
             </section>
 
-            <section id="section6">
+            <section id="section6-mobile">
                 <div class="center section-title">Team</div>
                 <div class="section6-grid">
                     <div id="tiffany" class="section6-grid-item" style="background-color:#FAE4E9">
@@ -140,7 +140,7 @@
                 </div>
             </section>
 
-            <section id="section7">
+            <section id="section7-mobile">
                 <div class="section7 standard-container">
                     <div class="section-title center">
                         What People Are Saying
@@ -155,7 +155,7 @@
                 </div>
             </section>
 
-             <section id="section8">
+             <section id="section8-mobile">
                 <div class="standard-container">
                     <div class="section8-title center">
                         Your personal event wardrobe awaits.
@@ -185,7 +185,7 @@
 
                                 <!--submit email-->
                                 <div class="control">
-                                    <input type="submit" value="Let's Get Started" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable is-medium custom-button-form">
+                                    <input type="submit" value="Let's Get Started" name="subscribe" id="mc-embedded-subscribe" class="button is-hoverable custom-button-form">
                                 </div>
                             </div>
                         </form>
@@ -588,8 +588,8 @@ export default class LandingMobile extends Vue {
         font-weight: bold;
         font-family: "Brandon Grotesque";
         border-radius: 3px;
-        font-size: 4vw;
-        width: 20vw;
+        font-size: 3vw;
+        width: 25vw;
     }
 }
 

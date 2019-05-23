@@ -13,8 +13,11 @@
                     <button class="my-nav-item" v-scroll-to="'#section5'">How It Works</button> 
                     <button class="my-nav-item" v-scroll-to="'#section6'">Team</button> 
                 </div>
+                <div class="my-nav-middle">
+                    <img src="@/assets/popshop_logo.png" alt="logo" v-scroll-to="'#section1'">
+                </div>
                 <div class="my-nav-end">
-                    <button class="my-nav-end-button" v-scroll-to="'#section6'">Create a Popshop</button>
+                    <button class="my-nav-end-button" v-scroll-to="'#section8'">Create a Popshop</button>
                 </div>
             </section>
 
@@ -27,7 +30,7 @@
                     <div class="big-hero-text-one ">
                         <p>Stress free style for every occasion.</p>
                         <div class="big-hero-text-one-space-between"></div>
-                        <button class="button big-hero-button">Create a Popshop</button>
+                        <button class="button big-hero-button" v-scroll-to="'#section8'">Create a Popshop</button>
                     </div>
                 </div>
             </section>
@@ -278,60 +281,6 @@ export default class LandingPage extends Vue {
     }
 }
 
-// NAVBAR STYLE
-.my-nav {
-    display: flex;
-    justify-content: space-between;
-    opacity: 0.7;
-
-     //sticky
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #f7f4f4;
-
-    &-menu{
-        width: 70%;
-        padding: 1%;
-        padding-left:1.5%;
-        font-size: 1.3vw;
-        color:black;
-        display: flex;
-        justify-content: flex-start;
-    }
-
-    &-item {
-        padding-left: 1.5%;
-        padding-right: 1.5%;
-        border: none;
-        background: none;
-    }
-    
-    &-item:hover {
-        font-weight: bold;
-    }
-
-    &-end {
-        margin-right: 0%; 
-        padding-right:1.5%;
-        padding: 1%;
-
-        &-button {
-            background-color:#FAE4E9;
-            border-radius: 3.5px;
-            border: none;
-            box-shadow: 0.5px 0.5px rgb(224, 223, 223);
-            font-weight: bold;
-            font-size: 1vw;
-            width: 10vw;  
-        }
-    }
-
-    :hover {
-        opacity: 1;
-    }
-}
-
 .big-hero {
     &-text {
         &-one {
@@ -368,6 +317,61 @@ export default class LandingPage extends Vue {
     }
 }
 
+.my-nav {
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.8;
+     //sticky
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f7f4f4;
+
+    &-menu{
+        width: 47%;
+        padding: 0.5%;
+        padding-left:1.5%;
+        display: flex;
+        justify-content: flex-start;
+
+        button {
+            background-color: transparent;
+            border: none;
+            font-size: 1.5vw;
+            color:black;
+        }
+    }
+    &-item {
+        padding-left: 2%;
+        padding-right: 2%;
+
+        :hover {
+            font-weight: bold;
+        }
+    }
+
+    &-middle {
+        img {
+            width: 6vw;
+        }
+    }
+    
+    &-end {
+        margin:auto;
+        margin-right: 0%; 
+        padding-right:1.5%;
+        padding: 2%;
+        &-button {
+            background-color:#FAE4E9;
+            border-radius: 3.5px;
+            border: none;
+            box-shadow: 0.5px 0.5px rgb(224, 223, 223);
+            font-weight: bold;
+            font-size: 1vw;
+            width: 10vw;  
+        }
+    }
+}
 .section2 {
     &-list{
         width: 55%;
