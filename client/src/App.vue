@@ -10,10 +10,9 @@
 
       <RouterView/>
 
-      <footer class="footer my-footer">
+      <footer class="footer my-footer" style="padding-bottom: 2%">
           
             <div class="content has-text-centered">
-              <br><br><br>
               <b style="font-size: 23px; padding-bottom: 10px">© Popshop 2019</b> <br>
 
               <!--social media-->
@@ -144,6 +143,7 @@ body {
 
 .my-footer {
   background: none;
+  margin-bottom: 0%;
 }
 /*comment*/
 </style>

@@ -40,8 +40,8 @@
                     <div class="center section-title">Say Goodbye To</div>
                     <div class='center'>
                         <ul class="section2-list">
-                            <li class='section2-item'> 
-                                <div class="section2-item-icon" style="margin-top:1%;">
+                            <li class='section2-item'>
+                                <div class="section2-item-icon">
                                     <img src="@/assets/icons/Goodbye_clock.png" alt="mail logo">
                                 </div>
                                 <div class="section2-item-text">Countless hours spent shopping</div>
@@ -120,11 +120,11 @@
                             and the last to go. At 5:01 PM, you’ll see her at the office changing into her PJ’s and getting ready for a long night! 
                         </p>
                     </div>
-                    <div id="team" class="section6-grid-item">
-                        <div class="section6-big-photo">
+                    <!--<div id="team" class="section6-grid-item">-->
+                        <div class="section6-grid-big-photo">
                             <img src="@/assets/team/team_teampic.png" alt="team">
-                        </div>
-                    </div>
+                       </div>
+                    <!--</div>-->
                     <div id="rutu" class="section6-grid-item">
                         <h1>Rutu Samai</h1>
                         <img src="@/assets/team/team_rutu.png" alt="rutu">
@@ -310,7 +310,7 @@ export default class LandingPage extends Vue {
         color: white;
         width: 15vw;
 
-        :hover {
+        &:hover {
             background-color: #FAE4E9;
             color: black;
         }
@@ -327,6 +327,10 @@ export default class LandingPage extends Vue {
     width: 100%;
     background-color: #f7f4f4;
 
+    &:hover {
+        opacity:1
+    }
+
     &-menu{
         width: 47%;
         padding: 0.5%;
@@ -341,11 +345,13 @@ export default class LandingPage extends Vue {
             color:black;
         }
     }
-    &-item {
-        padding-left: 2%;
-        padding-right: 2%;
 
-        :hover {
+    &-item {
+        padding-left: 3%;
+        padding-right: 3%;
+        white-space: nowrap;
+
+        &:hover {
             font-weight: bold;
         }
     }
@@ -367,14 +373,21 @@ export default class LandingPage extends Vue {
             border: none;
             box-shadow: 0.5px 0.5px rgb(224, 223, 223);
             font-weight: bold;
-            font-size: 1vw;
-            width: 10vw;  
+            font-size: 1.25vw;
+            width: 12vw;  
+            padding: 1%;
+
+            &:hover {
+                background-color: black;
+                color: white
+            }
         }
     }
 }
+
 .section2 {
     &-list{
-        width: 55%;
+        width: 60%;
         margin:auto;
     }
     &-item {
@@ -383,8 +396,8 @@ export default class LandingPage extends Vue {
         padding-bottom: 5%;
         &-icon {
             width:6vw;
-            padding-right: 3%;
-            padding-top: 1%;
+            //padding-right: 3%;
+            padding-top: 2%;
             img{
                 display:block;
                 margin-left:auto;
@@ -392,10 +405,11 @@ export default class LandingPage extends Vue {
             }
         }
         &-text {
-            padding-left: 3%;
+            padding-left: 6%;
             font-size: 3vw;
             margin-top:0px;
             margin-bottom:0px;
+            width: auto;
             white-space: nowrap;
         }
     }
@@ -480,10 +494,17 @@ export default class LandingPage extends Vue {
                 font-size: 1.75vw;
             }
         }
-    }
-    &-big-photo {
-        width: 100%;
-        object-fit: cover
+        &-big-photo {
+            object-fit: cover;
+            width: 50%;
+            img {
+                width: auto;
+                height: 100%;
+                min-height: 100%;
+                min-width: 100%;
+                object-fit: cover;
+            }
+        }
     }
 }
 

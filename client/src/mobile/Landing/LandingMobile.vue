@@ -269,7 +269,7 @@ export default class LandingMobile extends Vue {
 .my-nav {
     display: flex;
     justify-content: space-between;
-    opacity: 0.7;
+    opacity: 0.8;
 
      //sticky
     position: fixed;
@@ -277,10 +277,14 @@ export default class LandingMobile extends Vue {
     width: 100%;
     background-color: #f7f4f4;
 
+    &-hover {
+        opacity:1
+    }
+
     &-menu{
         width: 70%;
         padding: 1%;
-        padding-left:1.5%;
+        padding-left:2%;
         font-size: 1.3vw;
         color:black;
         display: flex;
@@ -300,10 +304,12 @@ export default class LandingMobile extends Vue {
     &-item {
         padding-left: 1.5%;
         padding-right: 1.5%;
+        white-space: nowrap;
 
         &-mobile{
             padding-left: 5%;
             padding-right: 5%;
+            white-space: nowrap;
         }
     }
     
@@ -338,10 +344,6 @@ export default class LandingMobile extends Vue {
     }
 }
 
-.my-nav:hover{
-    opacity:1;
-}
-
 .big-hero {
     &-text {
         &-one {
@@ -367,13 +369,13 @@ export default class LandingMobile extends Vue {
         border: none;
         box-shadow: 0.5px 0.5px rgb(224, 223, 223);
         font-weight: bold;
-        font-size: 5vw;
+        font-size: 4vw;
         color:white;
-        width: 50vw;
+        width: 40vw;
 
-        :hover {
+        &:hover {
             background-color: #FAE4E9;
-            color: white;
+            color: black;
         }
     }
 }
@@ -542,6 +544,8 @@ export default class LandingMobile extends Vue {
 
 .section8 {
     &-title{
+        padding-top: 3%;
+        padding-bottom: 0%;
         font-weight: bold;
         font-family: 'Homemade Apple';
         font-size: 3vw; 
