@@ -16,7 +16,7 @@
                         <div class="big-hero-text-one-space-between"></div>
 
                         <!--Button-->
-                        <button class="button big-hero-button">Create a Popshop</button>
+                        <button class="button big-hero-button" v-scroll-to="'#section8-mobile'">Create a Popshop</button>
                     </div>
                 </div>
                 <div class="arrow bounce">
@@ -31,7 +31,7 @@
                     <div class="my-nav-item" v-scroll-to="'#section6-mobile'">Team</div> 
                 </div>
                 <div class="my-nav-end">
-                    <button class="button my-nav-end-button">Create a Popshop</button>
+                    <button class="button my-nav-end-button" v-scroll-to="'#section8-mobile'">Create a Popshop</button>
                 </div>
             </section>
 
@@ -395,6 +395,9 @@ export default class LandingMobile extends Vue {
         &:hover {
             background-color: #FAE4E9;
             color: black;
+        }
+        &:focus {
+            outline: none;
         }
     }
 }
