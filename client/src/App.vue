@@ -10,7 +10,7 @@
 
       <RouterView/>
 
-      <footer class="footer my-footer">
+      <footer class="footer my-footer" style="padding-bottom: 2%">
           
             <div class="content has-text-centered">
               <b style="font-size: 23px; padding-bottom: 10px">© Popshop 2019</b> <br>
@@ -72,39 +72,47 @@ $family-primary: 'Brandon Grotesque', sans-serif;
 @import "bulma/sass/utilities/_all.sass";
 @import "bulma/sass/grid/columns.sass";
 @import "bulma/bulma.sass";
+@import url('https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap');
 
 @font-face {
   font-family: "Brandon Grotesque";
   src: url('./assets/fonts/Brandon_light.otf');
-      font-weight: normal;
-      font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Brandon Grotesque";
   src: url('./assets/fonts/Brandon_reg.otf');
-      font-weight: bold;
-      font-style: normal;
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
   font-family: "Brandon Grotesque Thin";
   src: url('./assets/fonts/Brandon_thin.otf');
-      font-weight: normal;
-      font-style: normal;
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
   font-family: "Brandon Grotesque Thin";
   src: url('./assets/fonts/Brandon_thin_it.otf');
-      font-weight: normal;
-      font-style: italic;
+  font-weight: normal;
+  font-style: italic;
 }
 
 @font-face {
   font-family: "Brandon Grotesque Thick";
   src: url('./assets/fonts/Brandon_bld.otf');
-      font-weight: bold;
-      font-style: normal;
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: "Homemade Apple", cursive;
+  src: url('https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap');
+  font-weight: normal;
+  font-style:normal;
 }
 
 #app {
@@ -134,7 +142,8 @@ body {
 }
 
 .my-footer {
-  background: #F8F8F8;
+  background: none;
+  margin-bottom: 0%;
 }
 /*comment*/
 </style>
