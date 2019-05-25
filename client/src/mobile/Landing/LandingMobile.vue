@@ -2,19 +2,6 @@
     <div class="LandingMobile">
         <div class="is-hidden-desktop is-hidden-tablet">
 
-            <!--mobile-->
-            <!--CHANGE THIS TO HAMBURGER?-->
-            <section id="navbar" class="my-nav">
-                <div class="my-nav-menu-mobile">
-                    <div class="my-nav-item-mobile" v-scroll-to="'#section2-mobile'">About</div> 
-                    <div class="my-nav-item-mobile" v-scroll-to="'#section5-mobile'">How It Works</div> 
-                    <div class="my-nav-item-mobile" v-scroll-to="'#section6-mobile'">Team</div> 
-                </div>
-                <div class="my-nav-end">
-                    <button class="button my-nav-end-button-mobile">Create a Popshop</button>
-                </div>
-            </section>
-
             <!--Hero Landing Page-->
             <section id="section1-mobile" class="hero is-fullheight has-bg-img-1" >
 
@@ -31,6 +18,20 @@
                         <!--Button-->
                         <button class="button big-hero-button">Create a Popshop</button>
                     </div>
+                </div>
+                <div class="arrow bounce">
+                    <img src="@/assets/icons/arrow.png" alt="bouncy arrow">
+                </div>
+            </section>
+
+            <section id="navbar-mobile" ref="navbar-mobile" class="my-nav" v-bind:style="navPosition" v-on:fixNav="navPosition=$event">
+                <div class="my-nav-menu">
+                    <div class="my-nav-item" v-scroll-to="'#section2-mobile'">About</div> 
+                    <div class="my-nav-item" v-scroll-to="'#section5-mobile'">How It Works</div> 
+                    <div class="my-nav-item" v-scroll-to="'#section6-mobile'">Team</div> 
+                </div>
+                <div class="my-nav-end">
+                    <button class="button my-nav-end-button">Create a Popshop</button>
                 </div>
             </section>
 
@@ -210,8 +211,11 @@ export default class LandingMobile extends Vue {
 
     @Prop(String) id!: string | null;
     error: string | boolean = false;
-
     isShowing : Boolean = false;
+    
+    navPositionNotFixed = { position: "relative"}
+    navPositionFixed = {position: "fixed", top: 0}
+    navPosition = this.navPositionNotFixed
 
     mounted(){
         if (this.id == "thanks") {
@@ -222,6 +226,32 @@ export default class LandingMobile extends Vue {
 
     showThankYou(){
         this.isShowing = true;
+    }
+
+    // event listeners for scrolling
+    beforeMount() {
+        window.addEventListener('scroll', this.handleScroll);
+        //console.log('scrolling Injected');
+    }
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
+        //console.log('scrolling Destroyed');
+    }
+    handleScroll() {
+        let scrolled = window.scrollY > 0;
+        let windowHeight = window.innerHeight;
+
+        //pass first page
+        //var nav = this.$refs.navbar;
+        if (window.scrollY > windowHeight) {
+            this.navPosition = this.navPositionFixed;
+            this.$emit('fixNav', this.navPosition)
+        }
+
+        if (window.scrollY < windowHeight) {
+            this.navPosition = this.navPositionNotFixed;
+            this.$emit('fixNav', this.navPosition)
+        }
     }
 
 }
@@ -270,51 +300,42 @@ export default class LandingMobile extends Vue {
     display: flex;
     justify-content: space-between;
     opacity: 0.8;
-
-     //sticky
-    position: fixed;
-    top: 0;
     width: 100%;
     background-color: #f7f4f4;
 
-    &-hover {
+    &:hover {
         opacity:1
     }
 
     &-menu{
         width: 70%;
-        padding: 1%;
-        padding-left:2%;
-        font-size: 1.3vw;
+        padding: 2%;
+        padding-left:1.5%;
+        font-size: 2.5vw;
         color:black;
         display: flex;
-        justify-content: flex-start;
-
-        &-mobile{
-            width: 70%;
-            padding: 2%;
-            padding-left:1.5%;
+        justify-content: flex-start; 
+        
+        button {
+            background-color: transparent;
+            border: none;
             font-size: 2.5vw;
             color:black;
-            display: flex;
-            justify-content: flex-start; 
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 
     &-item {
-        padding-left: 1.5%;
-        padding-right: 1.5%;
+        padding-left: 5%;
+        padding-right: 5%;
         white-space: nowrap;
-
-        &-mobile{
-            padding-left: 5%;
-            padding-right: 5%;
-            white-space: nowrap;
+        
+        &:hover {
+            font-weight: bold
         }
-    }
-    
-    &-item:hover {
-        font-weight: bold;
     }
 
     &-end {
@@ -328,17 +349,15 @@ export default class LandingMobile extends Vue {
             border: none;
             box-shadow: 0.5px 0.5px rgb(224, 223, 223);
             font-weight: bold;
-            font-size: 1vw;
-            width: 10vw;  
-
-            &-mobile{
-                background-color:#FAE4E9;
-                border-radius: 3.5px;
-                border: none;
-                box-shadow: 0.5px 0.5px rgb(224, 223, 223);
-                font-weight: bold;
-                font-size: 2.5vw;
-                width: 25vw;        
+            font-size: 2.5vw;
+            width: 25vw;       
+            
+            &:hover {
+                background-color: black;
+                color: white
+            }
+            &:focus {
+                outline: none;
             }
         }
     }
@@ -378,6 +397,27 @@ export default class LandingMobile extends Vue {
             color: black;
         }
     }
+}
+
+.arrow {
+  text-align: center;
+  margin-bottom: 3%;
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
 }
 
 

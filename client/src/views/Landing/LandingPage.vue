@@ -1,25 +1,13 @@
 <template>
     <div class="LandingPage">
 
+        <!--mobile view-->
         <div class="is-hidden-desktop is-hidden-tablet">
             <LandingMobile v-bind:id="id"/>
         </div>
 
+        <!--desktop view-->
         <div class="is-hidden-mobile">
-            <!--desktop-->
-            <section id="navbar" class="my-nav">
-                <div class="my-nav-menu">
-                    <button class="my-nav-item" v-scroll-to="'#section2'">About</button> 
-                    <button class="my-nav-item" v-scroll-to="'#section5'">How It Works</button> 
-                    <button class="my-nav-item" v-scroll-to="'#section6'">Team</button> 
-                </div>
-                <div class="my-nav-middle">
-                    <img src="@/assets/popshop_logo.png" alt="logo" v-scroll-to="'#section1'">
-                </div>
-                <div class="my-nav-end">
-                    <button class="my-nav-end-button" v-scroll-to="'#section8'">Create a Popshop</button>
-                </div>
-            </section>
 
             <!--Hero Landing Page-->
             <section id="section1" class="hero is-fullheight has-bg-img-1" >
@@ -33,10 +21,27 @@
                         <button class="button big-hero-button" v-scroll-to="'#section8'">Create a Popshop</button>
                     </div>
                 </div>
+                <div class="arrow bounce">
+                    <img src="@/assets/icons/arrow.png" alt="bouncy arrow">
+                </div>
+            </section>
+
+            <section id="navbar" ref="navbar" class="my-nav" v-bind:style="navPosition" v-on:fixNav="navPosition=$event">
+                <div class="my-nav-menu">
+                    <button class="my-nav-item" v-scroll-to="'#section2'">About</button> 
+                    <button class="my-nav-item" v-scroll-to="'#section5'">How It Works</button> 
+                    <button class="my-nav-item" v-scroll-to="'#section6'">Team</button> 
+                </div>
+                <div class="my-nav-middle">
+                    <img src="@/assets/popshop_logo.png" alt="logo" v-scroll-to="'#section1'">
+                </div>
+                <div class="my-nav-end">
+                    <button class="my-nav-end-button" v-scroll-to="'#section8'">Create a Popshop</button>
+                </div>
             </section>
 
             <section id="section2" >
-                <div class="standard-container">
+                <div class="standard-container" style="padding-top:5%">
                     <div class="center section-title">Say Goodbye To</div>
                     <div class='center'>
                         <ul class="section2-list">
@@ -76,7 +81,7 @@
             </section>
             
             <section id="section5" >
-                <div class="standard-container">
+                <div class="standard-container" style="padding-bottom:0%">
                 <div class="center section-title">How It Works</div>
                 <div  class="section5-steps ">
                     <div id="howitworks-step1" class="section5-step">
@@ -110,7 +115,7 @@
                 </div>
             </section>
 
-            <section id="section6">
+            <section id="section6" style="padding-top:5%">
                 <div class="center section-title">Team</div>
                 <div class="section6-grid">
                     <div id="tiffany" class="section6-grid-item" style="background-color:#FAE4E9">
@@ -224,14 +229,43 @@ export default class LandingPage extends Vue {
 
     @Prop(String) id!: string | null;
     error: string | boolean = false;
-
     isShowing : Boolean = false;
+
+    navPositionNotFixed = { position: "relative"}
+    navPositionFixed = {position: "fixed", top: 0}
+    navPosition = this.navPositionNotFixed
 
     mounted(){
         if (this.id == "thanks") {
            setTimeout(this.showThankYou, 500);
         }
         this.isShowing=false;
+    }
+
+    // event listeners for scrolling
+    beforeMount() {
+        window.addEventListener('scroll', this.handleScroll);
+        //console.log('scrolling Injected');
+    }
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
+        //console.log('scrolling Destroyed');
+    }
+    handleScroll() {
+        let scrolled = window.scrollY > 0;
+        let windowHeight = window.innerHeight;
+
+        //pass first page
+        //var nav = this.$refs.navbar;
+        if (window.scrollY > windowHeight) {
+            this.navPosition = this.navPositionFixed;
+            this.$emit('fixNav', this.navPosition)
+        }
+
+        if (window.scrollY < windowHeight) {
+            this.navPosition = this.navPositionNotFixed;
+            this.$emit('fixNav', this.navPosition)
+        }
     }
 
     showThankYou(){
@@ -251,7 +285,7 @@ export default class LandingPage extends Vue {
 }
 
 .logo-top {  
-    margin-top: 8vh;
+    margin-top: 5vh;
     width:15vw;
     position: absolute;
 }
@@ -293,7 +327,7 @@ export default class LandingPage extends Vue {
                 margin-top:0%;
             }
             &-space-between {
-                height: 15vh;
+                height: 17vh;
             }
             button {
                 margin-bottom: 0%;
@@ -314,26 +348,50 @@ export default class LandingPage extends Vue {
             background-color: #FAE4E9;
             color: black;
         }
+        &:focus {
+            outline: none;
+        }
     }
 }
+
+// BOUNCY ARROW 
+.arrow {
+  text-align: center;
+  margin-bottom: 3%;
+}
+.bounce {
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+
+//NAV BAR STYLES
 
 .my-nav {
     display: flex;
     justify-content: space-between;
     opacity: 0.8;
-     //sticky
-    position: fixed;
-    top: 0;
     width: 100%;
     background-color: #f7f4f4;
-
+    
     &:hover {
         opacity:1
     }
 
     &-menu{
         width: 47%;
-        padding: 0.5%;
+        padding: 0.25%;
         padding-left:1.5%;
         display: flex;
         justify-content: flex-start;
@@ -341,8 +399,12 @@ export default class LandingPage extends Vue {
         button {
             background-color: transparent;
             border: none;
-            font-size: 1.5vw;
+            font-size: 1.25vw;
             color:black;
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 
@@ -380,6 +442,9 @@ export default class LandingPage extends Vue {
             &:hover {
                 background-color: black;
                 color: white
+            }
+            &:focus {
+                outline: none;
             }
         }
     }
@@ -441,10 +506,12 @@ export default class LandingPage extends Vue {
 }
 
 .section5 {
-    // &-steps{}
+    &-steps{
+        padding-bottom: 0%
+    }
     &-step {
         display:flex;
-        padding-bottom: 5%;
+        padding-bottom: 3%;
         &-img {
             width: 50%;
             img {
