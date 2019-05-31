@@ -113,7 +113,8 @@
                                         <span class="checkmark-span checked"><font-awesome-icon class="checkmark" :icon="{ prefix: 'far', iconName: 'check-circle' }"/></span>
                                         <span class="checkmark-span unchecked"><font-awesome-icon class="checkmark" :icon="{ prefix: 'far', iconName: 'circle' }"/></span>
                                     </label>
-                                    <br>                                    
+                                    <br>    
+                                    <span class="eye"><font-awesome-icon class="eye" :icon="{ prefix: 'far', iconName: 'edit' }" v-on:click="viewDetails(p)"/>   </span>                            
                                     <span class="eye"><font-awesome-icon class="eye" :icon="{ prefix: 'fas', iconName: 'eye' }" v-on:click="goToProduct(p)"/></span>
                                 </p>
                             </div>
@@ -228,6 +229,12 @@ export default class Curate extends Vue {
     cancelCollection(){
         this.error = false;
         this.$router.push("/adminHome");
+    }
+
+    //temp
+    viewDetails(p: iProduct){
+        console.log(p)
+        this.$router.push("/product/"+ p.id);
     }
 
 }

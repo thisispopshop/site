@@ -12,7 +12,6 @@ export default new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
-
     //customer route
     {
       path: "/",
@@ -103,6 +102,14 @@ export default new Router({
           component:() =>
             import("./views/Admin/Collections.vue")
         },
+        {
+          path: "/product",
+          name: "product_details",
+          props:  (route) => ({id: route.params.id}),
+          component: () =>{
+            import("./views/Admin/ProductDetails.vue")
+          }
+        }
       ]
     }
 

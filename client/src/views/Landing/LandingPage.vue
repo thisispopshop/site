@@ -21,8 +21,8 @@
                         <button class="button big-hero-button" v-scroll-to="'#section8'">Create a Popshop</button>
                     </div>
                 </div>
-                <div class="arrow bounce">
-                    <img src="@/assets/icons/arrow.png" alt="bouncy arrow">
+                <div class="arrow bounce" >
+                    <span v-scroll-to="'#navbar'"><img src="@/assets/icons/arrow.png" alt="bouncy arrow"></span>
                 </div>
             </section>
 
@@ -40,7 +40,7 @@
                 </div>
             </section>
 
-            <section id="section2" >
+            <section id="section2" class="section2">
                 <div class="standard-container" style="padding-top:5%">
                     <div class="center section-title">Say Goodbye To</div>
                     <div class='center'>
@@ -80,7 +80,7 @@
                 <div class="center section4-text section-title">welcoming your newest sisters home.</div>
             </section>
             
-            <section id="section5" >
+            <section id="section5" class="section5">
                 <div class="standard-container" style="padding-bottom:0%">
                 <div class="center section-title">How It Works</div>
                 <div  class="section5-steps ">
@@ -99,7 +99,7 @@
                          </div>
                         <div class="section5-step-content">
                             <h1>Step 2: Customize Your Site</h1>
-                            <p>Customize your Popshop with your event information, submission forms and more.</p>
+                            <p>Customize with your clothing, event information, submit forms, and more.</p>
                         </div>
                     </div>
                     <div id="howitworks-step3" class="section5-step">
@@ -254,7 +254,6 @@ export default class LandingPage extends Vue {
     handleScroll() {
         let scrolled = window.scrollY > 0;
         let windowHeight = window.innerHeight;
-
         //pass first page
         //var nav = this.$refs.navbar;
         if (window.scrollY > windowHeight) {
@@ -285,7 +284,7 @@ export default class LandingPage extends Vue {
 }
 
 .logo-top {  
-    margin-top: 5vh;
+    margin-top: 1vh;
     width:15vw;
     position: absolute;
 }
@@ -335,7 +334,8 @@ export default class LandingPage extends Vue {
         }   
     }
     &-button {
-        background-color:black;
+        //background-color:black;
+        background-color:#3a3a3a;
         border-radius: 3.5px;
         border: none;
         box-shadow: 0.5px 0.5px rgb(224, 223, 223);
@@ -345,7 +345,8 @@ export default class LandingPage extends Vue {
         width: 15vw;
 
         &:hover {
-            background-color: #FAE4E9;
+            //background-color: #FAE4E9;
+            background-color: #FFFFFF;
             color: black;
         }
         &:focus {
@@ -420,7 +421,7 @@ export default class LandingPage extends Vue {
 
     &-middle {
         img {
-            width: 6vw;
+            width: 7vw;
         }
     }
     
@@ -451,6 +452,7 @@ export default class LandingPage extends Vue {
 }
 
 .section2 {
+    background-color: #F8F8F8;
     &-list{
         width: 60%;
         margin:auto;
@@ -506,6 +508,7 @@ export default class LandingPage extends Vue {
 }
 
 .section5 {
+    background-color: #F8F8F8;
     &-steps{
         padding-bottom: 0%
     }
