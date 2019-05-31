@@ -35,7 +35,7 @@
                 </div>
             </section>
 
-            <section id="section2-mobile" >
+            <section id="section2-mobile" class="section2">
                 <div class="standard-container">
                     <div class="center section-title">Say Goodbye To</div>
                     <div class='center'>
@@ -75,7 +75,7 @@
                 <div class="center section4-text section-title">welcoming your newest sisters home.</div>
             </section>
 
-            <section id="section5-mobile" >
+            <section id="section5-mobile" class="section5">
                     <div class="section5-title center section-title">How It Works</div>
                     <div class="section5-steps">
                         <div id="howitworks-step1" class="section5-step">
@@ -426,6 +426,7 @@ export default class LandingMobile extends Vue {
 
 
 .section2 {
+    background-color: #F8F8F8;
     &-list{
         width: 55%;
         margin:auto;
@@ -481,6 +482,7 @@ export default class LandingMobile extends Vue {
 }
 
 .section5 {
+    background-color:#F8F8F8;
     &-title{
         padding-top: 5%;
     }

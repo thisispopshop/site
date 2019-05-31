@@ -40,7 +40,7 @@
                 </div>
             </section>
 
-            <section id="section2">
+            <section id="section2" class="section2">
                 <div class="standard-container" style="padding-top:5%">
                     <div class="center section-title">Say Goodbye To</div>
                     <div class='center'>
@@ -80,7 +80,7 @@
                 <div class="center section4-text section-title">welcoming your newest sisters home.</div>
             </section>
             
-            <section id="section5" >
+            <section id="section5" class="section5">
                 <div class="standard-container" style="padding-bottom:0%">
                 <div class="center section-title">How It Works</div>
                 <div  class="section5-steps ">
@@ -421,7 +421,7 @@ export default class LandingPage extends Vue {
 
     &-middle {
         img {
-            width: 6vw;
+            width: 7vw;
         }
     }
     
@@ -452,6 +452,7 @@ export default class LandingPage extends Vue {
 }
 
 .section2 {
+    background-color: #F8F8F8;
     &-list{
         width: 60%;
         margin:auto;
@@ -507,6 +508,7 @@ export default class LandingPage extends Vue {
 }
 
 .section5 {
+    background-color: #F8F8F8;
     &-steps{
         padding-bottom: 0%
     }

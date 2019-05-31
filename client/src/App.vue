@@ -17,7 +17,7 @@
 
               <!--social media-->
               <a id="mail" class="social-media-icon" href="mailto:thepopshopteam@gmail.com">
-                <img src="@/assets/icons/footer_mail.png" alt="mail logo">
+                <img src="@/assets/icons/footer_mail.png" alt="mail icon">
               </a>
               <a id="instagram" class="tab-space social-media-icon" href="https://www.instagram.com/thisispopshop/" target="_blank">
                 <img src="@/assets/icons/footer_instagram.png" alt="instagram logo">
@@ -30,6 +30,9 @@
               </a>
               <a id="github" class="tab-space social-media-icon" href="https://github.com/thisispopshop/site" target="_blank">
                 <img src="@/assets/icons/footer_github.png" alt="github logo">
+              </a>
+              <a id="info" class="tab-space social-media-icon" href="https://thisispopshop.github.io/popshop_patternlibrary/#about" target="_blank">
+                <img src="@/assets/icons/footer_info.png" alt="info icon">
               </a>
               <!--<font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }"/>-->
               <!--<font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }"/>-->
