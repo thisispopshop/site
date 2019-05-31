@@ -14,7 +14,7 @@ import PrettyRadio from 'pretty-checkbox-vue/radio';
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
-import { faHeart , faUser, faCheckCircle, faCircle} from "@fortawesome/free-regular-svg-icons";
+import { faHeart , faUser, faCheckCircle, faCircle, faEdit} from "@fortawesome/free-regular-svg-icons";
 import {  faInstagram, faTwitter, faFacebook,} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 //import VueRouter from 'vue-router';
@@ -24,7 +24,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 //require('~/assets/css/popshopUIhomepage.css');
 
 library.add(faUpload, faCoffee, faPlus, faAngleDown, faSearch, faEye, faArrowLeft);
-library.add(faHeart, faUser, faCheckCircle,  faCircle);
+library.add(faHeart, faUser, faCheckCircle,  faCircle, faEdit);
 library.add( faInstagram, faTwitter, faFacebook);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
@@ -44,7 +44,7 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-/*
+
 //DEVELOPMENT
 const host = window.location.host;
 const url = host.split('.');
@@ -66,9 +66,9 @@ else if (subdomain === domain){  //normal page
 else {
   router.push({path:"home"});
 }
-*/
 
 
+/*
 // PRODUCTION
 const host = window.location.host;
 const url = host.split('.');
@@ -99,3 +99,4 @@ if (subdomain === "www" ){
  else {
   router.push({path:"home"});
 }
+*/

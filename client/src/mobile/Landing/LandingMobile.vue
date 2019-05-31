@@ -19,8 +19,8 @@
                         <button class="button big-hero-button" v-scroll-to="'#section8-mobile'">Create a Popshop</button>
                     </div>
                 </div>
-                <div class="arrow bounce">
-                    <img src="@/assets/icons/arrow.png" alt="bouncy arrow">
+                <div class="arrow bounce" >
+                    <span v-scroll-to="'#navbar'"><img src="@/assets/icons/arrow.png" alt="bouncy arrow"></span>
                 </div>
             </section>
 
@@ -91,7 +91,7 @@
                         <div id="howitworks-step2" class="section5-step">
                             <div class="section5-step-content">
                                 <h1>Step 2: Customize Your Site</h1>
-                                <p>Customize your Popshop with your event information, submission forms, and more.</p>
+                                <p>Customize with your clothing, event information, submit forms, and more.</p>
                             </div>
                             <div class="section5-step-img">
                                 <img src="@/assets/images/howitworks_step2.png" alt="how it works 2">
@@ -238,7 +238,7 @@ export default class LandingMobile extends Vue {
         //console.log('scrolling Destroyed');
     }
     handleScroll() {
-        let scrolled = window.scrollY > 0;
+        //let scrolled = window.scrollY > 0;
         let windowHeight = window.innerHeight;
 
         //pass first page
@@ -383,7 +383,7 @@ export default class LandingMobile extends Vue {
         }
     }
     &-button {
-        background-color:black;
+        background-color:#3a3a3a;
         border-radius: 3.5px;
         border: none;
         box-shadow: 0.5px 0.5px rgb(224, 223, 223);
@@ -393,7 +393,8 @@ export default class LandingMobile extends Vue {
         width: 40vw;
 
         &:hover {
-            background-color: #FAE4E9;
+            //background-color: #FAE4E9;
+            background-color: #FFFFFF;
             color: black;
         }
         &:focus {
@@ -512,8 +513,11 @@ export default class LandingMobile extends Vue {
             text-align:center;
             font-size: 3vw;
             h1{
-                font-family: "Brandon Grotesque Thin";
+                font-weight: bold;
                 font-style: italic
+            }
+            p{
+                font-family: "Brandon Grotesque Thin";
             }
         }
     }
@@ -534,7 +538,7 @@ export default class LandingMobile extends Vue {
             }
             img {
                 display:block;
-                margin-left: auto;
+                margin-left: 8%;
                 margin-right:auto;
                 margin-top: 3%;
                 margin-bottom: 3%;
