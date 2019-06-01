@@ -15,14 +15,14 @@
             class="input"
             type="text"
             placeholder="email address"
-            v-model="signup.emailAddress"
+            v-model="login.emailAddress"
           >
         </div>
       </div>
       <div class="field">
         <label class="label">Password</label>
         <div class="control">
-          <input class="input" type="password" placeholder="password" v-model="signup.password">
+          <input class="input" type="password" placeholder="password" v-model="login.password">
         </div>
       </div>
     </form>
@@ -40,8 +40,8 @@ import Modal from "./Modal.vue";
     Modal
   }
 })
-export default class Signup extends Vue {
-  signup: LoginForm = {
+export default class Login extends Vue {
+  login: LoginForm = {
     emailAddress: "",
     password: ""
   };
@@ -51,7 +51,7 @@ export default class Signup extends Vue {
   @Watch("isShowing")
   handleShowing(isShowingStart: boolean, isShowingEnd: boolean) {
     if (!isShowingStart && isShowingEnd) {
-      this.signup = {
+      this.login = {
         emailAddress: "",
         password: ""
       };
@@ -62,8 +62,8 @@ export default class Signup extends Vue {
     this.error = false;
     axios
       .post(APIConfig.buildUrl("/login"), {
-        emailAddress: this.signup.emailAddress,
-        password: this.signup.password
+        emailAddress: this.login.emailAddress,
+        password: this.login.password
       })
       .then((response: AxiosResponse<LoginResponse>) => {
         this.$store.dispatch("login", {
