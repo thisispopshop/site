@@ -52,9 +52,6 @@ const subdomain = url[0];
 
 /*
 //DEVELOPMENT
-const host = window.location.host;
-const url = host.split('.');
-const subdomain = url[0];
 const domain = "localhost:8080";
 // redirect to home page or not
 if (subdomain === "admin"){
@@ -82,14 +79,8 @@ else {
 */
 
 
-// PRODUCTION
-const host = window.location.host;
-const url = host.split('.');
-const subdomain = url[0];
-//const domain = "localhost:8080";
+//production
 const domain = "thisispopshop";
-
-// redirect to home page or not
 if (subdomain === "www" ){
   const ending = url[2];
   const firstPage = ending.slice(4);
