@@ -50,19 +50,24 @@ const path = window.location.pathname;
 const url = host.split('.');
 const subdomain = url[0];
 
-//DEVELOPMENT
 /*
+//DEVELOPMENT
 const domain = "localhost:8080";
+// redirect to home page or not
 if (subdomain === "admin"){
-  if (path === "/"){
-    router.push({path:"dashboard"})
-  } else {
-    router.push({path:path})
-  }
+    if (path === "/"){
+      router.push({path:"dashboard"})
+    } else {
+      router.push({path:path})
+    }
 }
 else if (subdomain === domain){  //normal page
-    //possibly uneccessary
+    const ending = url[1];
+    const firstPage = ending.slice(4);
+    //console.log(firstPage);
     router.push({path:"ThanksLandingPage",params:{id:"thanks"}});
+    //if (firstPage === "/thanks")
+    //    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
   }
 else {
   if (path === "/"){
@@ -74,18 +79,32 @@ else {
 */
 
 
-// PRODUCTION
+//production
 const domain = "thisispopshop";
-
-if (subdomain === "www" || subdomain === domain){
-  router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
-}
-else if (subdomain === "admin"){
-  if (path === "/"){
-    router.push({path:"dashboard"})
+if (subdomain === "www" ){
+  const ending = url[2];
+  const firstPage = ending.slice(4);
+  //console.log(firstPage);
+  //router.push(firstPage);
+  if (firstPage === "/thanks")
+        router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
   }
+  else if (subdomain === "admin"){
+    if (path === "/"){
+      router.push({path:"dashboard"})
+    } else {
+      router.push({path:path})
+    }
+  }
+  else if (subdomain === domain){  //normal page
+    const ending = url[1];
+    const firstPage = ending.slice(4);
+    //console.log(firstPage);
+    //router.push(firstPage);
+    if (firstPage === "/thanks")
+        router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
 }
-else {
+ else {
   if (path === "/"){
     router.push({path:"home"});
   } else {
