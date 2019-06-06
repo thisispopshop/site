@@ -15,6 +15,17 @@
             </div>
         </section>
 
+        <section class="section">
+            <a class="button is-light" v-on:click="showLoginModal()">
+              Log in
+            </a>
+            <a class="button is-success" href="/login">login again</a>
+            <router-link to="/users/login" class="button is-dark">LOG INNNNN</router-link>
+        </section>
+
+        <router-view/>
+        <Login v-bind:is-showing="showLogin" v-on:success="successLogin()" v-on:cancel="cancelLogin()"/>
+
         <!--all info-->
         <section class="section">
             <div class="container">
@@ -164,8 +175,13 @@ import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
 import { iCollection, iOccasion ,iProduct, iOrganization, iEvent, iOccImage, iOrgImage} from "@/models";
+import Login from "@/components/Login.vue";
 
-@Component
+@Component({
+    components: {
+        Login
+    }
+})
 export default class Collections extends Vue {
 
     error : string | boolean = false;
@@ -363,6 +379,19 @@ export default class Collections extends Vue {
     /*HANDLE COLLECTIONS */
     createCollection(){
         this.$router.push("/curate");
+    }
+
+
+
+    public showLogin: boolean = false;
+    showLoginModal() {
+        this.showLogin = true;
+    }
+    successLogin() {
+        this.showLogin = false;
+    }
+    cancelLogin() {
+        this.showLogin = false;
     }
 
 }

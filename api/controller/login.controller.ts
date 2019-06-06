@@ -9,6 +9,7 @@ export class LoginController extends DefaultController {
   protected initializeRoutes(): express.Router {
     const router = express.Router();
 
+    /*
     router.route("/login").post((req: Request, res: Response) => {
       const { emailAddress, password } = req.body;
       const userRepo = getRepository(User);
@@ -18,6 +19,8 @@ export class LoginController extends DefaultController {
         .then((user: User | undefined) => {
           console.log("found user:", user);
           if (user && user.password === password) {
+            
+            // rmeove this session????
             sessionRepo
               .findOne({ where: { userId: user.id } })
               .then((session: Session | undefined) => {
@@ -33,6 +36,9 @@ export class LoginController extends DefaultController {
                     .send({ token: updatedSession.id, userId: user.id });
                 });
               });
+
+              // add new code here???
+
           } else {
             res
               .status(401)
@@ -44,6 +50,8 @@ export class LoginController extends DefaultController {
     });
     router.route("/logout").post((req: Request, res: Response) => {
       const token = req.get("token");
+
+      //remove session???
       const sessionRepo = getRepository(Session);
       sessionRepo.findOne(token).then((foundSession: Session | undefined) => {
         if (foundSession) {
@@ -55,6 +63,8 @@ export class LoginController extends DefaultController {
         }
       });
     });
+     */
+
     return router;
   }
 }

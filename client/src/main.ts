@@ -4,6 +4,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+//import auth from "./auth";
 
 import  vueheadful  from "vue-headful";
 import vueScrollto from 'vue-scrollto';
@@ -44,58 +45,50 @@ new Vue({
   render: h => h(App)
 }).$mount("#app");
 
-/*
-//DEVELOPMENT
-const host = window.location.host;
+const host = window.location.hostname;
+const path = window.location.pathname;
 const url = host.split('.');
 const subdomain = url[0];
-const domain = "localhost:8080";
 
-// redirect to home page or not
+//DEVELOPMENT
+/*
+const domain = "localhost:8080";
 if (subdomain === "admin"){
-    router.push({name: "organizations"});
+  if (path === "/"){
+    router.push({path:"dashboard"})
+  } else {
+    router.push({path:path})
+  }
 }
 else if (subdomain === domain){  //normal page
-    const ending = url[1];
-    const firstPage = ending.slice(4);
-    //console.log(firstPage);
+    //possibly uneccessary
     router.push({path:"ThanksLandingPage",params:{id:"thanks"}});
-    //if (firstPage === "/thanks")
-    //    router.push({name:"ThanksLandingPage", params:{id:"thanks"}});
   }
 else {
-  router.push({path:"home"});
+  if (path === "/"){
+    router.push({path:"home"});
+  } else {
+    router.push({path:path})
+  }
 }
 */
 
 
 // PRODUCTION
-const host = window.location.host;
-const url = host.split('.');
-const subdomain = url[0];
-//const domain = "localhost:8080";
 const domain = "thisispopshop";
 
-// redirect to home page or not
-if (subdomain === "www" ){
-  const ending = url[2];
-  const firstPage = ending.slice(4);
-  //console.log(firstPage);
-  //router.push(firstPage);
-  if (firstPage === "/thanks")
-        router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
-  }
-  else if (subdomain === "admin"){
-    router.push({name: "organizations"});
-  }
-  else if (subdomain === domain){  //normal page
-    const ending = url[1];
-    const firstPage = ending.slice(4);
-    //console.log(firstPage);
-    //router.push(firstPage);
-    if (firstPage === "/thanks")
-        router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
+if (subdomain === "www" || subdomain === domain){
+  router.push({path:"ThanksLandingPage", params:{id:"thanks"}});
 }
- else {
-  router.push({path:"home"});
+else if (subdomain === "admin"){
+  if (path === "/"){
+    router.push({path:"dashboard"})
+  }
+}
+else {
+  if (path === "/"){
+    router.push({path:"home"});
+  } else {
+    router.push({path:path})
+  }
 }
