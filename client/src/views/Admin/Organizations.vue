@@ -19,7 +19,7 @@
             <a class="button is-light" v-on:click="showLoginModal()">
               Log in
             </a>
-            <a class="button is-success" href="/users/login">login again</a>
+            <a class="button is-success" href="/login">login again</a>
             <router-link to="/users/login" class="button is-dark">LOG INNNNN</router-link>
         </section>
 

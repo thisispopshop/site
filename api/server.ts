@@ -1,4 +1,4 @@
-import express, {Request, Response} from "express";
+import express, {Request, Response, NextFunction} from "express";
 import { DBConnection } from "./connection";
 
 //session imports
@@ -29,6 +29,7 @@ export class Server {
     return DBConnection.getConnection().then(() => {
       const app: express.Application = express();
 
+      /*
       // oid communication & routing
       const oktaClient = new okta.Client({
         orgUrl: "https://dev-181223.okta.com",
@@ -44,14 +45,14 @@ export class Server {
         scope: "openid profile",
         routes: {
           login: {
-            path: "/users/login"
+            path: "/login"
           },
           callback: {
-            path: "/users/callback",
-            defaultRedirect: "/adminHome"
+            path: "/callback",
+            defaultRedirect: "/dashboard"
           }
         }
-      });
+      });*/
 
       app.use(cors());
       app.use(express.json());
@@ -67,18 +68,19 @@ export class Server {
         resave: true,
         saveUninitialized: false
       }));
-      app.use(oidc.router);
+      //app.use(oidc.router);
 
       //this middleware will run on every user request
-      app.use((req:Request, res:Response) => {
-        if (!req.body.userinfo) {
+      /*
+      app.use((req, res) => {
+        if (!req.userinfo) {
           console.log("no user info?")
         }
         oktaClient.getUser(req.body.userinfo.sub)
         //oktaUserclass?
           .then((user) => {
-            req.body.user = user;
-            req.body.locals.user = user;
+            req.user = user;
+            req.locals.user = user;
             console.log(user)
           }).catch((err: Response) => {
             console.log(err)
@@ -87,7 +89,7 @@ export class Server {
 
       //test user stuff
       app.get('/test', (req, res) => {
-        res.json({ profile: req.body.user ? req.body.user.profile : null });
+        res.json({ profile: req.user ? req.user.profile : null });
       });
 
       // wont let user access unless logged in
@@ -98,9 +100,11 @@ export class Server {
         }
       }
 
+      */
+
       //rest api
       app.use("/", new UserController().router);
-      app.use("/", new LoginController().router);
+      //app.use("/", new LoginController().router);
       app.use("/", new ProductController().router);
       app.use("/", new CollectionController().router);
       app.use("/", new CategoryController().router);
@@ -108,7 +112,10 @@ export class Server {
       app.use("/", new BrandController().router);
       app.use("/", new OccasionController().router);
       app.use("/", new EventController().router);
-      app.use("/", loginRequired, new OrganizationController().router);
+      app.use("/", new OrganizationController().router);
+
+      // login!
+      app.get("/")
 
       return app;
     })

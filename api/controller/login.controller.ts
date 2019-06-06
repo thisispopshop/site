@@ -9,6 +9,7 @@ export class LoginController extends DefaultController {
   protected initializeRoutes(): express.Router {
     const router = express.Router();
 
+    /*
     router.route("/login").post((req: Request, res: Response) => {
       const { emailAddress, password } = req.body;
       const userRepo = getRepository(User);
@@ -62,6 +63,8 @@ export class LoginController extends DefaultController {
         }
       });
     });
+     */
+
     return router;
   }
 }

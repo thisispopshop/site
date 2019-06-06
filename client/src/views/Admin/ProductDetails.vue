@@ -1,7 +1,7 @@
 <template>
     <div class="product_details">
         <section class="section">
-            <p class="title">hi</p>
+            <p class="title">hi??????????????????????????? <br> ?</p>
         </section>
         <section class="section">
             {{product}}
@@ -12,7 +12,7 @@
 <script lang="ts">
 /* eslint-disable */
 import Vue from "vue";
-import { Component, Prop} from "vue-property-decorator";
+import { Component, Prop, Watch} from "vue-property-decorator";
 import axios, {AxiosError, AxiosResponse} from "axios";
 import { APIConfig } from "@/utils/api.utils";
 import {iProduct} from "@/models";
@@ -27,6 +27,20 @@ export default class ProductDetails extends Vue{
     // get the product you want to view
     mounted(){
         console.log("here?")
+        this.error = false;
+        axios
+            .get(APIConfig.buildUrl("/product/" + this.id))
+            .then((response: AxiosResponse) => {
+                this.product = response.data.product;
+            })
+            .catch((res:AxiosError) => {
+                this.error = res.response && res.response.data.reason;
+                console.log(this.error)
+            })
+    }
+
+    @Watch("id")
+    update(){
         this.error = false;
         axios
             .get(APIConfig.buildUrl("/product/" + this.id))

@@ -1,6 +1,7 @@
 /* eslint-disable */
 import Vue from "vue";
 import Router from "vue-router";
+import auth from "@/Auth";
 
 import SubDomainNav from "./views/Subdomains/Navigation.vue";
 import AdminNav from "./views/Admin/Navigation.vue";
@@ -74,41 +75,68 @@ export default new Router({
         }
       ]
     }, {
-      path: "/adminHome",
+      path: "/dashboard",
       name: 'admin_navigation',
       component: AdminNav,
       children : [
         {
-          path: "/adminHome",
+          path: "/dashboard",
+          name: "dashboard",
+          beforeEnter: requireAuth,
+          component:() =>
+            import("./views/Admin/Dashboard.vue")
+        },{
+          path: "/login",
+          name: "oktalogin",
+          component: () => 
+            import("./views/Admin/OktaLogin.vue")
+        },{
+          path: "/logout",
+          name: "oktalogout",
+          beforeEnter (to, from, next) {
+            const answer = window.confirm('Ready to log out?')
+            if (answer) {
+              auth.logout()
+              next('/login')
+            } else {
+              next(false)
+            }
+          }
+        },
+        {
+          path: "/organizations",
           name: "organizations",
+          beforeEnter: requireAuth,
           component:() =>
             import("./views/Admin/Organizations.vue")
         },
         {
           path: "/curate",
           name: "curate",
+          beforeEnter: requireAuth,
           component:() =>
             import("./views/Admin/Curate.vue")
         },
         {
           path: "/curate1",
-          name: "curate",
+          name: "curate1",
+          beforeEnter: requireAuth,
           component:() =>
             import("./views/Admin/Curate.1.vue")
         },
         {
           path: "/collections",
           name: "collections",
+          beforeEnter: requireAuth,
           component:() =>
             import("./views/Admin/Collections.vue")
         },
         {
-          path: "/product",
+          path: "/product/:id",
           name: "product_details",
-          props:  (route) => ({id: route.params.id}),
-          component: () =>{
+          beforeEnter: requireAuth,
+          component: () =>
             import("./views/Admin/ProductDetails.vue")
-          }
         }
       ]
     }
@@ -116,4 +144,36 @@ export default new Router({
   ]
 });
 
+
+function requireAuth (to,from,next){
+  if (!auth.loggedIn()) {
+    console.log('not logged in')
+    /*next({
+      path: '/login',
+      query: {redirect: to.fullPath}
+    })*/
+    next("/login")
+  } else {
+    console.log('is logged in')
+    next()
+  }
+}
+
 //export default router;
+
+/**
+ * 
+ * 
+ *       beforeEnter (to,from,next) {
+        if (!auth.loggedIn()) {
+          console.log("not logged in")
+          next({
+            path: 'login',
+            //query: {redirect: to.fullPath}
+          })
+        } else {
+          console.log('is logged in')
+          next()
+        }
+      },
+ */

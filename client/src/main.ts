@@ -4,6 +4,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+//import auth from "./auth";
 
 import  vueheadful  from "vue-headful";
 import vueScrollto from 'vue-scrollto';
@@ -49,15 +50,14 @@ const path = window.location.pathname;
 const url = host.split('.');
 const subdomain = url[0];
 
-
 //DEVELOPMENT
+/*
 const domain = "localhost:8080";
 if (subdomain === "admin"){
   if (path === "/"){
-    router.push({path:"adminHome"})
-  }
-  if (path === "/users/login"){
-    console.log(path)
+    router.push({path:"dashboard"})
+  } else {
+    router.push({path:path})
   }
 }
 else if (subdomain === domain){  //normal page
@@ -71,8 +71,9 @@ else {
     router.push({path:path})
   }
 }
+*/
 
-/*
+
 // PRODUCTION
 const domain = "thisispopshop";
 
@@ -81,7 +82,7 @@ if (subdomain === "www" || subdomain === domain){
 }
 else if (subdomain === "admin"){
   if (path === "/"){
-    router.push({path:"adminHome"})
+    router.push({path:"dashboard"})
   }
 }
 else {
@@ -91,4 +92,3 @@ else {
     router.push({path:path})
   }
 }
-*/
