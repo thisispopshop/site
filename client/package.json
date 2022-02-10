@@ -50,7 +50,7 @@
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-vue": "^5.1.0",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "pretty-checkbox-vue": "^1.1.9",
     "sass-loader": "^7.0.1",
     "ts-jest": "^23.0.0",
