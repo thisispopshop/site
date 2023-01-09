@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@okta/jwt-verifier": "^0.0.15",
-    "@okta/oidc-middleware": "^2.0.0",
+    "@okta/oidc-middleware": "^5.0.0",
     "@okta/okta-sdk-nodejs": "^2.0.0",
     "axios": "^0.19.0",
     "cookie-parser": "^1.4.4",
